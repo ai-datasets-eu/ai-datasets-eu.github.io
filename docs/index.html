@@ -730,10 +730,16 @@ document.addEventListener("DOMContentLoaded", () => {
       history.replaceState(null, "", "#" + id);
     }
   };
+  // Capture phase, so the tab opens even if another script (Quarto) handles the link click first
   document.addEventListener("click", e => {
-    const a = e.target.closest('a[href^="#"]');
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
     const id = a && a.hash.slice(1);
-    if (ids.includes(id)) { e.preventDefault(); show(id, true); }
+    if (ids.includes(id)) { e.preventDefault(); e.stopPropagation(); show(id, true); }
+  }, true);
+  // Fallback: any change of the address to #individuals / #workers / #firms opens that tab
+  window.addEventListener("hashchange", () => {
+    const id = location.hash.slice(1);
+    if (ids.includes(id)) show(id, false);
   });
   const start = location.hash.slice(1);
   if (ids.includes(start)) {
