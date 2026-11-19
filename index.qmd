@@ -22,21 +22,18 @@ toc: false
 </nav>
 
 <section class="chapter chapter-individuals" id="individuals">
-  <p class="chapter-num">Individuals</p>
   <h2 class="chapter-title">AI use by individuals</h2>
   <p class="chapter-lede">General population surveys ask whether people use AI for any purpose: at work, in their studies or in private life.</p>
 {{< include figures/adoption-individuals.inline.html >}}
 </section>
 
 <section class="chapter chapter-workers" id="workers">
-  <p class="chapter-num">Workers</p>
   <h2 class="chapter-title">AI use by workers</h2>
   <p class="chapter-lede">Worker surveys ask whether people use AI in their job. Estimates differ with the population covered and how the question names AI.</p>
 {{< include figures/adoption-workers.inline.html >}}
 </section>
 
 <section class="chapter chapter-firms" id="firms">
-  <p class="chapter-num">Firms</p>
   <h2 class="chapter-title">AI use by firms</h2>
   <p class="chapter-lede">Firm surveys ask whether the business uses AI. Results depend on firm size, on whether firms are weighted by count, employment or value added, and on what counts as use.</p>
 {{< include figures/adoption-firms.inline.html >}}
