@@ -468,18 +468,24 @@ COVERAGE = {
 
 
 def timeline(kind, points):
-    """Overview time series, written as plain SVG so that text uses the page font,
+    """Overview time series, drawn twice: a compact version and a wide, flatter one for big
+    screens. styles.css shows one or the other, so labels stay the same size at any width."""
+    svgs = [timeline_svg(kind, points, 900, 380, "compact"), timeline_svg(kind, points, 1300, 430, "wide")]
+    (OUT / f"adoption-{kind}.inline.html").write_text("\n".join(svgs), encoding="utf8")
+
+
+def timeline_svg(kind, points, W, H, variant):
+    """One overview time series as plain SVG, so that text uses the page font,
     dots link to the survey pages and show a tooltip, and the chart scales with the page."""
     colour, title, unit = KINDS[kind]
-    W, H = 720, 380
-    left, right, top, bottom = 40, 96, 40, 32          # plot margins; labels may run into the right margin
+    left, right, top, bottom = 40, 110, 40, 32          # plot margins; labels may run into the right margin
     x0, x1 = date(2024, 1, 1).toordinal(), date(2027, 1, 1).toordinal()
     ymax = 10 * (int(max(p["value"] for p in points) * 1.15) // 10 + 1)
     pw, ph = W - left - right, H - top - bottom
     X = lambda d: left + (d.toordinal() - x0) / (x1 - x0) * pw
     Y = lambda v: top + ph - v / ymax * ph
     esc = lambda t: str(t).replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")
-    out = [f'<svg viewBox="0 0 {W} {H}" class="adoption-chart chart-{kind}" role="img" '
+    out = [f'<svg viewBox="0 0 {W} {H}" class="adoption-chart chart-{kind} chart-{variant}" role="img" '
            f'aria-label="{esc(title)}" xmlns="http://www.w3.org/2000/svg" style="--c:{colour}">']
 
     # Year written under the middle of each year
@@ -548,26 +554,28 @@ def timeline(kind, points):
         out.append(f'<text class="legend" x="{lx + 16}" y="{cy + 4}">{text}</text>')
         lx += 32 + 7.4 * len(text)
     out.append("</svg>")
-    svg = "\n".join(out)
-    (OUT / f"adoption-{kind}.inline.html").write_text(svg, encoding="utf8")
+    return "\n".join(out)
 
 
 def overview_stats(points):
-    """Opening sentence of the overview page: the range of estimates from the surveys
-    fielded in the latest year, for individuals, workers and firms."""
-    parts, years = {}, set()
+    """Opening lines of the overview page: the range of estimates from the surveys fielded in the
+    latest year, one bullet each for individuals, workers and firms (bullets in the chart colours)."""
+    rows, years = [], set()
+    who = {"individuals": "of people", "workers": "of workers", "firms": "of firms"}
     for kind in KINDS:
         group = [p for p in points if p["kind"] == kind]
         year = max(p["when"].year for p in group)
         latest = [p for p in group if p["when"].year == year]
         lo, hi = round(min(p["value"] for p in latest)), round(max(p["value"] for p in latest))
         text = f"{lo}%" if lo == hi else f"{lo} to {hi}%"
-        parts[kind] = f'<a class="fig fig-{kind}" href="#{kind}">{text}</a>'
+        rows.append(f'<li class="fig-{kind}"><span><a class="fig" href="#{kind}">{text}</a> {who[kind]}</span></li>')
         years.add(year)
     year = " and ".join(str(y) for y in sorted(years))
-    html = (f'<p class="lede">Surveys fielded in {year} put the share using AI at {parts["individuals"]} '
-            f'of people, {parts["workers"]} of workers and {parts["firms"]} of firms. '
-            "The ranges are wide because each survey defines AI, use and its population in its own way.</p>")
+    html = (f'<div class="lede"><p>Surveys fielded in {year} put the share using AI at:</p>'
+            f'<ul class="lede-list">{"".join(rows)}</ul>'
+            "<p>These ranges are wide, because each survey makes different choices when defining:</p>"
+            '<ul class="lede-list lede-list-plain"><li><span>artificial intelligence tools</span></li><li><span>adoption and intensity</span></li>'
+            "<li><span>the target population</span></li></ul></div>")
     (OUT / "overview-stats.inline.html").write_text(html, encoding="utf8")
 
 
@@ -582,12 +590,9 @@ EURO_AREA = ["AT", "BE", "HR", "CY", "EE", "FI", "FR", "DE", "EL", "IE", "IT", "
              "NL", "PT", "SK", "SI", "ES"]   # 20 members in 2024-25
 
 
-def sidebar_data():
-    """Data for the sidebar script (includes/sidebar.html): for each survey page, who was asked
-    and which EU countries it covers (from the `asked` and `countries` fields); the EU countries;
-    and the countries that have a section on the country evidence page."""
-    import json
-    surveys = {}
+def survey_index():
+    """Every EU survey page: title, year, page path, who was asked, EU countries covered."""
+    out = []
     for path in sorted(ROOT.glob("surveys/*/*.qmd")):
         meta = yaml.safe_load(path.read_text(encoding="utf8").split("---")[1])
         asked = str(meta.get("asked", "")).lower()
@@ -596,18 +601,103 @@ def sidebar_data():
         unknown = set(codes) - set(EU_COUNTRIES)
         if unknown:
             raise ValueError(f"{path}: unknown country codes {sorted(unknown)}")
-        surveys[path.relative_to(ROOT).with_suffix(".html").as_posix()] = {
-            "pops": [k for k in ("individuals", "workers", "firms") if k in asked], "countries": codes}
-    national = {}
-    names = {v: k for k, v in EU_COUNTRIES.items()}
-    for line in (ROOT / "country-evidence.qmd").read_text(encoding="utf8").splitlines():
-        if line.startswith("## ") and line[3:].strip() in names:
-            name = line[3:].strip()
-            national[names[name]] = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
-    countries = sorted(EU_COUNTRIES.items(), key=lambda kv: kv[1])
-    data = {"surveys": surveys, "countries": countries, "national": national}
+        out.append({"title": meta["title"], "year": path.parent.name,
+                    "url": path.relative_to(ROOT).with_suffix(".html").as_posix(),
+                    "pops": [k for k in ("individuals", "workers", "firms") if k in asked],
+                    "countries": codes})
+    return out
+
+
+def country_pages():
+    """Country pages (countries/*.qmd): EU country code -> page path and number of national surveys."""
+    pages = {}
+    for path in sorted(ROOT.glob("countries/*.qmd")):
+        text = path.read_text(encoding="utf8")
+        code = yaml.safe_load(text.split("---")[1]).get("country")
+        if code not in EU_COUNTRIES:
+            raise ValueError(f"{path}: `country` must be an EU country code, not {code!r}")
+        pages[code] = {"url": path.relative_to(ROOT).with_suffix(".html").as_posix(), "stem": path.stem,
+                       "n": text.count("{.survey-entry")}
+    return pages
+
+
+def sidebar_data(surveys, pages):
+    """Data for the sidebar script (includes/sidebar.html): for each survey page, who was asked
+    and which EU countries it covers; the EU countries; and the countries with their own page."""
+    import json
+    data = {"surveys": {s["url"]: {"pops": s["pops"], "countries": s["countries"]} for s in surveys},
+            "countries": sorted(EU_COUNTRIES.items(), key=lambda kv: kv[1]),
+            "national": {code: page["url"] for code, page in pages.items()}}
     (ROOT / "includes" / "sidebar-data.html").write_text(
         "<script>window.SIDEBAR_DATA = " + json.dumps(data) + ";</script>", encoding="utf8")
+
+
+def country_grid(surveys, pages):
+    """Index of the country evidence page: one tile per EU country, each linking to its page."""
+    tiles = []
+    for code, name in sorted(EU_COUNTRIES.items(), key=lambda kv: kv[1]):
+        page = pages.get(code)
+        if not page:
+            raise ValueError(f"no page in countries/ for {name} ({code})")
+        n_eu = sum(code in s["countries"] for s in surveys)
+        n = page["n"]
+        count = f'{n} national survey{"s" if n != 1 else ""}' if n else "No national surveys yet"
+        tiles.append(f'<a class="country-tile{" has-national" if n else ""}" href="{page["url"]}">'
+                     f'<span class="ct-name">{name}</span><span class="ct-count">{count}</span>'
+                     f'<span class="ct-eu">{n_eu} EU-wide surveys</span></a>')
+    (OUT / "country-grid.inline.html").write_text('<div class="country-grid">' + "".join(tiles) + "</div>",
+                                                encoding="utf8")
+
+
+def company_surveys():
+    """Company surveys and the EU countries they cover, from the `companies` field in the header of
+    company-surveys.qmd. `countries` is a list of EU codes, or "eu27"; `notes` gives a country's
+    own figure where the source publishes one."""
+    meta = yaml.safe_load((ROOT / "company-surveys.qmd").read_text(encoding="utf8").split("---")[1])
+    out = []
+    for c in meta.get("companies", []):
+        cov = c.get("countries") or []
+        codes = list(EU_COUNTRIES) if cov == "eu27" else list(cov)
+        unknown = set(codes) - set(EU_COUNTRIES) - {"none"}
+        if unknown:
+            raise ValueError(f"company-surveys.qmd, {c['name']}: unknown country codes {sorted(unknown)}")
+        out.append({**c, "countries": codes, "notes": c.get("notes") or {}})
+    return out
+
+
+def country_coverage(surveys, pages, companies):
+    """For each country page: the EU-wide surveys and the company surveys that cover the country
+    (includes/coverage/<page>.html)."""
+    folder = ROOT / "includes" / "coverage"
+    folder.mkdir(parents=True, exist_ok=True)
+    for old in folder.glob("*.html"):
+        old.unlink()
+    for code, page in pages.items():
+        name = EU_COUNTRIES[code]
+        covering = [s for s in surveys if code in s["countries"]]
+        items = "".join(
+            f'<li><a href="../{s["url"]}" class="cov-link {" ".join("pop-" + p for p in s["pops"])}">'
+            f'{s["title"]}</a> <span class="cov-year">{s["year"]}</span></li>'
+            for s in sorted(covering, key=lambda s: (-int(s["year"]), s["title"])))
+        html = (f'<section class="coverage"><h2>EU-wide surveys covering {name}</h2>'
+                f'<p class="coverage-note">{len(covering)} of the {len(surveys)} EU survey pages include {name}. '
+                'The dot shows who was asked: <span class="key key-individuals"></span>individuals, '
+                '<span class="key key-workers"></span>workers, <span class="key key-firms"></span>firms.</p>'
+                f'<ul class="coverage-list">{items}</ul></section>')
+        mine = [c for c in companies if code in c["countries"]]
+        if mine:
+            rows = "".join(
+                f'<li><a href="../company-surveys.html#{c["anchor"]}">{c["name"]}</a>'
+                f' <span class="cov-year">{c["company"]}, {c["year"]}</span>'
+                + (f'<div class="cov-note">{c["notes"][code]}</div>' if code in c["notes"] else "")
+                + "</li>"
+                for c in mine)
+            html += (f'<section class="coverage coverage-company"><h2>Company surveys covering {name}</h2>'
+                     '<p class="coverage-note">Run or commissioned by private companies. Most use online panels '
+                     'and loose definitions of "using AI" and publish little on method, so treat them with care; '
+                     'they are not plotted on the overview.</p>'
+                     f'<ul class="coverage-list company-list">{rows}</ul></section>')
+        (folder / f'{page["stem"]}.html').write_text(html, encoding="utf8")
 
 
 if __name__ == "__main__":
@@ -619,5 +709,8 @@ if __name__ == "__main__":
     for kind in KINDS:
         timeline(kind, [p for p in points if p["kind"] == kind])
     overview_stats(points)
-    sidebar_data()
+    surveys, pages = survey_index(), country_pages()
+    sidebar_data(surveys, pages)
+    country_grid(surveys, pages)
+    country_coverage(surveys, pages, company_surveys())
     print(f"wrote {len(FIGURES)} survey charts and {len(KINDS)} overview charts to {OUT}")

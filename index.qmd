@@ -8,8 +8,8 @@ toc: false
   <div class="hero-body">
   <p class="hero-eyebrow">DG EMPL &middot; DG ECFIN</p>
   <h1 class="hero-title">GenAI Surveys in Europe</h1>
-  <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe. To add your own survey, please make a request through GitHub.
-    <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a></p>
+  <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe.<br>
+    To add your own survey, please make a request through <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
 {{< include figures/overview-stats.inline.html >}}
   </div>
   <a class="hero-cue" href="#individuals">See the trends <span aria-hidden="true">&darr;</span></a>
@@ -51,15 +51,39 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-// Highlight the chapter in view in the sticky navigation
+// The three charts are tabs: one chapter is shown at a time. The tab buttons, the numbers in the
+// opening list and "See the trends" all open a chart; a link to #workers etc. opens that tab.
 (() => {
-  const links = document.querySelectorAll(".chapter-nav a");
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.hash === "#" + e.target.id));
+  const ids = ["individuals", "workers", "firms"];
+  const nav = document.querySelector(".chapter-nav");
+  const links = nav.querySelectorAll("a");
+  const chapters = document.querySelectorAll(".chapter");
+  nav.setAttribute("role", "tablist");
+  links.forEach(a => a.setAttribute("role", "tab"));
+  const show = (id, scroll) => {
+    chapters.forEach(c => { c.hidden = c.id !== id; });
+    links.forEach(a => {
+      const on = a.hash === "#" + id;
+      a.classList.toggle("active", on);
+      a.setAttribute("aria-selected", String(on));
     });
-  }, { rootMargin: "-45% 0px -50% 0px" });
-  document.querySelectorAll(".chapter").forEach(s => obs.observe(s));
+    if (scroll) {
+      nav.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", "#" + id);
+    }
+  };
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#"]');
+    const id = a && a.hash.slice(1);
+    if (ids.includes(id)) { e.preventDefault(); show(id, true); }
+  });
+  const start = location.hash.slice(1);
+  if (ids.includes(start)) {
+    show(start, false);
+    window.addEventListener("load", () => nav.scrollIntoView({ block: "start" }));
+  } else {
+    show("individuals", false);
+  }
 })();
 </script>
 ```

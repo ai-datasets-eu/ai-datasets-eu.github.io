@@ -1,0 +1,12 @@
+---
+title: "Portugal"
+country: PT
+---
+
+## National surveys
+
+No national survey with AI questions is listed for Portugal yet. To suggest one, please make a request through [GitHub](https://github.com/thimodeschouwer/ai-data-eu).
+
+```{=html}
+{{< include /includes/coverage/portugal.html >}}
+```

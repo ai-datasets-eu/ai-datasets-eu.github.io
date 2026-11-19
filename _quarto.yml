@@ -28,10 +28,13 @@ website:
         contents: "surveys/2025/*.qmd"
       - section: "2024"
         contents: "surveys/2024/*.qmd"
-      - text: "Country evidence"
+      # The country pages and the company surveys page are listed here so that they get the sidebar,
+      # but styles.css hides the list: the sidebar shows a single "Country evidence" link.
+      - section: "Country evidence"
         href: country-evidence.qmd
-      - text: "Company surveys"
-        href: company-surveys.qmd
+        contents:
+          - auto: "countries/*.qmd"
+          - company-surveys.qmd
 
 format:
   html:

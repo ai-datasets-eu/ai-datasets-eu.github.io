@@ -2,7 +2,7 @@
 // Sidebar extras: a coloured dot per survey (who was asked), a filter by population, and a
 // country filter (surveys covering that country, plus a link to its national surveys if any).
 // Data: includes/sidebar-data.html, written by figures/make_figures.py from the survey headers
-// (`asked`, `countries`) and the headings of country-evidence.qmd.
+// (`asked`, `countries`) and the country pages (countries/*.qmd).
 (() => {
   const data = window.SIDEBAR_DATA;
   const sidebar = document.querySelector("#quarto-sidebar");
@@ -78,13 +78,13 @@
       const kids = sec.querySelectorAll("ul li.sidebar-item");
       sec.hidden = kids.length > 0 && [...kids].every(li => li.hidden);
     });
-    // Link to the country's national surveys, if the country page has a section for it
+    // Link to the country's own page, if it has one
     const name = state.country ? data.countries.find(([c]) => c === state.country)[1] : "";
     const anchor = data.national[state.country];
     national.hidden = !anchor;
     if (anchor) {
-      national.href = root + "country-evidence.html#" + anchor;
-      national.textContent = "National surveys: " + name + " →";
+      national.href = root + anchor;
+      national.textContent = "Country page: " + name + " \u2192";
     }
     // Summary line while a filter is on and the panel is closed
     const active = state.pop !== "all" || !!state.country;
@@ -113,5 +113,11 @@
     if (e.target.closest(".filter-clear")) { state.pop = "all"; state.country = ""; apply(); }
   });
   apply();
+
+  // Country pages and the company surveys page sit under "Country evidence", whose list is hidden
+  // (styles.css): mark the "Country evidence" link as the current page instead
+  const ce = sidebar.querySelector('a.sidebar-link[href$="country-evidence.html"]');
+  const sec = ce && ce.closest("li.sidebar-item-section");
+  if (sec && sec.querySelector("ul.sidebar-section .sidebar-link.active")) ce.classList.add("active");
 })();
 </script>

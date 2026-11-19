@@ -11,13 +11,19 @@ _quarto.yml               site configuration and sidebar (one section per year)
 index.qmd                 overview page
 surveys/<year>/*.qmd      one page per survey; the YAML header fills the table
 surveys/_template.qmd     template for a new entry
-country-evidence.qmd      single-country surveys, one section per country
+country-evidence.qmd      index of the country pages (grid of the 27 EU countries)
+countries/*.qmd           one page per country; each national survey is a `::: {.survey-entry ...}` block
+includes/                 sidebar script and data, and the generated lists of EU-wide surveys per country
 company-surveys.qmd       surveys run by private companies, one section per company
 figures/make_figures.py   data and code for all charts (writes figures/*.svg)
 filters/survey-card.lua   builds the link and table from the YAML header
 styles.css                fonts, colours, table
 docs/                     rendered site (serve this folder with GitHub Pages)
 ```
+
+## Adding a national survey
+
+Add a `::: {.survey-entry name="..." link="..." who="..." when="..." asked="Firms" sample="..." use="firm" question="..."}` block, with its notes and chart inside, to `countries/<country>.qmd`. For a new country, copy an existing country page and set `country:` to its EU code; the grid, the sidebar and the list of EU-wide surveys pick it up when you run `python figures/make_figures.py`.
 
 ## Adding a survey
 

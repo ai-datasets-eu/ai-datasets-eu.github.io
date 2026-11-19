@@ -3,6 +3,44 @@ title: "Company surveys"
 toc: true
 toc-depth: 2
 toc-title: "Surveys"
+# EU countries each survey covers, for the "Company surveys covering ..." list on the country pages
+# (figures/make_figures.py). anchor = the id of the survey's section below. notes = the country's own
+# figure, where the source publishes one. PwC and McKinsey do not publish their country lists.
+companies:
+  - name: "Unlocking Europe's AI Potential 2026"
+    company: "AWS / Strand Partners"
+    year: 2026
+    anchor: aws-strand-partners
+    countries: [BE, CZ, DK, DE, IE, EL, ES, FR, IT, NL, PL, PT, FI, SE]
+  - name: "HR and Payroll Pulse 2026"
+    company: "SD Worx"
+    year: 2026
+    anchor: sd-worx
+    countries: [BE, DE, IE, ES, FR, HR, IT, NL, PL, RO, SI, FI, SE]
+  - name: "European AI Barometer 2025"
+    company: "EY"
+    year: 2025
+    anchor: ey
+    countries: [AT, BE, DE, ES, FR, IT, NL, PT]
+  - name: "Trust in generative AI: a European perspective"
+    company: "Deloitte"
+    year: 2024
+    anchor: deloitte
+    countries: [BE, DE, ES, FR, IE, IT, NL, PL, SE]
+  - name: "Trust, attitudes and use of artificial intelligence 2025"
+    company: "KPMG / University of Melbourne"
+    year: 2025
+    anchor: kpmg-university-of-melbourne
+    countries: [AT, BE, CZ, DK, DE, EE, EL, ES, FI, FR, HU, IE, IT, LT, LV, NL, PL, PT, RO, SE, SI, SK]
+    notes:
+      LV: "72% use AI at least every few months, the highest in the EU."
+      PL: "69% use AI at least every few months."
+      IT: "60% use AI at least every few months."
+      ES: "60% use AI at least every few months."
+      FR: "51% use AI at least every few months."
+      DE: "51% use AI at least every few months."
+      BE: "47% use AI at least every few months; in the Belgium snapshot, 59% of employees say they intentionally use AI at work."
+      NL: "43% use AI at least every few months, the lowest in the EU."
 ---
 
 Surveys run or commissioned by private companies. Most use online panels and loose definitions of "using AI", and publish little on method, so they are not plotted on the overview. The label after each name says what the AI question covers: use at work, use for work and in private life (asked separately), use for any purpose, or use by the firm.

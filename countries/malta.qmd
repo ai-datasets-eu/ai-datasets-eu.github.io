@@ -1,0 +1,12 @@
+---
+title: "Malta"
+country: MT
+---
+
+## National surveys
+
+No national survey with AI questions is listed for Malta yet. To suggest one, please make a request through [GitHub](https://github.com/thimodeschouwer/ai-data-eu).
+
+```{=html}
+{{< include /includes/coverage/malta.html >}}
+```

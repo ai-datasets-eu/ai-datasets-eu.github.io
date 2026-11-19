@@ -1,6 +1,15 @@
--- Builds the top of every survey page from its YAML header:
--- a source link, then a short fact table (who / when / where / sample / question).
--- Pages without a `who` field (the overview) are left untouched.
+-- Builds the fact tables of the site.
+--
+-- 1. Survey pages (surveys/<year>/*.qmd): the YAML header gives a source link, then a short
+--    fact table (who / when / where / sample / AI use / question / demographics / adoption),
+--    then the "Main aim" and "Also covers" lines. Pages without a `who` field are left alone.
+-- 2. Country pages (countries/*.qmd): every national survey is a div
+--      ::: {.survey-entry name="..." link="..." who="..." when="..." asked="Firms"
+--           sample="..." use="firm" question="..."}
+--      notes and chart
+--      :::
+--    which becomes a heading (linked to the source) with the same fact table above its content.
+--    Attribute values may contain markdown.
 
 local function html(v)
   if v == nil or type(v) == "boolean" then return nil end
@@ -19,46 +28,87 @@ end
 
 local pills = { workers = "pill-workers", firms = "pill-firms", individuals = "pill-individuals" }
 
-function Pandoc(doc)
-  local m = doc.meta
-  if not m.who then return doc end
+-- Work or private use: shown as a coloured label
+local uses = {
+  work = { "pill-use-work", "At work", "Use for work only" },
+  private = { "pill-use-private", "Private life", "Use outside work only" },
+  both = { "pill-use-both", "Work and private", "Asked separately" },
+  any = { "pill-use-any", "Any purpose", "Work and private use not separated" },
+  firm = { "pill-use-firm", "Firm", "Use by the firm, not by individual workers" },
+}
 
+-- The rows shared by survey pages and country entries. `get(key)` returns the value of a field
+-- (metadata or Inlines) or nil.
+local function common_rows(get, row, where)
+  row("Who", html(get("who")))
+  row("When", html(get("when")))
+  if where then row("Where", html(get("where"))) end
+
+  local asked = get("asked")
+  if asked then
+    local label = pandoc.utils.stringify(asked)
+    local cls = pills[label:lower()] or "pill-both"
+    local sample = '<span class="pill ' .. cls .. '">' .. label .. "</span>"
+    if get("sample") then sample = sample .. html(get("sample")) end
+    row("Sample", sample)
+  end
+
+  local u = get("use")
+  local use = u and uses[pandoc.utils.stringify(u):lower()]
+  if u and not use then
+    error("unknown `use` value '" .. pandoc.utils.stringify(u) .. "' in " .. (PANDOC_STATE.input_files[1] or "?"))
+  end
+  if use then
+    local text = '<span class="pill ' .. use[1] .. '">' .. use[2] .. "</span>"
+    text = text .. (get("use-note") and html(get("use-note")) or use[3])
+    row("AI use", text)
+  end
+
+  row("Question", html(get("question")))
+end
+
+local function new_rows()
   local rows = {}
   local function row(label, value)
     if value and value ~= "" then
       rows[#rows + 1] = "<dt>" .. label .. "</dt><dd>" .. value .. "</dd>"
     end
   end
+  return rows, row
+end
 
-  row("Who", html(m.who))
-  row("When", html(m.when))
-  row("Where", html(m.where))
-
-  if m.asked then
-    local label = pandoc.utils.stringify(m.asked)
-    local cls = pills[label:lower()] or "pill-both"
-    local sample = '<span class="pill ' .. cls .. '">' .. label .. "</span>"
-    if m.sample then sample = sample .. html(m.sample) end
-    row("Sample", sample)
+-- Country pages: one entry per national survey
+function Div(div)
+  if not div.classes:includes("survey-entry") then return nil end
+  local a = div.attributes
+  local function get(key)
+    local v = a[key]
+    if v == nil or v == "" then return nil end
+    local blocks = pandoc.read(v, "markdown").blocks
+    return blocks[1] and blocks[1].content or nil
   end
+  if not a.name then error("survey-entry without a name in " .. (PANDOC_STATE.input_files[1] or "?")) end
 
-  -- Work or private use: shown as a coloured label in front of the question
-  local uses = {
-    work = { "pill-use-work", "At work", "Use for work only" },
-    private = { "pill-use-private", "Private life", "Use outside work only" },
-    both = { "pill-use-both", "Work and private", "Asked separately" },
-    any = { "pill-use-any", "Any purpose", "Work and private use not separated" },
-    firm = { "pill-use-firm", "Firm", "Use by the firm, not by individual workers" },
+  local rows, row = new_rows()
+  common_rows(get, row, false)
+
+  local title = get("name")
+  if a.link then title = { pandoc.Link(title, a.link, "", { target = "_blank", rel = "noopener" }) } end
+  local out = {
+    pandoc.Header(3, title, pandoc.Attr("", { "entry-title" })),
+    pandoc.RawBlock("html", '<dl class="survey-card entry-card">\n' .. table.concat(rows, "\n") .. "\n</dl>"),
   }
-  local use = m.use and uses[pandoc.utils.stringify(m.use):lower()]
-  if m.use and not use then error("unknown `use` value in " .. (PANDOC_STATE.input_files[1] or "?")) end
-  if use then
-    local text = '<span class="pill ' .. use[1] .. '">' .. use[2] .. "</span>"
-    text = text .. (m["use-note"] and html(m["use-note"]) or use[3])
-    row("AI use", text)
-  end
+  for _, b in ipairs(div.content) do out[#out + 1] = b end
+  return pandoc.Div(out, pandoc.Attr("", { "survey-entry-out" }))
+end
 
-  row("Question", html(m.question))
+function Pandoc(doc)
+  local m = doc.meta
+
+  if not m.who then return doc end
+
+  local rows, row = new_rows()
+  common_rows(function(k) return m[k] end, row, true)
 
   -- Respondent characteristics: one collapsible list for workers or individuals, one for firms
   local function list(v)
@@ -96,21 +146,43 @@ function Pandoc(doc)
   if m["adoption-text"] then adoption = { html(m["adoption-text"]) } end
   row("Adoption", #adoption > 0 and table.concat(adoption, " &middot; ") or "No adoption question")
 
-  local out = {}
+  -- The page title links to the source; the link text becomes its tooltip
   if m.link then
     local url = pandoc.utils.stringify(m.link)
-    local text = m["link-text"] and html(m["link-text"]) or url
-    out[#out + 1] = '<p class="survey-link"><a href="' .. url .. '" target="_blank" rel="noopener">' .. text .. "</a></p>"
-  end
-  out[#out + 1] = '<dl class="survey-card">\n' .. table.concat(rows, "\n") .. "\n</dl>"
-  if m.aim then
-    local aim = '<p class="survey-aim"><strong>Main aim.</strong> ' .. html(m.aim)
-    if m["other-topics"] then
-      aim = aim .. '<br><strong>Also covers.</strong> ' .. html(m["other-topics"])
-    end
-    out[#out + 1] = aim .. "</p>"
+    local tip = m["link-text"] and pandoc.utils.stringify(m["link-text"]) or url
+    m.title = pandoc.MetaInlines({ pandoc.Link(m.title, url, tip,
+      pandoc.Attr("", { "title-source" }, { target = "_blank", rel = "noopener" })) })
+    if not m.pagetitle then m.pagetitle = pandoc.utils.stringify(m.title) end
+    doc.meta = m
   end
 
-  table.insert(doc.blocks, 1, pandoc.RawBlock("html", table.concat(out, "\n")))
+  local out = {}
+  out[#out + 1] = '<dl class="survey-card">\n' .. table.concat(rows, "\n") .. "\n</dl>"
+
+  -- Under the table, two buttons jump to the sections below: the survey's aim and other topics,
+  -- and its results (the page body: charts and notes)
+  local has_about = m.aim or m["other-topics"]
+  local has_results = #doc.blocks > 0
+  local cues = {}
+  if has_about then cues[#cues + 1] = '<a class="survey-cue" href="#about">Main aim and topics <span aria-hidden="true">&darr;</span></a>' end
+  if has_results then cues[#cues + 1] = '<a class="survey-cue" href="#results">See the results <span aria-hidden="true">&darr;</span></a>' end
+  if #cues > 0 then out[#out + 1] = '<div class="survey-cues">' .. table.concat(cues, "") .. "</div>" end
+
+  -- The source link, table and buttons fill the first screen (styles.css: .survey-top)
+  local blocks = { pandoc.RawBlock("html", '<div class="survey-top">\n' .. table.concat(out, "\n") .. "\n</div>") }
+  if has_about then
+    blocks[#blocks + 1] = pandoc.Header(2, "About the survey", pandoc.Attr("about", { "survey-section" }))
+    local about = {}
+    if m.aim then about[#about + 1] = '<p class="survey-aim"><strong>Main aim.</strong> ' .. html(m.aim) .. "</p>" end
+    if m["other-topics"] then
+      about[#about + 1] = '<p class="survey-aim"><strong>Also covers.</strong> ' .. html(m["other-topics"]) .. "</p>"
+    end
+    blocks[#blocks + 1] = pandoc.RawBlock("html", table.concat(about, "\n"))
+  end
+  if has_results then
+    blocks[#blocks + 1] = pandoc.Header(2, "Results", pandoc.Attr("results", { "survey-section" }))
+  end
+  for _, b in ipairs(doc.blocks) do blocks[#blocks + 1] = b end
+  doc.blocks = blocks
   return doc
 end
