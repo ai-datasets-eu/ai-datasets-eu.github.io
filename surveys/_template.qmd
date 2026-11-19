@@ -6,11 +6,18 @@ link-text: "Publisher: title of the report"
 who: "Who ran the survey"
 when: "2025"
 where: "Countries covered"
+countries: eu27            # eu27 | euro-area | list of EU country codes, e.g. [DE, FR, IT] (EL = Greece); drives the sidebar country filter
 asked: "Workers"           # Workers | Firms | Individuals | Workers and firms
 sample: "Number of respondents"
+use: work                  # work | private | both (asked separately) | any (not separated) | firm
+# use-note: "optional short note, e.g. which split is published"
 question: "\"The main AI question, in quotation marks if verbatim.\""
+demographics:              # characteristics collected, shown as collapsible lists
+  workers: [age, sex, education, occupation, sector, country]   # or individuals:
+  firms: [size, sector, country]
 
 aim: "One or two sentences on what the survey is for."
+other-topics: "Job quality, working time, skills and training (topics besides AI)."
 
 # Adoption tracking, used for the time series on the overview page.
 # Leave out adoption-workers / adoption-firms if the survey has no such question.

@@ -3,18 +3,53 @@ title: "GenAI Surveys in Europe"
 toc: false
 ---
 
-A list of surveys on artificial intelligence run in Europe, kept by DG EMPL and DG ECFIN of the European Commission. Surveys are grouped by year in the menu on the left; each page gives who ran the survey, when, where, whether workers or firms were asked, and the main result.
-
 ```{=html}
+<section class="hero">
+  <p class="hero-eyebrow">DG EMPL &middot; DG ECFIN</p>
+  <h1 class="hero-title">GenAI Surveys in Europe</h1>
+  <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe. To add your own survey, please make a request through GitHub.
+    <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a></p>
+{{< include figures/overview-stats.inline.html >}}
+  <a class="hero-cue" href="#individuals">See the trends <span aria-hidden="true">&darr;</span></a>
+</section>
+
+<nav class="chapter-nav" aria-label="Overview charts">
+  <a href="#individuals" class="nav-individuals">Individuals</a>
+  <a href="#workers" class="nav-workers">Workers</a>
+  <a href="#firms" class="nav-firms">Firms</a>
+</nav>
+
+<section class="chapter chapter-individuals" id="individuals">
+  <p class="chapter-num">Individuals</p>
+  <h2 class="chapter-title">AI use by individuals</h2>
+  <p class="chapter-lede">General population surveys ask whether people use AI for any purpose: at work, in their studies or in private life.</p>
 {{< include figures/adoption-individuals.inline.html >}}
-```
+</section>
 
-```{=html}
+<section class="chapter chapter-workers" id="workers">
+  <p class="chapter-num">Workers</p>
+  <h2 class="chapter-title">AI use by workers</h2>
+  <p class="chapter-lede">Worker surveys ask whether people use AI in their job. Estimates differ with the population covered and how the question names AI.</p>
 {{< include figures/adoption-workers.inline.html >}}
-```
+</section>
 
-```{=html}
+<section class="chapter chapter-firms" id="firms">
+  <p class="chapter-num">Firms</p>
+  <h2 class="chapter-title">AI use by firms</h2>
+  <p class="chapter-lede">Firm surveys ask whether the business uses AI. Results depend on firm size, on whether firms are weighted by count, employment or value added, and on what counts as use.</p>
 {{< include figures/adoption-firms.inline.html >}}
-```
+</section>
 
-Each dot is one survey wave, and lines join the waves of the same survey; click a dot to open its page. Surveys define AI and their target population differently, so levels are not directly comparable across surveys.
+<script>
+// Highlight the chapter in view in the sticky navigation
+(() => {
+  const links = document.querySelectorAll(".chapter-nav a");
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.hash === "#" + e.target.id));
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll(".chapter").forEach(s => obs.observe(s));
+})();
+</script>
+```

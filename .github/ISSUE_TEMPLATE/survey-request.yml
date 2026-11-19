@@ -1,0 +1,119 @@
+name: Add a survey
+description: Suggest a survey on generative AI in Europe for the site.
+title: "Survey request: "
+labels: ["survey request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a survey. Please fill in what you know; the maintainers check every entry against the source before adding it.
+        A survey fits the site if it asks about the use of (generative) AI by people, workers or firms in one or more EU countries.
+
+  - type: input
+    id: name
+    attributes:
+      label: Survey name
+      placeholder: "e.g. Eurofound European Working Conditions Survey 2024"
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Link to the report, questionnaire or data
+      description: The most primary source you have; a questionnaire or technical report is ideal.
+      placeholder: "https://"
+    validations:
+      required: true
+
+  - type: input
+    id: who
+    attributes:
+      label: Who ran the survey
+      placeholder: "e.g. Eurofound; national statistical office; central bank; university; company"
+    validations:
+      required: true
+
+  - type: input
+    id: when
+    attributes:
+      label: Fieldwork dates
+      placeholder: "e.g. March to May 2025"
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: Countries covered
+      placeholder: "e.g. EU-27; or Germany, France and Italy"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: asked
+    attributes:
+      label: Who was asked
+      options:
+        - Individuals (general population)
+        - Workers
+        - Firms
+        - Workers and firms
+    validations:
+      required: true
+
+  - type: input
+    id: sample
+    attributes:
+      label: Sample
+      placeholder: "e.g. 25,000 people aged 16 to 74; 12,000 firms with 10+ employees"
+
+  - type: dropdown
+    id: use
+    attributes:
+      label: Which use of AI does the main question cover?
+      options:
+        - Use at work
+        - Use in private life
+        - Work and private use, asked separately
+        - Any purpose (work and private not separated)
+        - Use by the firm
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Main AI question
+      description: The wording of the main AI question. Please say whether it is verbatim from the questionnaire or a summary.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: result
+    attributes:
+      label: Main result
+      description: The headline figure(s), with the population they refer to and the page or table where they are published.
+      placeholder: "e.g. 18% of employed people aged 16+ use AI-powered software for their main job (report, p. 24)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: demographics
+    attributes:
+      label: Respondent characteristics recorded
+      description: Worker or individual characteristics (age, sex, education, occupation, sector...) and firm characteristics (size, sector, country...) the survey collects.
+
+  - type: textarea
+    id: other-topics
+    attributes:
+      label: Other topics covered
+      description: Topics besides AI use, such as job quality, working conditions, skills and training, algorithmic management or productivity.
+
+  - type: input
+    id: contact
+    attributes:
+      label: Your affiliation (optional)
+      description: Helps us follow up if a detail is unclear.

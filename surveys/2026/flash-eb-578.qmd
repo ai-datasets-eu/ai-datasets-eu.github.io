@@ -5,14 +5,20 @@ link-text: "European Commission: Growing use of AI in European companies"
 who: "European Commission, DG EMPL"
 when: "2026"
 where: "EU-27"
+countries: eu27
 asked: "Firms"
 sample: "12,826 SMEs and mid-caps (1 to 749 employees)"
+use: firm
+use-note: "AI and algorithmic management in the workplace, asked as one item, so the two cannot be separated"
 question: "Does the company use AI or algorithmic management, and what drives or holds back adoption?"
+demographics:
+  firms: ["size class (1-9 to 250-749)", "sector", "turnover", "country", "in-house or external supplier", "supplier location (EU or not)"]
 month: "2026-03"
 adoption-firms: 42
 coverage: eu27
 chart-label: "Eurobarometer"
 aim: "To identify what drives and what hinders the adoption of AI and algorithmic management in smaller companies, with a focus on workplace issues."
+other-topics: "Workforce uses (recruitment, HR decisions, performance monitoring, scheduling, health and safety, training), human oversight, expected effects on job quality (job satisfaction, safety, privacy, workload), employees' reactions as seen by employers, motivations such as labour shortages, and barriers. No questions on employment or productivity effects."
 ---
 
 ![](../../figures/fl578-use.svg){fig-alt="42% of EU SMEs and mid-caps already use AI or algorithmic management; 21% plan to."}

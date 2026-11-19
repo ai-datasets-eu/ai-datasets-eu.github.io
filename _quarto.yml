@@ -4,6 +4,7 @@ project:
   resources:
     - .nojekyll
     - figures/*.svg
+    - assets/*
 
 website:
   title: "GenAI Surveys in Europe"
@@ -13,10 +14,9 @@ website:
     type: textbox
   sidebar:
     style: floating
-    tools:
-      - icon: github
-        href: https://github.com/thimodeschouwer/ai-data-eu
-        text: "GitHub repository"
+    logo: assets/ec-logo.svg
+    logo-alt: "European Commission"
+    title: "GenAI Surveys in Europe"
     collapse-level: 2
     contents:
       - text: "Overview"
@@ -39,5 +39,8 @@ format:
     css: styles.css
     toc: false
     link-external-newwindow: true
+    include-after-body:
+      - includes/sidebar-data.html
+      - includes/sidebar.html
     filters:
       - filters/survey-card.lua

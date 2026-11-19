@@ -5,15 +5,20 @@ link-text: 'EIB Group Investment Survey 2026: European Union overview'
 who: European Investment Bank
 when: '2026'
 where: EU-27 (plus a US sample)
+countries: eu27
 asked: Firms
 sample: 12,083 firms
+use: firm
 question: '"I would like to ask about your company''s systematic use of generative AI tools to improve processes. [...] Does your company use these kinds of tools in any of the following areas?"'
+demographics:
+  firms: ["size", "sector", "country", "turnover", "employment", "wage bill", "exporter or importer", "female ownership and management"]
 month: 2026-05
 adoption-firms: 67
 adoption-firms-base: use of generative AI tools only. The 2025 figure combined a big data and AI question with a question on investing in generative AI tools, so the two waves are not comparable
 coverage: eu27
 chart-label: EIBIS
 aim: "To track firms' investment activity, financing needs and obstacles to investment across the EU. The generative AI questions ask in which business areas firms use these tools."
+other-topics: "Plans to adopt generative AI within 12 months, expected benefits and reasons for not using it (incl. lack of skilled staff); investment by asset type (including training of employees), obstacles to investment, access to finance, innovation, climate investment and trade."
 ---
 
 ![](../../figures/eibis26.svg){fig-alt="Firms using generative AI in 2026: 67% in the EU, 71% in the United States; 58% of EU SMEs and 74% of large EU firms."}

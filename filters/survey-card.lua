@@ -42,7 +42,43 @@ function Pandoc(doc)
     row("Sample", sample)
   end
 
+  -- Work or private use: shown as a coloured label in front of the question
+  local uses = {
+    work = { "pill-use-work", "At work", "Use for work only" },
+    private = { "pill-use-private", "Private life", "Use outside work only" },
+    both = { "pill-use-both", "Work and private", "Asked separately" },
+    any = { "pill-use-any", "Any purpose", "Work and private use not separated" },
+    firm = { "pill-use-firm", "Firm", "Use by the firm, not by individual workers" },
+  }
+  local use = m.use and uses[pandoc.utils.stringify(m.use):lower()]
+  if m.use and not use then error("unknown `use` value in " .. (PANDOC_STATE.input_files[1] or "?")) end
+  if use then
+    local text = '<span class="pill ' .. use[1] .. '">' .. use[2] .. "</span>"
+    text = text .. (m["use-note"] and html(m["use-note"]) or use[3])
+    row("AI use", text)
+  end
+
   row("Question", html(m.question))
+
+  -- Respondent characteristics: one collapsible list for workers or individuals, one for firms
+  local function list(v)
+    if not v then return nil end
+    if pandoc.utils.type(v) ~= "List" then return html(v) end
+    local items = {}
+    for _, x in ipairs(v) do items[#items + 1] = html(x) end
+    return table.concat(items, ", ")
+  end
+  local d = m.demographics
+  if d then
+    local groups = {}
+    for _, g in ipairs({ { "workers", "Workers" }, { "individuals", "Individuals" }, { "firms", "Firms" } }) do
+      local items = list(d[g[1]])
+      if items then
+        groups[#groups + 1] = '<details class="demo"><summary>' .. g[2] .. "</summary>" .. items .. "</details>"
+      end
+    end
+    if #groups > 0 then row("Demographics", table.concat(groups, "")) end
+  end
 
   -- Does the survey measure AI adoption by workers and/or by firms?
   local adoption = {}
@@ -68,7 +104,11 @@ function Pandoc(doc)
   end
   out[#out + 1] = '<dl class="survey-card">\n' .. table.concat(rows, "\n") .. "\n</dl>"
   if m.aim then
-    out[#out + 1] = '<p class="survey-aim"><strong>Main aim.</strong> ' .. html(m.aim) .. "</p>"
+    local aim = '<p class="survey-aim"><strong>Main aim.</strong> ' .. html(m.aim)
+    if m["other-topics"] then
+      aim = aim .. '<br><strong>Also covers.</strong> ' .. html(m["other-topics"])
+    end
+    out[#out + 1] = aim .. "</p>"
   end
 
   table.insert(doc.blocks, 1, pandoc.RawBlock("html", table.concat(out, "\n")))

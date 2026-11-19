@@ -5,9 +5,14 @@ link-text: "Eurofound: EWCS 2024 first findings"
 who: "Eurofound"
 when: "2024"
 where: "35 European countries"
+countries: eu27
 asked: "Workers"
 sample: "36,644 people"
-question: "\"At work, do you use artificial intelligence that simplifies complex mental tasks or makes recommendations (e.g. ChatGPT, LLAMA, DALL-E, Midjourney, Jasper)?\""
+use: work
+question: "\"And do you use the following equipment in your work? [...] Artificial Intelligence that simplifies complex mental tasks or makes recommendations on how you should be working? (ChatGPT, LLAMA, DALL-E, Midjourney, Jasper)\""
+demographics:
+  workers: ["age", "sex", "education", "occupation (ISCO 4-digit)", "contract type", "working hours", "earnings", "migrant background", "tenure", "country"]
+  firms: ["workplace size (reported by worker)", "sector (NACE)", "employment change over 3 years", "worker representation"]
 month: "2024-04"
 adoption-workers: 12
 adoption-base: "workers, all ages"
@@ -15,6 +20,7 @@ coverage: eu27
 chart-label: "EWCS"
 label-pos: below
 aim: "To monitor working conditions and job quality across Europe. The AI question is one item in a long questionnaire on tasks, autonomy, work intensity and health."
+other-topics: "The seven job-quality indices (physical and social environment, working time, work intensity, skills and discretion, prospects, earnings), algorithmic management, training, health and well-being, telework and work-life balance."
 ---
 
 12% of EU workers use generative AI tools at work. Among EU countries the share runs from 5% or less in Greece, Italy, Portugal and Romania to at least one in five in Luxembourg, Sweden, Belgium and Denmark (Eurofound overview report, pp. 27-28). Across all 35 countries surveyed, the range is from under 3% (Bosnia-Herzegovina) to about 25% (Luxembourg).

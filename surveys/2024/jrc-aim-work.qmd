@@ -5,9 +5,15 @@ link-text: "JRC: Digital monitoring, algorithmic management and the platformisat
 who: "European Commission, JRC and DG EMPL"
 when: "2024-25"
 where: "EU-27"
+countries: eu27
 asked: "Workers"
 sample: "70,316 people aged 16 to 65"
+use: work
+use-note: "Main paid job; no question on use in private life"
 question: "\"In the last 12 months, did you use an AI-powered tool when performing your main paid job?\""
+demographics:
+  workers: ["age", "sex", "education", "occupation (ISCO 4-digit)", "contract type", "working hours", "earnings", "migrant background", "region (NUTS)", "country"]
+  firms: ["firm size (reported by worker)", "sector (NACE)", "trade union presence"]
 month: "2024-12"
 adoption-workers: 30
 adoption-base: "workers aged 16-65"
@@ -15,6 +21,7 @@ coverage: eu27
 chart-label: "AIM-WORK"
 label-pos: above
 aim: "To measure how common AI tools, digital monitoring and algorithmic management are in European workplaces, and how they relate to working conditions."
+other-topics: "Digital monitoring, algorithmic management, autonomy, working time and telework, work with robots, platform work, worker voice, and whether AI made tasks easier or harder. No questions on training, health or job security."
 ---
 
 ![](../../figures/jrc-aim-work.svg){fig-alt="EU workers: 90% use digital devices, 37% have working hours digitally monitored, 30% use AI tools, 24% have their schedule set automatically."}

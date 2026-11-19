@@ -5,9 +5,14 @@ link-text: "ECB Occasional Paper 395: Adoption and investment in AI across the e
 who: "European Central Bank"
 when: "2025"
 where: "12 euro area countries (AT, BE, DE, EL, ES, FI, FR, IE, IT, NL, PT, SK)"
+countries: [AT, BE, DE, EL, ES, FI, FR, IE, IT, NL, PT, SK]
 asked: "Firms"
 sample: "5,067 firms in the December 2025 round; results weighted by employment"
+use: firm
+use-note: "One question on the intensity of use, covering predictive AI, generative AI and process automation together"
 question: "\"How would you assess the use of AI technologies in your firm?\""
+demographics:
+  firms: ["size", "sector", "country", "firm age", "turnover", "exporter", "ownership"]
 month: "2025-12"
 adoption-firms: 38
 adoption-firms-base: "moderate or significant use; 71% including very infrequent or pilot use"
@@ -15,6 +20,7 @@ coverage: eu-subset
 chart-label: "SAFE"
 label-pos: below
 aim: "To monitor the financing conditions of euro area firms for monetary policy. The AI questions were a one-off addition asking how intensively firms use AI and what holds them back."
+other-topics: "Access to finance, investment, employment and wage expectations, labour costs, availability of skilled staff, expected share of investment going to AI, and obstacles to using AI."
 ---
 
 ![](../../figures/ecb-safe-intensity.svg){fig-alt="Firms in 12 euro area countries by intensity of AI use, weighted by employment: not in use 27%, very infrequent or pilot 33%, moderate 31%, significant 7%."}

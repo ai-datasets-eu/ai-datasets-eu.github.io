@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-17T10:01:11.355936</dc:date>
+    <dc:date>2026-11-19T11:26:07.955369</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,52 +33,52 @@ z
    <g id="line2d_1">
     <path d="M 11.267942 84.036226 
 L 463.932058 84.036226 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_2">
     <path d="M 11.267942 122.753208 
 L 463.932058 122.753208 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_3">
     <path d="M 11.267942 161.470189 
 L 463.932058 161.470189 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_4">
     <path d="M 11.267942 200.18717 
 L 463.932058 200.18717 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_5">
     <path d="M 11.267942 238.904151 
 L 463.932058 238.904151 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_6">
     <path d="M 11.267942 84.036226 
 L 59.502643 84.036226 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #e2703a; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #ffcc00; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_7">
     <path d="M 11.267942 122.753208 
 L 48.835354 122.753208 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_8">
     <path d="M 11.267942 161.470189 
 L 54.864691 161.470189 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_9">
     <path d="M 11.267942 200.18717 
 L 122.57879 200.18717 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_10">
     <path d="M 11.267942 238.904151 
 L 126.289152 238.904151 
-" clip-path="url(#p01e97760ac)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p5b8cd69a62)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <!-- All -->
@@ -119,7 +119,7 @@ z
    </g>
    <g id="text_2">
     <!-- 12.8% -->
-    <g style="fill: #e2703a" transform="translate(438.895022 73.186043) scale(0.115 -0.115)">
+    <g style="fill: #1d2733" transform="translate(438.895022 73.186043) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-31" d="M 2445 4326 
 L 1542 4326 
@@ -382,7 +382,7 @@ z
    </g>
    <g id="text_4">
     <!-- 10.5% -->
-    <g style="fill: #1f4e79" transform="translate(438.630881 111.903024) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(438.630881 111.903024) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-30" d="M 1875 4416 
 C 813 4416 243 3610 243 2157 
@@ -478,7 +478,7 @@ z
    </g>
    <g id="text_6">
     <!-- 11.8% -->
-    <g style="fill: #1f4e79" transform="translate(439.504162 150.620005) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(439.504162 150.620005) scale(0.115 -0.115)">
      <use xlink:href="#FiraSans-Bold-31"/>
      <use xlink:href="#FiraSans-Bold-31" transform="translate(46.399994 0)"/>
      <use xlink:href="#FiraSans-Bold-2e" transform="translate(92.799988 0)"/>
@@ -498,7 +498,7 @@ z
    </g>
    <g id="text_8">
     <!-- 26.4% -->
-    <g style="fill: #1f4e79" transform="translate(437.928303 189.336986) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(437.928303 189.336986) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-36" d="M 2208 2912 
 C 1882 2912 1562 2790 1293 2509 
@@ -572,7 +572,7 @@ z
    </g>
    <g id="text_10">
     <!-- 27.2% -->
-    <g style="fill: #1f4e79" transform="translate(439.585022 228.053967) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(439.585022 228.053967) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-37" d="M 2880 4326 
 L 83 4326 
@@ -595,7 +595,7 @@ z
   </g>
   <g id="text_11">
    <!-- Dutch employers using algorithms, AI or big data, 2024 -->
-   <g style="fill: #1f4e79" transform="translate(5.7024 18.227891) scale(0.13 -0.13)">
+   <g style="fill: #004494" transform="translate(5.7024 18.227891) scale(0.13 -0.13)">
     <defs>
      <path id="FiraSans-Bold-44" d="M 1651 4435 
 L 416 4435 
@@ -1228,7 +1228,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p01e97760ac">
+  <clipPath id="p5b8cd69a62">
    <rect x="5.7024" y="56.16" width="463.7952" height="205.2"/>
   </clipPath>
  </defs>

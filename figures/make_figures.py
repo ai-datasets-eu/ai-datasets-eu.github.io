@@ -4,7 +4,7 @@ Run from the repository root:  python figures/make_figures.py
 
 1. Result charts for the survey pages: one entry in FIGURES per chart.
 2. The three adoption time series on the overview page (individuals, workers,
-   firms). These are built from the YAML header of every survey page (fields:
+   firms), written as plain SVG (figures/adoption-*.inline.html) and styled in styles.css. These are built from the YAML header of every survey page (fields:
    month, adoption-individuals, adoption-workers, adoption-firms, coverage,
    series, earlier-waves), so they update when a survey is added. Lines join
    only the waves of one survey (same `series`), never different surveys.
@@ -18,13 +18,13 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import yaml
-from matplotlib.lines import Line2D
 
-ACCENT = "#1f4e79"      # site navy
-HIGHLIGHT = "#e2703a"   # headline value
+# European Commission palette: blue, EU flag yellow, light grey, dark grey
+EC_BLUE, EC_YELLOW, EC_GREY_LIGHT, EC_GREY_DARK = "#004494", "#FFCC00", "#C5C6C8", "#646567"
+ACCENT = EC_BLUE        # site blue
+HIGHLIGHT = EC_YELLOW   # headline bar
 TRACK = "#e9eff5"
 INK = "#1d2733"
 MUTED = "#6b7785"
@@ -56,12 +56,12 @@ FIGURES = {
     # Eurostat, ICT usage by individuals 2025
     "eurostat-ind-purpose": (
         "Use of generative AI tools, by purpose, 2025",
-        "% of people aged 16-74, EU, last 3 months",
+        "% of people aged 16-74, EU, last 3 months; several purposes possible",
         [("Any purpose", 32.7), ("Private", 25.5), ("Work", 15.4), ("*Work, employed people aged 25-64", 21.9), ("Formal education", 9.3)],
     ),
     "eurostat-ind-age": (
         "Use of generative AI tools, by age, 2025",
-        "% of age group, EU, last 3 months",
+        "% of age group, EU, any purpose, last 3 months",
         [("Aged 16-74", 32.7), ("Aged 16-24", 63.8)],
     ),
     # ECB SAFE, Q4 2025
@@ -195,13 +195,13 @@ FIGURES = {
     ),
     "ey-barometer": (
         "Workers and AI, 9 Western European countries",
-        "% of managers and employees",
+        "% of managers and employees; use not limited to work",
         [("*Ever used or been involved with AI (2025)", 78), ("Same question (2024)", 72),
          ("Positive attitude towards AI (2025)", 70)],
     ),
     "deloitte-use": (
         "Generative AI: awareness and use, mid-2024",
-        "% of people aged 16-75, 11 European countries",
+        "% of people aged 16-75, 11 European countries, any purpose",
         [("*Have used generative AI", 44), ("Aware but not using", 22), ("Unaware or unsure", 34)],
     ),
     "deloitte-purpose": (
@@ -270,7 +270,7 @@ FIGURES = {
     ),
     "austria": (
         "Generative AI use in Austria, last three months",
-        "% of people aged 16-74",
+        "% of people aged 16-74, any purpose",
         [('2024', 28.0), ('*2025', 39.4), ('Employed people, 2025', 43.2), ('Aged 16-24, 2025', 73.2)],
     ),
     "cbs-work": (
@@ -322,7 +322,7 @@ FIGURES = {
     ),
     "bdi-households": (
         "Generative AI use in Italy, August-September 2024",
-        "% of respondents to the Bank of Italy household survey",
+        "% of respondents to the Bank of Italy household survey, any purpose",
         [('*Used it in the past 12 months', 26), ('Use it at least weekly', 10),
          ('Workers and retirees: used it in the past 12 months', 36), ('Workers and retirees: use it at least weekly', 13)],
     ),
@@ -333,7 +333,7 @@ FIGURES = {
     ),
     "statbel-ind": (
         "Generative AI use in Belgium, 2025",
-        "% of people aged 16-74 (unless stated), last 3 months",
+        "% of people aged 16-74 (unless stated), any purpose, last 3 months",
         [('*All', 42.0), ('Brussels', 47.1), ('Flanders', 43.5), ('Wallonia', 37.5),
          ('Workers', 48.5), ('Aged 16-24', 74.4), ('Aged 65-74', 11.7)],
     ),
@@ -411,8 +411,9 @@ def bar_chart(name, title, unit, rows):
         ax.plot([1.2, 98.8], [i, i], color=TRACK, lw=9, solid_capstyle="round", zorder=1)
         ax.plot([1.2, max(value - 1.2, 1.21)], [i, i], color=colour, lw=9, solid_capstyle="round", zorder=2)
         ax.text(0, i - 0.36, label, ha="left", va="center", fontsize=10.5, color=INK)
+        # Yellow is too light for text, so the headline value is printed in ink
         ax.text(100, i - 0.36, f"{value:g}%", ha="right", va="center", fontsize=11.5,
-                fontweight="bold", color=colour)
+                fontweight="bold", color=INK if star else colour)
     fig.text(0.012, 1 - 0.20 / height, title, fontsize=13, fontweight="bold", color=ACCENT, va="center")
     fig.text(0.012, 1 - 0.47 / height, unit, fontsize=9.5, color=MUTED, va="center")
     fig.savefig(OUT / f"{name}.svg", transparent=True)
@@ -429,6 +430,8 @@ def survey_points():
             continue
         base = {
             "label": meta.get("chart-label", meta["title"]),
+            "title": meta["title"],
+            "where": meta.get("where", ""),
             "coverage": meta.get("coverage", "eu27"),
             "series": meta.get("series"),
             "pos": meta.get("label-pos"),
@@ -449,9 +452,9 @@ def survey_points():
 
 # One colour per population, matching the pills on the survey pages
 KINDS = {
-    "individuals": ("#5b47a8", "AI use by individuals", "% of people using AI for any purpose"),
-    "workers": ("#1d7a4a", "AI use by workers", "% of workers using AI for their job"),
-    "firms": ("#c9731a", "AI use by firms", "% of firms using AI"),
+    "individuals": (EC_BLUE, "AI use by individuals", "% of people using AI for any purpose"),
+    "workers": (EC_YELLOW, "AI use by workers", "% of workers using AI for their job"),
+    "firms": (EC_GREY_DARK, "AI use by firms", "% of firms using AI"),
 }
 
 
@@ -465,85 +468,146 @@ COVERAGE = {
 
 
 def timeline(kind, points):
+    """Overview time series, written as plain SVG so that text uses the page font,
+    dots link to the survey pages and show a tooltip, and the chart scales with the page."""
     colour, title, unit = KINDS[kind]
-    fig, ax = plt.subplots(figsize=(7.4, 5.0))
-    fig.subplots_adjust(left=0.07, right=0.98, top=0.84, bottom=0.085)
-    top = max(p["value"] for p in points)
-    ax.set_ylim(0, 10 * (int(top * 1.18) // 10 + 1))
-    ax.set_xlim(date(2024, 1, 1), date(2027, 5, 31))
+    W, H = 720, 380
+    left, right, top, bottom = 40, 96, 40, 32          # plot margins; labels may run into the right margin
+    x0, x1 = date(2024, 1, 1).toordinal(), date(2027, 1, 1).toordinal()
+    ymax = 10 * (int(max(p["value"] for p in points) * 1.15) // 10 + 1)
+    pw, ph = W - left - right, H - top - bottom
+    X = lambda d: left + (d.toordinal() - x0) / (x1 - x0) * pw
+    Y = lambda v: top + ph - v / ymax * ph
+    esc = lambda t: str(t).replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")
+    out = [f'<svg viewBox="0 0 {W} {H}" class="adoption-chart chart-{kind}" role="img" '
+           f'aria-label="{esc(title)}" xmlns="http://www.w3.org/2000/svg" style="--c:{colour}">']
 
-    # Line joining, in date order, the waves of one survey (same `series` in the page header).
-    # Different surveys are never joined: their definitions and populations differ.
+    # Year written under the middle of each year
+    for year in range(2024, 2027):
+        a, b = X(date(year, 1, 1)), X(date(year + 1, 1, 1))
+        out.append(f'<text class="axis year" x="{(a + b) / 2:.1f}" y="{H - 8}">{year}</text>')
+    # Horizontal gridlines; the % sign only on the top label
+    step = 10 if ymax <= 60 else 20
+    for v in range(0, ymax + 1, step):
+        out.append(f'<line class="grid{" base" if v == 0 else ""}" x1="{left}" x2="{left + pw}" '
+                   f'y1="{Y(v):.1f}" y2="{Y(v):.1f}"/>')
+        out.append(f'<text class="axis ytick" x="{left - 8}" y="{Y(v) + 4:.1f}">{v}{"%" if v == ymax - ymax % step else ""}</text>')
+
+    # Linear trend through every dot (each survey wave counted once)
+    if len(points) >= 3:
+        days = [p["when"].toordinal() for p in points]
+        slope, intercept = np.polyfit(days, [p["value"] for p in points], 1)
+        d0, d1 = min(days) - 45, max(days) + 45
+        ya, yb = Y(slope * d0 + intercept), Y(slope * d1 + intercept)
+        xa, xb = X(date.fromordinal(d0)), X(date.fromordinal(d1))
+        out.append(f'<line class="trend" x1="{xa:.1f}" y1="{ya:.1f}" x2="{xb:.1f}" y2="{yb:.1f}"/>')
+
+    # Lines joining the waves of one survey (same `series`); different surveys are never joined
     for series in sorted({p["series"] for p in points if p["series"]}):
         group = sorted((p for p in points if p["series"] == series), key=lambda p: p["when"])
         if len(group) > 1:
-            ax.plot([p["when"] for p in group], [p["value"] for p in group], color=colour, lw=2.4,
-                    alpha=0.4, solid_capstyle="round", solid_joinstyle="round", zorder=2)
+            path = " ".join(f"{'M' if i == 0 else 'L'}{X(p['when']):.1f},{Y(p['value']):.1f}"
+                            for i, p in enumerate(group))
+            out.append(f'<path class="series" d="{path}"/>')
 
-    # Linear trend fitted through every dot on the chart (ordinary least squares, each
-    # survey wave counted once), so it is visible which surveys sit above or below it.
-    has_trend = len(points) >= 3
-    if has_trend:
-        days = [p["when"].toordinal() for p in points]
-        slope, intercept = np.polyfit(days, [p["value"] for p in points], 1)
-        ends = [min(days) - 45, max(days) + 45]
-        ax.plot([date.fromordinal(d) for d in ends], [slope * d + intercept for d in ends],
-                color=MUTED, lw=1.6, linestyle=(0, (5, 4)), alpha=0.8, zorder=1)
+    # Dots with labels: survey name in grey, value in bold. Name only on the latest wave of a series.
+    offsets = {"right": (12, 4, "start"), "above": (0, -14, "middle"), "below": (0, 22, "middle")}
+    for p in sorted(points, key=lambda p: p["when"]):
+        x, y = X(p["when"]), Y(p["value"])
+        marker, filled, cov = COVERAGE[p["coverage"]]
+        cls = "dot filled" if filled else "dot hollow"
+        if marker == "o":
+            shape = f'<circle class="{cls}" cx="{x:.1f}" cy="{y:.1f}" r="7"/>'
+        elif marker == "s":
+            shape = f'<rect class="{cls}" x="{x - 6:.1f}" y="{y - 6:.1f}" width="12" height="12" rx="1.5"/>'
+        else:
+            shape = (f'<path class="{cls}" d="M{x:.1f},{y - 7.5:.1f} L{x + 7:.1f},{y + 5:.1f} '
+                     f'L{x - 7:.1f},{y + 5:.1f} Z"/>')
+        name = p["label"]
+        if p["series"] and p["when"] != max(q["when"] for q in points if q["series"] == p["series"]):
+            name = ""
+        dx, dy, anchor = offsets[p["pos"] or "above"]
+        label = (f'<tspan class="name">{esc(name)} </tspan>' if name else "") + f'<tspan class="val">{p["value"]:g}%</tspan>'
+        tip = f'{p["title"]}, {p["when"]:%B %Y}: {p["value"]:g}% ({p["where"]})'
+        out.append(f'<a href="{p["url"]}" class="point"><title>{esc(tip)}</title>{shape}'
+                   f'<text class="label" x="{x + dx:.1f}" y="{y + dy:.1f}" text-anchor="{anchor}">{label}</text></a>')
 
-    offsets = {"right": (10, 0), "above": (-6, 14), "below": (-6, -15)}
-    for p in points:
-        marker, filled, _ = COVERAGE[p["coverage"]]
-        # Each dot and its label link to the survey's page (works because the SVG is inlined)
-        ax.scatter(p["when"], p["value"], s=150 if marker == "o" else 120, marker=marker, zorder=3,
-                   linewidths=2.4, edgecolors="white" if filled else colour,
-                   facecolors=colour if filled else "white", urls=[p["url"]])
-        # Labels sit above the dot (survey name on its latest wave only);
-        # label-pos in the page header overrides this.
-        text = f"{p['label']}  {p['value']:g}%"
-        if p["series"]:
-            latest = max(q["when"] for q in points if q["series"] == p["series"])
-            if p["when"] != latest:
-                text = f"{p['value']:g}%"
-        ax.annotate(text, (p["when"], p["value"]), textcoords="offset points",
-                    xytext=offsets[p["pos"] or "above"],
-                    ha="left", va="center", fontsize=10, color=INK, url=p["url"])
-
-    ax.xaxis.set_major_locator(mdates.YearLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(4, 7, 10)))
-    for label in ax.get_xticklabels():
-        label.set_horizontalalignment("left")
-    ax.yaxis.set_major_formatter(lambda v, _: f"{v:g}%")
-    ax.grid(axis="y", color="#dde3ea", lw=0.9, linestyle=(0, (2, 4)))
-    ax.set_axisbelow(True)
-    for side in ("top", "right", "left"):
-        ax.spines[side].set_visible(False)
-    ax.spines["bottom"].set_color("#c5ccd4")
-    ax.tick_params(axis="both", which="major", length=0, labelsize=9.5, labelcolor=MUTED, pad=5)
-    ax.tick_params(axis="x", which="minor", length=3, color="#c5ccd4")
-
-    fig.text(0.5, 0.955, title, fontsize=17, fontweight="bold", color=colour, va="center", ha="center")
-    present = {p["coverage"] for p in points}
-    handles = [
-        Line2D([], [], marker=marker, ls="", ms=9 if filled else 8, mew=0 if filled else 2.2,
-               mec=colour, mfc=colour if filled else "white", label=label)
-        for key, (marker, filled, label) in COVERAGE.items() if key in present
-    ]
-    if has_trend:
-        handles.append(Line2D([], [], color=MUTED, lw=1.6, linestyle=(0, (5, 4)), alpha=0.8,
-                              label="Linear trend, all surveys"))
-    fig.legend(handles=handles, loc="center", bbox_to_anchor=(0.5, 0.890), ncol=len(handles), frameon=False,
-               fontsize=9.5, labelcolor=MUTED, handletextpad=0.2, columnspacing=1.6)
-    target = OUT / f"adoption-{kind}.svg"
-    fig.savefig(target, transparent=True)
-    plt.close(fig)
-    # Inline copy for the overview page: links inside an <img> are not clickable,
-    # so the page embeds the SVG markup itself.
-    svg = target.read_text(encoding="utf8")
-    svg = svg[svg.index("<svg"):]
-    svg = re.sub(r'<svg ([^>]*?)width="[^"]*" height="[^"]*"',
-                 r'<svg \1class="adoption-chart" role="img" aria-label="%s"' % title, svg, count=1)
+    # Legend: coverage only, top left
+    lx = left
+    for key, (marker, filled, text) in COVERAGE.items():
+        if key not in {p["coverage"] for p in points}:
+            continue
+        cls = "dot filled" if filled else "dot hollow"
+        cy = 16
+        if marker == "o":
+            out.append(f'<circle class="{cls} key" cx="{lx + 5}" cy="{cy}" r="5"/>')
+        elif marker == "s":
+            out.append(f'<rect class="{cls} key" x="{lx}" y="{cy - 5}" width="10" height="10" rx="1"/>')
+        else:
+            out.append(f'<path class="{cls} key" d="M{lx + 5},{cy - 6} L{lx + 10.5},{cy + 4} L{lx - 0.5},{cy + 4} Z"/>')
+        out.append(f'<text class="legend" x="{lx + 16}" y="{cy + 4}">{text}</text>')
+        lx += 32 + 7.4 * len(text)
+    out.append("</svg>")
+    svg = "\n".join(out)
     (OUT / f"adoption-{kind}.inline.html").write_text(svg, encoding="utf8")
+
+
+def overview_stats(points):
+    """Opening sentence of the overview page: the range of estimates from the surveys
+    fielded in the latest year, for individuals, workers and firms."""
+    parts, years = {}, set()
+    for kind in KINDS:
+        group = [p for p in points if p["kind"] == kind]
+        year = max(p["when"].year for p in group)
+        latest = [p for p in group if p["when"].year == year]
+        lo, hi = round(min(p["value"] for p in latest)), round(max(p["value"] for p in latest))
+        text = f"{lo}%" if lo == hi else f"{lo} to {hi}%"
+        parts[kind] = f'<a class="fig fig-{kind}" href="#{kind}">{text}</a>'
+        years.add(year)
+    year = " and ".join(str(y) for y in sorted(years))
+    html = (f'<p class="lede">Surveys fielded in {year} put the share using AI at {parts["individuals"]} '
+            f'of people, {parts["workers"]} of workers and {parts["firms"]} of firms. '
+            "The ranges are wide because each survey defines AI, use and its population in its own way.</p>")
+    (OUT / "overview-stats.inline.html").write_text(html, encoding="utf8")
+
+
+EU_COUNTRIES = {  # Eurostat codes (EL = Greece)
+    "BE": "Belgium", "BG": "Bulgaria", "CZ": "Czechia", "DK": "Denmark", "DE": "Germany", "EE": "Estonia",
+    "IE": "Ireland", "EL": "Greece", "ES": "Spain", "FR": "France", "HR": "Croatia", "IT": "Italy",
+    "CY": "Cyprus", "LV": "Latvia", "LT": "Lithuania", "LU": "Luxembourg", "HU": "Hungary", "MT": "Malta",
+    "NL": "Netherlands", "AT": "Austria", "PL": "Poland", "PT": "Portugal", "RO": "Romania", "SI": "Slovenia",
+    "SK": "Slovakia", "FI": "Finland", "SE": "Sweden",
+}
+EURO_AREA = ["AT", "BE", "HR", "CY", "EE", "FI", "FR", "DE", "EL", "IE", "IT", "LV", "LT", "LU", "MT",
+             "NL", "PT", "SK", "SI", "ES"]   # 20 members in 2024-25
+
+
+def sidebar_data():
+    """Data for the sidebar script (includes/sidebar.html): for each survey page, who was asked
+    and which EU countries it covers (from the `asked` and `countries` fields); the EU countries;
+    and the countries that have a section on the country evidence page."""
+    import json
+    surveys = {}
+    for path in sorted(ROOT.glob("surveys/*/*.qmd")):
+        meta = yaml.safe_load(path.read_text(encoding="utf8").split("---")[1])
+        asked = str(meta.get("asked", "")).lower()
+        cov = meta.get("countries", "eu27")
+        codes = (list(EU_COUNTRIES) if cov == "eu27" else EURO_AREA if cov == "euro-area" else list(cov))
+        unknown = set(codes) - set(EU_COUNTRIES)
+        if unknown:
+            raise ValueError(f"{path}: unknown country codes {sorted(unknown)}")
+        surveys[path.relative_to(ROOT).with_suffix(".html").as_posix()] = {
+            "pops": [k for k in ("individuals", "workers", "firms") if k in asked], "countries": codes}
+    national = {}
+    names = {v: k for k, v in EU_COUNTRIES.items()}
+    for line in (ROOT / "country-evidence.qmd").read_text(encoding="utf8").splitlines():
+        if line.startswith("## ") and line[3:].strip() in names:
+            name = line[3:].strip()
+            national[names[name]] = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    countries = sorted(EU_COUNTRIES.items(), key=lambda kv: kv[1])
+    data = {"surveys": surveys, "countries": countries, "national": national}
+    (ROOT / "includes" / "sidebar-data.html").write_text(
+        "<script>window.SIDEBAR_DATA = " + json.dumps(data) + ";</script>", encoding="utf8")
 
 
 if __name__ == "__main__":
@@ -554,4 +618,6 @@ if __name__ == "__main__":
     points = survey_points()
     for kind in KINDS:
         timeline(kind, [p for p in points if p["kind"] == kind])
-    print(f"wrote {len(FIGURES) + len(KINDS)} figures to {OUT}")
+    overview_stats(points)
+    sidebar_data()
+    print(f"wrote {len(FIGURES)} survey charts and {len(KINDS)} overview charts to {OUT}")

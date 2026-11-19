@@ -5,9 +5,13 @@ link-text: "Eurostat: Use of artificial intelligence in enterprises"
 who: "Eurostat"
 when: "2025"
 where: "EU-27"
+countries: eu27
 asked: "Firms"
 sample: "157,000 enterprises with 10+ employees"
+use: firm
 question: "Does the enterprise use any of eight AI technologies (text mining, speech recognition, language generation, image generation, image recognition, machine learning, process automation, autonomous machines)?"
+demographics:
+  firms: ["sector (NACE)", "size class (10-49, 50-249, 250+)", "country", "turnover", "region (NUTS 2, optional)"]
 month: "2025-02"
 adoption-firms: 20.0
 coverage: eu27
@@ -15,6 +19,7 @@ series: eurostat-enterprises
 chart-label: "Eurostat"
 label-pos: right
 aim: "To produce official, comparable statistics on how businesses use digital technologies, for monitoring the EU's Digital Decade targets. AI is one module among several."
+other-topics: "AI by business function and reasons for not using AI; cloud computing, data analytics, business software, e-commerce and green ICT. The 2025 wave has no questions on ICT specialists or training (those were in 2024)."
 ---
 
 ![](../../figures/eurostat-ent-size.svg){fig-alt="Share of EU enterprises using AI in 2025: all 20%, small 17%, medium 30.4%, large 55%."}

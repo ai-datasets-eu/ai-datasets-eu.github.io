@@ -1,0 +1,117 @@
+<script>
+// Sidebar extras: a coloured dot per survey (who was asked), a filter by population, and a
+// country filter (surveys covering that country, plus a link to its national surveys if any).
+// Data: includes/sidebar-data.html, written by figures/make_figures.py from the survey headers
+// (`asked`, `countries`) and the headings of country-evidence.qmd.
+(() => {
+  const data = window.SIDEBAR_DATA;
+  const sidebar = document.querySelector("#quarto-sidebar");
+  if (!data || !sidebar) return;
+
+  // Match each sidebar link to a survey page by the end of its path; add the coloured dot
+  const items = [];
+  sidebar.querySelectorAll("a.sidebar-link[href]").forEach(a => {
+    const info = data.surveys[a.getAttribute("href").replace(/^(\.\.\/|\.\/)+/, "")];
+    if (!info) return;
+    info.pops.forEach(p => a.classList.add("pop-" + p));
+    items.push({ li: a.closest("li.sidebar-item"), ...info });
+  });
+
+  // Root of the site, from the Overview link (works at any folder depth)
+  const home = sidebar.querySelector('a.sidebar-link[href$="index.html"]');
+  const root = home ? home.getAttribute("href").replace(/index\.html$/, "") : "";
+
+  // Filter controls under the search box
+  const labels = { all: "All", individuals: "Individuals", workers: "Workers", firms: "Firms" };
+  const bar = document.createElement("div");
+  bar.className = "sidebar-filter";
+  bar.innerHTML =
+    '<div class="filter-pops" role="group" aria-label="Show surveys of">' +
+    Object.entries(labels).map(([k, v]) =>
+      `<button type="button" data-pop="${k}" class="filter-${k}">${v}</button>`).join("") +
+    "</div>" +
+    '<select class="filter-country" aria-label="Show surveys covering a country">' +
+    '<option value="">All countries</option>' +
+    data.countries.map(([code, name]) => `<option value="${code}">${name}</option>`).join("") +
+    "</select>" +
+    '<a class="filter-national" hidden></a>';
+  // Layout: [search box][filter button] on one row; the filters open in a panel below it,
+  // and while a filter is on a one-line summary (with a clear button) shows instead
+  const search = sidebar.querySelector(".sidebar-search");
+  const row = search ? search.parentElement : sidebar.querySelector(".sidebar-menu-container");
+  if (search) row.classList.add("search-row");
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "filter-toggle";
+  toggle.title = "Filter surveys by population or country";
+  toggle.setAttribute("aria-label", toggle.title);
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.innerHTML = '<i class="bi bi-funnel" aria-hidden="true"></i>';
+  if (search) row.append(toggle);
+  const summary = document.createElement("div");
+  summary.className = "filter-summary";
+  summary.hidden = true;
+  bar.hidden = true;
+  row.after(bar);
+  bar.after(summary);
+  if (!search) bar.before(toggle);
+  const select = bar.querySelector("select");
+  const national = bar.querySelector(".filter-national");
+
+  const state = { pop: "all", country: "" };
+  try { Object.assign(state, JSON.parse(sessionStorage.getItem("survey-filter2")) || {}); } catch (e) {}
+  if (!labels[state.pop]) state.pop = "all";
+  if (!data.countries.some(([c]) => c === state.country)) state.country = "";
+
+  const apply = () => {
+    bar.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.pop === state.pop));
+    select.value = state.country;
+    select.classList.toggle("on", !!state.country);
+    // The page you are on always stays visible
+    items.forEach(({ li, pops, countries }) => {
+      const keep = (state.pop === "all" || pops.includes(state.pop)) &&
+                   (!state.country || countries.includes(state.country));
+      li.hidden = !keep && !li.querySelector(".sidebar-link.active");
+    });
+    // Hide a year whose surveys are all filtered out
+    sidebar.querySelectorAll("li.sidebar-item-section").forEach(sec => {
+      const kids = sec.querySelectorAll("ul li.sidebar-item");
+      sec.hidden = kids.length > 0 && [...kids].every(li => li.hidden);
+    });
+    // Link to the country's national surveys, if the country page has a section for it
+    const name = state.country ? data.countries.find(([c]) => c === state.country)[1] : "";
+    const anchor = data.national[state.country];
+    national.hidden = !anchor;
+    if (anchor) {
+      national.href = root + "country-evidence.html#" + anchor;
+      national.textContent = "National surveys: " + name + " →";
+    }
+    // Summary line while a filter is on and the panel is closed
+    const active = state.pop !== "all" || !!state.country;
+    toggle.classList.toggle("active", active);
+    const parts = [state.pop !== "all" ? labels[state.pop] : "", name].filter(Boolean);
+    summary.hidden = !active || !bar.hidden;
+    summary.innerHTML = active
+      ? '<span class="filter-what">' + parts.join(" · ") + "</span>" +
+        '<button type="button" class="filter-clear" aria-label="Clear filter">×</button>' +
+        (anchor ? '<a class="filter-national" href="' + national.href + '">' + national.textContent + "</a>" : "")
+      : "";
+    try { sessionStorage.setItem("survey-filter2", JSON.stringify(state)); } catch (e) {}
+  };
+  bar.addEventListener("click", e => {
+    const b = e.target.closest("button[data-pop]");
+    if (b) { state.pop = b.dataset.pop; apply(); }
+  });
+  select.addEventListener("change", () => { state.country = select.value; apply(); });
+  toggle.addEventListener("click", () => {
+    bar.hidden = !bar.hidden;
+    toggle.setAttribute("aria-expanded", String(!bar.hidden));
+    toggle.classList.toggle("open", !bar.hidden);
+    apply();
+  });
+  summary.addEventListener("click", e => {
+    if (e.target.closest(".filter-clear")) { state.pop = "all"; state.country = ""; apply(); }
+  });
+  apply();
+})();
+</script>

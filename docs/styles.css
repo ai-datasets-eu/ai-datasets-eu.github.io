@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
-:root { --accent: #1f4e79; --accent-soft: #eef3f8; --bs-body-font-family: "Fira Sans", system-ui, sans-serif; }
+:root { --accent: #004494; --accent-soft: #e8eef7; --ec-yellow: #FFCC00; --ec-grey-light: #C5C6C8; --ec-grey-dark: #646567; --bs-body-font-family: "Fira Sans", system-ui, sans-serif; }
 body { font-size: 1.02rem; line-height: 1.65; font-family: "Fira Sans", system-ui, sans-serif; }
 h1, h2, h3, h4, h5, h6 { font-family: "Fira Sans", system-ui, sans-serif; }
 h1, h2, h3 { color: var(--accent); letter-spacing: -0.01em; }
@@ -34,7 +34,7 @@ code { color: #b5295c; }
 .survey-link { margin: .2rem 0 0; font-size: .97rem; }
 .survey-card {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 8.6rem 1fr;
   margin: .9rem 0 1.8rem;
   border: 1px solid #dfe6ee;
   border-radius: 8px;
@@ -57,48 +57,176 @@ main.content img.img-fluid, main.content figure img { max-width: min(100%, 700px
 
 /* Who-was-asked pill */
 .pill { display: inline-block; padding: .05rem .6rem; border-radius: 999px; font-size: .82rem; font-weight: 600; margin-right: .4rem; white-space: nowrap; }
-.pill-workers { background: #e3f1e8; color: #1d6b3c; }
-.pill-firms { background: #fdeeda; color: #8a4f08; }
-.pill-individuals { background: #ece8f7; color: #4d3a94; }
+.pill-workers { background: #fff0b3; color: #4d3d00; }
+.pill-firms { background: #e6e7e8; color: #3f4041; }
+.pill-individuals { background: #e1e9f5; color: #004494; }
 .pill-both { background: var(--accent-soft); color: var(--accent); }
 
-/* Overview time series: inline SVG so that dots link to the survey pages */
-svg.adoption-chart { display: block; width: 100%; max-width: 700px; height: auto; margin: 0 0 1.2rem; }
-svg.adoption-chart a { cursor: pointer; }
-svg.adoption-chart a:hover path, svg.adoption-chart a:hover use { opacity: .7; }
+/* Work or private use label */
+.pill-use-work { background: #fff0b3; color: #4d3d00; }
+.pill-use-private { background: #f2f2f2; color: #3f4041; border: 1px solid #C5C6C8; }
+.pill-use-both { background: #e1e9f5; color: #004494; }
+.pill-use-any { background: #fff; color: #646567; border: 1px dashed #C5C6C8; }
+.pill-use-firm { background: #e6e7e8; color: #3f4041; }
+
+/* Breakdowns row: collapsible lists of respondent characteristics */
+.survey-card details.demo { display: inline-block; vertical-align: top; margin: 0 .5rem .15rem 0; }
+.survey-card details.demo summary {
+  cursor: pointer; display: inline-block; padding: .05rem .6rem; border-radius: 999px;
+  font-size: .82rem; font-weight: 600; background: var(--accent-soft); color: var(--accent);
+  list-style: none;
+}
+.survey-card details.demo summary::-webkit-details-marker { display: none; }
+.survey-card details.demo summary::after { content: " ▾"; }
+.survey-card details.demo[open] { display: block; margin-bottom: .35rem; }
+.survey-card details.demo[open] summary { margin-right: .4rem; }
+.survey-card details.demo[open] summary::after { content: " ▴"; }
+
+/* Overview time series: plain SVG written by figures/make_figures.py, inlined so dots link to survey pages */
+svg.adoption-chart { display: block; width: 100%; height: auto; margin: 0 0 1.2rem; overflow: visible; font-family: "Fira Sans", system-ui, sans-serif; }
+svg.adoption-chart a, svg.adoption-chart a:hover { text-decoration: none; }
+svg.adoption-chart .grid { stroke: #e6eaef; stroke-width: 1; }
+svg.adoption-chart .grid.base { stroke: #b9bec5; }
+svg.adoption-chart .axis { fill: #8a9099; font-size: 12.5px; }
+svg.adoption-chart .year { text-anchor: middle; font-weight: 500; fill: #646567; font-size: 13.5px; }
+svg.adoption-chart .ytick { text-anchor: end; }
+svg.adoption-chart .trend { stroke: #C5C6C8; stroke-width: 2; stroke-dasharray: 6 5; stroke-linecap: round; }
+svg.adoption-chart .series { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .45; }
+svg.adoption-chart .dot { stroke-width: 2.5; transition: transform .15s ease; transform-box: fill-box; transform-origin: center; }
+svg.adoption-chart .dot.filled { fill: var(--c); stroke: #fff; }
+svg.adoption-chart .dot.hollow { fill: #fff; stroke: var(--c); }
+svg.adoption-chart .dot.key { stroke-width: 2; }
+svg.adoption-chart .label { font-size: 14px; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+svg.adoption-chart .label .name { fill: #646567; }
+svg.adoption-chart .label .val { fill: #1d2733; font-weight: 600; }
+svg.adoption-chart .legend { fill: #646567; font-size: 13px; }
+svg.adoption-chart a.point { cursor: pointer; }
+svg.adoption-chart a.point:hover .dot { transform: scale(1.3); }
+svg.adoption-chart a.point:hover .label .name { fill: #1d2733; }
+svg.adoption-chart.chart-workers .series { opacity: .8; }
 
 /* Short 'Main aim' paragraph under the fact table */
 .survey-aim { margin: -0.6rem 0 1.8rem; }
 .survey-aim strong { color: var(--accent); }
 
-/* Sidebar header: title on one line, GitHub button underneath */
+/* Sidebar header: title on one line */
 .sidebar-header .sidebar-title { font-size: 1.12rem; white-space: nowrap; }
 .sidebar-header .sidebar-title a { letter-spacing: -0.01em; }
-.sidebar-header .sidebar-tools-main { display: block; margin: .55rem 0 0; }
-.sidebar-header .sidebar-tools-main .quarto-navigation-tool {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  padding: .22rem .7rem !important;
-  font-size: .8rem;
-  font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid #d5e0ec;
-  border-radius: 999px;
-  text-decoration: none;
-}
-.sidebar-header .sidebar-tools-main .quarto-navigation-tool:hover { background: #e2ebf4; }
-.sidebar-header .sidebar-tools-main .quarto-navigation-tool::after { content: "GitHub repository"; }
 
-/* Pull the layout towards the left edge on wide screens. Quarto centres the sidebar and
-   text with equal flexible space on both sides (5fr / 5fr); here the left share is 1fr,
-   so most of the spare width goes to the right of the page. */
+/* Put the sidebar against the left edge on wide screens. Quarto centres the sidebar and
+   text with equal flexible space on both sides (5fr / 5fr); here the left share is 0,
+   so all spare width goes to the right of the page. */
 @media (min-width: 992px) {
   body.floating .page-columns {
-    grid-template-columns: [screen-start] 1.5em [screen-start-inset] 1fr [page-start] minmax(25px, 50px) [page-start-inset] minmax(50px, 150px) [body-start-outset] minmax(25px, 50px) [body-start] 1.5em [body-content-start] minmax(500px, calc(800px - 3em)) [body-content-end] 1.5em [body-end] minmax(25px, 50px) [body-end-outset] minmax(50px, 150px) [page-end-inset] minmax(25px, 50px) [page-end] 9fr [screen-end-inset] 1.5em [screen-end];
+    grid-template-columns: [screen-start] 0px [screen-start-inset] 0px [page-start] minmax(25px, 50px) [page-start-inset] minmax(50px, 150px) [body-start-outset] minmax(25px, 50px) [body-start] 1.5em [body-content-start] minmax(500px, calc(800px - 3em)) [body-content-end] 1.5em [body-end] minmax(25px, 50px) [body-end-outset] minmax(50px, 150px) [page-end-inset] minmax(25px, 50px) [page-end] 9fr [screen-end-inset] 1.5em [screen-end];
   }
   body.floating.fullcontent .page-columns {
-    grid-template-columns: [screen-start] 1.5em [screen-start-inset] 1fr [page-start] 50px [page-start-inset] minmax(50px, 150px) [body-start-outset] 50px [body-start] 1.5em [body-content-start] minmax(500px, calc(800px - 3em)) [body-content-end] 1.5em [body-end body-end-outset page-end-inset page-end] 9fr [screen-end-inset] 1.5em [screen-end];
+    grid-template-columns: [screen-start] 0px [screen-start-inset] 0px [page-start] 50px [page-start-inset] minmax(50px, 150px) [body-start-outset] 50px [body-start] 1.5em [body-content-start] minmax(500px, calc(800px - 3em)) [body-content-end] 1.5em [body-end body-end-outset page-end-inset page-end] 9fr [screen-end-inset] 1.5em [screen-end];
   }
 }
+
+/* ---------- Overview page: hero, chapters ---------- */
+:root { --c-individuals: #004494; --c-workers: #FFCC00; --c-firms: #646567; }
+body:has(.hero) #title-block-header { display: none; }
+html { scroll-behavior: smooth; }
+
+/* The opening screen fills the window exactly, so nothing below it peeks in */
+body:has(.hero) #quarto-content, body:has(.hero) main.content { margin-top: 0 !important; padding-top: 0 !important; }
+.hero { min-height: 100vh; min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0; }
+.hero-eyebrow { margin: 0 0 .4rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #6b7785; }
+.hero-title { font-size: clamp(2.3rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 1.2rem; color: var(--accent); border: 0; }
+.hero-intro { font-size: 1.02rem; line-height: 1.6; color: #4a5562; max-width: 40rem; margin: 0 0 1.1rem; }
+.gh-request { display: inline-flex; align-items: center; gap: .3rem; margin-left: .2rem; padding: 0 .5rem; border-radius: 999px; font-size: .78rem; line-height: 1.5; font-weight: 600; white-space: nowrap; text-decoration: none; color: #fff; background: var(--accent); vertical-align: 1px; }
+.gh-request:hover { background: #00346f; color: #fff; }
+.lede { font-size: 1.22rem; line-height: 1.65; color: #2b3540; max-width: 40rem; margin: 0 0 2rem; }
+.lede a.fig { color: inherit; font-weight: 600; text-decoration: none; white-space: nowrap; border-bottom: 4px solid var(--c); }
+.lede a.fig:hover { background: color-mix(in srgb, var(--c) 18%, transparent); }
+.fig-individuals { --c: var(--c-individuals); }
+.fig-workers { --c: var(--c-workers); }
+.fig-firms { --c: var(--c-firms); }
+.hero-cue { align-self: flex-start; font-weight: 600; color: var(--accent); text-decoration: none; padding: .5rem 1.1rem; border-radius: 999px; background: var(--accent-soft); border: 1px solid #d5e0ec; }
+.hero-cue:hover { background: #e2ebf4; }
+.hero-cue span { display: inline-block; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-cue span { animation: none; } }
+
+.chapter-nav { position: sticky; top: 0; z-index: 10; display: flex; gap: .4rem; padding: .7rem 0; background: rgba(255, 255, 255, .92); backdrop-filter: blur(6px); border-bottom: 1px solid #edf1f5; }
+.chapter-nav a { font-size: .85rem; font-weight: 600; text-decoration: none; padding: .25rem .85rem; border-radius: 999px; color: #6b7785; border: 1px solid transparent; transition: background .15s, color .15s; }
+.chapter-nav a:hover { color: var(--accent); background: var(--accent-soft); }
+.chapter-nav a.nav-individuals.active { color: #fff; background: var(--c-individuals); }
+.chapter-nav a.nav-workers.active { color: #1d2733; background: var(--c-workers); }
+.chapter-nav a.nav-firms.active { color: #fff; background: var(--c-firms); }
+
+.chapter { min-height: 88vh; padding: 3.2rem 0 1.5rem; scroll-margin-top: 3rem; display: flex; flex-direction: column; justify-content: center; }
+.chapter-num { margin: 0 0 .3rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #646567; display: flex; align-items: center; gap: .5rem; }
+.chapter-num::before { content: ""; width: .8rem; height: .8rem; border-radius: 2px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.chapter-individuals { --c: var(--c-individuals); }
+.chapter-workers { --c: var(--c-workers); }
+.chapter-firms { --c: var(--c-firms); }
+.chapter-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 .5rem; color: #1d2733; border: 0; padding: 0; }
+.chapter-lede { font-size: 1.05rem; color: #3a4552; max-width: 40rem; margin: 0 0 1.2rem; }
+.chapter svg.adoption-chart { max-width: 100%; margin: 0; }
+
+
+/* Sidebar: flush with the left edge, small inner padding only */
+@media (min-width: 992px) {
+  body.floating .sidebar.sidebar-navigation { padding-left: 1.25rem; }
+}
+
+/* Sidebar: page you are on */
+.sidebar-navigation .sidebar-item .sidebar-link.active {
+  background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent);
+  border-radius: 0 6px 6px 0; padding-left: .55rem; margin-left: -.55rem; font-weight: 500;
+}
+.sidebar-navigation .sidebar-item-section + .sidebar-item-section { margin-top: .9rem; }
+
+/* Sidebar: dot per survey for who was asked (added by includes/sidebar.html) */
+.sidebar-link[class*="pop-"] .menu-text::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  margin: 0 .5rem 1px 0; vertical-align: middle; background: var(--dot, #C5C6C8);
+}
+.sidebar-link.pop-individuals { --dot: #004494; }
+.sidebar-link.pop-workers { --dot: #FFCC00; }
+.sidebar-link.pop-firms { --dot: #646567; }
+
+/* Sidebar: search box and filter button on one row; filters in a panel below */
+.search-row { display: flex; align-items: center; gap: .4rem; }
+.search-row .sidebar-search { flex: 1 1 auto; min-width: 0; }
+.filter-toggle {
+  flex: 0 0 auto; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid #dee2e6; border-radius: 6px; background: #fff; color: #646567; cursor: pointer; padding: 0;
+}
+.filter-toggle:hover, .filter-toggle.open { color: var(--accent); border-color: #b9c6d8; }
+.filter-toggle.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+.filter-summary { display: flex; flex-wrap: wrap; align-items: center; gap: .1rem .4rem; margin: .5rem 0 0; font-size: .8rem; }
+.filter-what { font-weight: 600; color: var(--accent); }
+.filter-clear { border: 0; background: none; padding: 0 .2rem; font-size: 1rem; line-height: 1; color: #8a9099; cursor: pointer; }
+.filter-clear:hover { color: #1d2733; }
+.filter-summary .filter-national { flex-basis: 100%; margin-top: .1rem; }
+#quarto-sidebar a.filter-national { color: var(--accent); font-weight: 500; }
+
+.filter-summary[hidden], .filter-national[hidden], .sidebar-filter[hidden] { display: none !important; }
+
+/* Sidebar: filter panel */
+.sidebar-filter { margin: .6rem 0 .2rem; }
+.filter-pops { display: flex; border: 1px solid #dfe3e8; border-radius: 999px; padding: 2px; background: #fff; }
+.filter-pops button {
+  flex: 1 1 auto; font: inherit; font-size: .72rem; font-weight: 600; line-height: 1.6; padding: .05rem .35rem;
+  border: 0; border-radius: 999px; background: transparent; color: #646567; cursor: pointer; white-space: nowrap;
+}
+.filter-pops button:hover { color: #1d2733; background: #f2f4f6; }
+.filter-pops button.on { background: #1d2733; border-color: #1d2733; color: #fff; }
+.filter-pops button.filter-individuals.on { background: #004494; border-color: #004494; }
+.filter-pops button.filter-workers.on { background: #FFCC00; border-color: #FFCC00; color: #1d2733; }
+.filter-pops button.filter-firms.on { background: #646567; border-color: #646567; }
+.filter-country {
+  width: 100%; margin-top: .45rem; font: inherit; font-size: .8rem; color: #3a4552; padding: .2rem .4rem;
+  border: 1px solid #dfe3e8; border-radius: 6px; background: #fff;
+}
+.filter-country.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.filter-national { display: block; margin-top: .4rem; font-size: .8rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+.filter-national:hover { text-decoration: underline; }
+
+/* Sidebar logo */
+.sidebar-logo { width: 100%; max-width: 210px; margin: 0 0 .9rem -6px; }
+.sidebar-header .sidebar-title { display: block; margin-top: .2rem; }

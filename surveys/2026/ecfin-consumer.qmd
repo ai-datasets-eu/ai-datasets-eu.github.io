@@ -5,9 +5,14 @@ link-text: "DG ECFIN: AI at work in Europe (European Business Cycle Indicators, 
 who: "European Commission, DG ECFIN"
 when: "2026"
 where: "18 EU Member States"
+countries: [BG, CZ, DE, EL, ES, HR, CY, LV, HU, MT, NL, AT, PL, PT, RO, SK, FI, SE]
 asked: "Individuals"
 sample: "21,207 consumers"
+use: both
+use-note: "One question with several answers possible: for work, for personal tasks, or both"
 question: "\"Are you using AI technologies for your work or for personal tasks?\""
+demographics:
+  individuals: ["age", "sex", "education", "occupation", "full-time or part-time", "household income quartile", "country"]
 month: "2026-03"
 adoption-individuals: 54
 adoption-workers: 34.5
@@ -16,6 +21,7 @@ coverage: eu-subset
 chart-label: "ECFIN"
 label-pos: right
 aim: "To measure consumer confidence each month. A one-off module in early 2026 asked how people use AI and how they think it affects their productivity, quality of work and job security."
+other-topics: "For people using AI for work: speed of tasks, hours saved per month, quality of work, workload and fear of job loss. The core survey covers unemployment expectations, household finances and prices."
 ---
 
 ![](../../figures/ecfin-use.svg){fig-alt="Early 2026, 18 EU Member States: 54% of respondents use AI for any purpose; 34.5% of the employed use AI for work."}

@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-17T10:01:09.860183</dc:date>
+    <dc:date>2026-11-19T11:26:07.325556</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,52 +33,52 @@ z
    <g id="line2d_1">
     <path d="M 11.267942 84.036226 
 L 463.932058 84.036226 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_2">
     <path d="M 11.267942 122.753208 
 L 463.932058 122.753208 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_3">
     <path d="M 11.267942 161.470189 
 L 463.932058 161.470189 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_4">
     <path d="M 11.267942 200.18717 
 L 463.932058 200.18717 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_5">
     <path d="M 11.267942 238.904151 
 L 463.932058 238.904151 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_6">
     <path d="M 11.267942 84.036226 
 L 338.707354 84.036226 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_7">
     <path d="M 11.267942 122.753208 
 L 306.24169 122.753208 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_8">
     <path d="M 11.267942 161.470189 
 L 306.24169 161.470189 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_9">
     <path d="M 11.267942 200.18717 
 L 283.05193 200.18717 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_10">
     <path d="M 11.267942 238.904151 
 L 245.948314 238.904151 
-" clip-path="url(#pf90222436d)" style="fill: none; stroke: #1f4e79; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#pbb2b0a7321)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <!-- Speed up how fast tasks get done -->
@@ -393,7 +393,7 @@ z
    </g>
    <g id="text_2">
     <!-- 73% -->
-    <g style="fill: #1f4e79" transform="translate(448.256741 73.186043) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(448.256741 73.186043) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-37" d="M 2880 4326 
 L 83 4326 
@@ -592,7 +592,7 @@ z
    </g>
    <g id="text_4">
     <!-- 66% -->
-    <g style="fill: #1f4e79" transform="translate(446.644944 111.903024) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(446.644944 111.903024) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-36" d="M 2208 2912 
 C 1882 2912 1562 2790 1293 2509 
@@ -709,7 +709,7 @@ z
    </g>
    <g id="text_6">
     <!-- 66% -->
-    <g style="fill: #1f4e79" transform="translate(446.644944 150.620005) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(446.644944 150.620005) scale(0.115 -0.115)">
      <use xlink:href="#FiraSans-Bold-36"/>
      <use xlink:href="#FiraSans-Bold-36" transform="translate(56.399994 0)"/>
      <use xlink:href="#FiraSans-Bold-25" transform="translate(112.799988 0)"/>
@@ -798,7 +798,7 @@ z
    </g>
    <g id="text_8">
     <!-- 61% -->
-    <g style="fill: #1f4e79" transform="translate(447.794944 189.336986) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(447.794944 189.336986) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-31" d="M 2445 4326 
 L 1542 4326 
@@ -873,7 +873,7 @@ z
    </g>
    <g id="text_10">
     <!-- 53% -->
-    <g style="fill: #1f4e79" transform="translate(447.4751 228.053967) scale(0.115 -0.115)">
+    <g style="fill: #004494" transform="translate(447.4751 228.053967) scale(0.115 -0.115)">
      <defs>
       <path id="FiraSans-Bold-35" d="M 3021 4326 
 L 371 4326 
@@ -902,7 +902,7 @@ z
   </g>
   <g id="text_11">
    <!-- Views on robots and AI at work -->
-   <g style="fill: #1f4e79" transform="translate(5.7024 17.890703) scale(0.13 -0.13)">
+   <g style="fill: #004494" transform="translate(5.7024 17.890703) scale(0.13 -0.13)">
     <defs>
      <path id="FiraSans-Bold-56" d="M 3738 4435 
 L 2662 4435 
@@ -1265,7 +1265,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pf90222436d">
+  <clipPath id="pbb2b0a7321">
    <rect x="5.7024" y="56.16" width="463.7952" height="205.2"/>
   </clipPath>
  </defs>
