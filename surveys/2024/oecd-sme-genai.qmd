@@ -1,0 +1,17 @@
+---
+title: "OECD SME survey"
+link: "https://doi.org/10.1787/2d08b99d-en"
+link-text: "OECD (2025): Generative AI and the SME Workforce: New Survey Evidence"
+who: "OECD, fieldwork by Ipsos"
+when: "2024"
+where: "7 OECD countries: Austria, Germany and Ireland in the EU; also Canada, Japan, Korea and the United Kingdom"
+asked: "Firms"
+sample: "5,232 SMEs with 1 to 249 employees, about 800 per country (400 in Japan), interviewed by telephone from 14 October to 6 December 2024; weighted by number of firms"
+question: "\"Does anyone in your company, and please include yourself, ever use generative AI for work?\""
+adoption-text: "31% of SMEs across the 7 countries; 38.7% in Germany, 34.1% in Austria, 33.0% in Ireland"
+aim: "To find out how small and medium-sized enterprises use generative AI to deal with skill and labour shortages, and how it changes the skills they need."
+---
+
+![](../../figures/oecd-sme.svg){fig-alt="SMEs where someone uses generative AI for work, late 2024: 31% across the 7 countries; Germany 38.7%, Austria 34.1%, Ireland 33.0%; 23.6% of one-person firms and 45.8% of firms with 50 to 249 employees."}
+
+The question counts any use by anyone in the firm, including staff using tools on their own initiative, and includes one-person firms, so it is not comparable with Eurostat's enterprise survey of firms with 10+ employees. It is not plotted on the overview: the measure differs from the other firm surveys, and the 31% headline mixes the three EU countries with four non-EU ones.

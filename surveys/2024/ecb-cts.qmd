@@ -1,0 +1,15 @@
+---
+title: "ECB Corporate Telephone Survey"
+link: "https://www.ecb.europa.eu/press/blog/date/2025/html/ecb.blog20250328~60c0a587f7.en.html"
+link-text: "ECB Blog, 28 March 2025: AI can boost productivity if firms use it"
+who: "European Central Bank"
+when: "2024"
+where: "Euro area"
+asked: "Firms"
+sample: "Leading non-financial companies that the ECB contacts regularly; the number in the AI round is not published"
+question: "Whether the firm uses AI in its daily business operations, what share of employees use it, and for what; exact wording not published"
+adoption-text: "About 75% of the firms surveyed say they already use AI in daily business operations; these are among the largest firms in the euro area, not a representative sample"
+aim: "To gather early information on business conditions from large euro area companies through regular telephone interviews. The June 2024 round added questions on AI."
+---
+
+About 75% of the firms in the June 2024 round claim to already use AI in their daily business operations, although most report that less than 25% of their employees do so. The most common uses are improving access to information and creating customised web content, and most firms say they do not intend to reduce their headcount through AI. The firms are among the largest in the euro area, so the share is far above estimates for all firms, and it is not plotted on the overview.

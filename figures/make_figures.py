@@ -172,8 +172,8 @@ FIGURES = {
     ),
     # EIB Investment Survey 2025
     "eibis-genai": (
-        "Firms using AI or investing in generative AI, 2025",
-        "% of firms, weighted by value added; EIB calls this 'using generative AI'",
+        "Firms using generative AI as measured by the EIB, 2025",
+        "% of firms, weighted by value added; combines two questions (see text)",
         [("*European Union", 37), ("United States", 36)],
     ),
     # Private surveys
@@ -208,6 +208,29 @@ FIGURES = {
         "What generative AI is used for, mid-2024",
         "% of people aware of generative AI",
         [("Personal tasks", 47), ("Work", 23)],
+    ),
+    "kpmg-countries": (
+        "People using AI regularly or semi-regularly, EU countries",
+        "% of people, any purpose, Nov 2024-Jan 2025; selected EU countries",
+        [('Latvia (highest in the EU)', 72), ('Poland', 69), ('Italy', 60), ('Spain', 60), ('France', 51),
+         ('Germany', 51), ('Belgium', 47), ('Netherlands (lowest in the EU)', 43)],
+    ),
+    "pwc-hopes": (
+        "Employees using AI at work, 2026",
+        "% of employees, May-June 2026",
+        [('*Belgium', 56), ('Western Europe', 56), ('North America', 55), ('Asia Pacific', 72), ('Middle East', 80)],
+    ),
+    "mckinsey-regions": (
+        "Organisations using AI in at least one function, 2025",
+        "% of respondents to McKinsey's online survey, by region, as published in the AI Index 2026",
+        [('*Europe', 91), ('North America', 90), ('All regions', 88), ('Greater China', 88),
+         ('Developing markets', 88), ('Asia-Pacific', 82)],
+    ),
+    "mckinsey-jobs": (
+        "AI and head count: expected and reported change",
+        "% of respondents whose organisation regularly uses AI, global",
+        [('Expect a decline next year, 2025 survey', 32), ('*Expect a decline next year, 2026 survey', 39),
+         ('Expect little or no change next year, 2026 survey', 43), ('Report a decline over the past year, 2026 survey', 14)],
     ),
     # National surveys
     "ifo-trend": (
@@ -277,8 +300,53 @@ FIGURES = {
     ),
     "nbp": (
         "Polish enterprises using AI tools",
-        "% of enterprises",
-        [('End of 2024', 13.7), ('*Q2 2026', 42), ('Large firms, Q2 2026', 59), ('Small and micro firms, Q2 2026', 28)],
+        "% of surveyed non-financial enterprises; large firms over-represented",
+        [('Q4 2024', 13.7), ('*Q2 2026', 42), ('Large firms, Q2 2026', 59), ('Medium-sized firms, Q2 2026', 43),
+         ('Small and micro firms, Q2 2026', 28)],
+    ),
+    "bopf-2026": (
+        "German firms using at least one AI technology, 2026",
+        "% of firms, employment-weighted",
+        [('January 2026', 65), ('*July 2026', 78)],
+    ),
+    "insee-tic": (
+        "French enterprises using AI",
+        "% of enterprises with 10+ employees",
+        [('2023', 6), ('2024', 10), ('*2025', 18), ('10-49 employees, 2025', 15), ('50-249, 2025', 31), ('250+, 2025', 58)],
+    ),
+    "sige-ai": (
+        "How important is AI to Italian firms? Q3 2024",
+        "% of firms with 50+ employees in industry and non-financial services",
+        [('*Important and already adopting it', 11.2), ('Important, plan to adopt within 2 years', 28.4),
+         ('Not important for the business', 33.4), ("Don't know or no answer", 26.9)],
+    ),
+    "bdi-households": (
+        "Generative AI use in Italy, August-September 2024",
+        "% of respondents to the Bank of Italy household survey",
+        [('*Used it in the past 12 months', 26), ('Use it at least weekly', 10),
+         ('Workers and retirees: used it in the past 12 months', 36), ('Workers and retirees: use it at least weekly', 13)],
+    ),
+    "statbel-ent": (
+        "Belgian enterprises using AI",
+        "% of enterprises with 10+ persons employed",
+        [('2023', 13.8), ('2024', 24.7), ('*2025', 34.5), ('Brussels, 2025', 42.3), ('Flanders, 2025', 34.8), ('Wallonia, 2025', 30.2)],
+    ),
+    "statbel-ind": (
+        "Generative AI use in Belgium, 2025",
+        "% of people aged 16-74 (unless stated), last 3 months",
+        [('*All', 42.0), ('Brussels', 47.1), ('Flanders', 43.5), ('Wallonia', 37.5),
+         ('Workers', 48.5), ('Aged 16-24', 74.4), ('Aged 65-74', 11.7)],
+    ),
+    "dst-ent": (
+        "Danish enterprises using AI",
+        "% of enterprises with 10+ employees, reference month January",
+        [('2023', 15), ('2024', 28), ('2025', 42), ('*2026', 59), ('AI to produce written text or speech, 2026', 44)],
+    ),
+    "dst-ind": (
+        "AI use in Denmark, by situation",
+        "% of residents aged 16+",
+        [('In connection with work, 2024', 21), ('*In connection with work, 2025', 27),
+         ('Private purposes, 2025', 34), ('Use it daily, 2025', 11)],
     ),
     # EU surveys added from the wider search
     "dd-use": (
@@ -310,6 +378,18 @@ FIGURES = {
         "Enterprises that have adopted AI, early 2025",
         "% of enterprises, EU",
         [('*All SMEs (1-249 employees)', 14), ('Micro (1-9)', 14), ('Small (10-49)', 12), ('Medium (50-249)', 13), ('Large (500+)', 24), ('Startups', 21)],
+    ),
+    "eurostat-ind-nouse": (
+        "Main reason for not using generative AI, 2025",
+        "% of people aged 16-74 who did not use it in the last 3 months, EU",
+        [('*No need', 64.3), ('Did not know how to use them', 13.8), ('Did not know they existed', 8.5),
+         ('Concerns about privacy, security or safety', 7.3), ('Other', 5.4)],
+    ),
+    "oecd-sme": (
+        "SMEs where someone uses generative AI for work, late 2024",
+        "% of SMEs (1-249 employees)",
+        [('*All 7 countries', 31), ('Germany', 38.7), ('Austria', 34.1), ('Ireland', 33.0),
+         ('One-person firms, 7 countries', 23.6), ('50-249 employees, 7 countries', 45.8)],
     ),
 }
 
