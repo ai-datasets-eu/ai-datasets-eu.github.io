@@ -317,12 +317,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section class="hero">
+  <div class="hero-body">
   <p class="hero-eyebrow">DG EMPL · DG ECFIN</p>
   <h1 class="hero-title">GenAI Surveys in Europe</h1>
   <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe. To add your own survey, please make a request through GitHub.
     <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a></p>
 <p class="lede">Surveys fielded in 2026 put the share using AI at <a class="fig fig-individuals" href="#individuals">54 to 61%</a> of people, <a class="fig fig-workers" href="#workers">31 to 52%</a> of workers and <a class="fig fig-firms" href="#firms">42 to 67%</a> of firms. The ranges are wide because each survey defines AI, use and its population in its own way.</p>
 
+  </div>
   <a class="hero-cue" href="#individuals">See the trends <span aria-hidden="true">↓</span></a>
 </section>
 
@@ -441,6 +443,14 @@ ul.task-list li input[type="checkbox"] {
 </svg>
 
 </section>
+
+<script>
+// The link to the next page at the bottom reads "To the surveys" instead of the first survey's name
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".nav-page-next .nav-page-text").forEach(t => { t.textContent = "To the surveys"; });
+  document.querySelectorAll(".nav-page-next a").forEach(a => a.setAttribute("aria-label", "To the surveys"));
+});
+</script>
 
 <script>
 // Highlight the chapter in view in the sticky navigation
