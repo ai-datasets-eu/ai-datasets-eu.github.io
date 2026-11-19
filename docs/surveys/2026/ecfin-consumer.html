@@ -467,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../surveys/2026/bick-et-al.html">2026</a></li><li class="breadcrumb-item"><a href="../../surveys/2026/ecfin-consumer.html">ECFIN consumer survey</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><a href="https://economy-finance.ec.europa.eu/publications/european-business-cycle-indicators-ai-work-europe-perceived-impacts-productivity-quality-work-and_en" class="title-source" target="_blank" rel="noopener" title="DG ECFIN: AI at work in Europe (European Business Cycle Indicators, Q1 2026)">ECFIN consumer survey</a></h1>
+<h1 class="title"><a href="https://economy-finance.ec.europa.eu/publications/european-business-cycle-indicators-ai-work-europe-perceived-impacts-productivity-quality-work-and_en" class="title-source" rel="noopener" target="_blank" title="DG ECFIN: AI at work in Europe (European Business Cycle Indicators, Q1 2026)">ECFIN consumer survey</a></h1>
 </div>
 
 
@@ -836,7 +836,7 @@ unemployment expectations, household finances and prices.</p>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ai-datasets-eu\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

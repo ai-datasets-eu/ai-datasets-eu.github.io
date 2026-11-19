@@ -5,7 +5,7 @@ country: BG
 
 ## National surveys
 
-No national survey with AI questions is listed for Bulgaria yet. To suggest one, please make a request through [GitHub](https://github.com/thimodeschouwer/ai-data-eu).
+No national survey with AI questions is listed for Bulgaria yet. To suggest one, please make a request through [GitHub](https://github.com/ai-datasets-eu/ai-datasets-eu.github.io).
 
 ```{=html}
 {{< include /includes/coverage/bulgaria.html >}}

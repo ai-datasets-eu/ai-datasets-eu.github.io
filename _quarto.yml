@@ -8,6 +8,7 @@ project:
 
 website:
   title: "GenAI Surveys in Europe"
+  site-url: "https://ai-datasets-eu.github.io"
   page-navigation: true
   search:
     location: sidebar

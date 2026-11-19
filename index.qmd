@@ -9,7 +9,7 @@ toc: false
   <p class="hero-eyebrow">DG EMPL &middot; DG ECFIN</p>
   <h1 class="hero-title">GenAI Surveys in Europe</h1>
   <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe.<br>
-    To add your own survey, please make a request through <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
+    To add your own survey, please make a request through <a class="gh-request" href="https://github.com/ai-datasets-eu/ai-datasets-eu.github.io" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
 {{< include figures/overview-stats.inline.html >}}
   </div>
   <a class="hero-cue" href="#individuals">See the trends <span aria-hidden="true">&darr;</span></a>

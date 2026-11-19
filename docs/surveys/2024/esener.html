@@ -467,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../surveys/2024/cedefop-ai-skills.html">2024</a></li><li class="breadcrumb-item"><a href="../../surveys/2024/esener.html">EU-OSHA ESENER</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><a href="https://osha.europa.eu/sites/default/files/documents/first-findings-esener-2024_EN.pdf" class="title-source" rel="noopener" target="_blank" title="EU-OSHA: ESENER 2024 first findings">EU-OSHA ESENER</a></h1>
+<h1 class="title"><a href="https://osha.europa.eu/sites/default/files/documents/first-findings-esener-2024_EN.pdf" class="title-source" target="_blank" rel="noopener" title="EU-OSHA: ESENER 2024 first findings">EU-OSHA ESENER</a></h1>
 </div>
 
 
@@ -838,7 +838,7 @@ worker participation. No worker characteristics are collected.</p>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ai-datasets-eu\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

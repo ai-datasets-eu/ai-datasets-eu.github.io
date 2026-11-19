@@ -467,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../surveys/2025/bick-et-al.html">2025</a></li><li class="breadcrumb-item"><a href="../../surveys/2025/flash-eb-559.html">Flash Eurobarometer 559</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><a href="https://europa.eu/eurobarometer/surveys/detail/3359" class="title-source" rel="noopener" target="_blank" title="Flash Eurobarometer 559: Startups, scaleups and entrepreneurship">Flash Eurobarometer 559</a></h1>
+<h1 class="title"><a href="https://europa.eu/eurobarometer/surveys/detail/3359" class="title-source" target="_blank" rel="noopener" title="Flash Eurobarometer 559: Startups, scaleups and entrepreneurship">Flash Eurobarometer 559</a></h1>
 </div>
 
 
@@ -836,7 +836,7 @@ barriers to growth, innovation and single-market barriers.</p>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ai-datasets-eu\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

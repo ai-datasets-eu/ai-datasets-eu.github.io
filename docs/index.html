@@ -488,7 +488,7 @@ ul.task-list li input[type="checkbox"] {
   <p class="hero-eyebrow">DG EMPL · DG ECFIN</p>
   <h1 class="hero-title">GenAI Surveys in Europe</h1>
   <p class="hero-intro">This repository collects the surveys on generative artificial intelligence run in Europe.<br>
-    To add your own survey, please make a request through <a class="gh-request" href="https://github.com/thimodeschouwer/ai-data-eu" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
+    To add your own survey, please make a request through <a class="gh-request" href="https://github.com/ai-datasets-eu/ai-datasets-eu.github.io" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
 <div class="lede"><p>Surveys fielded in 2026 put the share using AI at:</p><ul class="lede-list"><li class="fig-individuals"><span><a class="fig" href="#individuals">54 to 61%</a> of people</span></li><li class="fig-workers"><span><a class="fig" href="#workers">31 to 52%</a> of workers</span></li><li class="fig-firms"><span><a class="fig" href="#firms">42 to 67%</a> of firms</span></li></ul><p>These ranges are wide, because each survey makes different choices when defining:</p><ul class="lede-list lede-list-plain"><li><span>artificial intelligence tools</span></li><li><span>adoption and intensity</span></li><li><span>the target population</span></li></ul></div>
 
   </div>
@@ -1071,7 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ai-datasets-eu\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
