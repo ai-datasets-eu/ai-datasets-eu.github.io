@@ -260,15 +260,8 @@ body:has(.hero) #quarto-content, body:has(.hero) main.content { margin-top: 0 !i
 .filter-national:hover { text-decoration: underline; }
 
 /* Sidebar logo */
-/* Small Commission logo, then the site's own EC AI logo (added here, since Quarto takes only one logo) */
-.sidebar-logo-link { display: flex; align-items: center; gap: .7rem; margin: 0 0 .9rem -6px; }
-.sidebar-logo { height: 44px; width: auto; margin: 0; }
-@media (min-width: 992px) {
-  .sidebar-logo-link::after {
-    content: ""; display: block; width: 116px; height: 47px;
-    padding-left: .7rem; border-left: 1px solid #dfe6ee; background: url("assets/logo.svg") right center / 106px auto no-repeat;
-  }
-}
+.sidebar-logo-link { display: block; text-align: center; }
+.sidebar-logo { width: 100%; max-width: 170px; margin: 0 auto .9rem; }
 .sidebar-header .sidebar-title { display: block; margin-top: .2rem; }
 
 /* ---------- Country evidence: index grid and country pages ---------- */

@@ -8,7 +8,7 @@ toc: false
   <div class="hero-body">
   <p class="hero-eyebrow">DG EMPL &middot; DG ECFIN</p>
   <h1 class="hero-title">GenAI Surveys in Europe</h1>
-  <p class="hero-intro">This repository (EC AI) collects the surveys on generative artificial intelligence run in European countries.<br>
+  <p class="hero-intro">This repository (EC-AI) collects the surveys on generative artificial intelligence run in European countries.<br>
     To add a new survey, please make a request through <a class="gh-request" href="https://github.com/ai-datasets-eu/ai-datasets-eu.github.io" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>.</p>
 {{< include figures/overview-stats.inline.html >}}
   </div>

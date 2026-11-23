@@ -15,8 +15,8 @@ website:
     type: textbox
   sidebar:
     style: floating
-    logo: assets/ec-logo.svg
-    logo-alt: "European Commission"
+    logo: assets/logo.svg
+    logo-alt: "EC-AI"
     title: "GenAI Surveys in Europe"
     collapse-level: 2
     contents:
