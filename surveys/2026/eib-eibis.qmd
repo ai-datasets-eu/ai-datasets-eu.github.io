@@ -21,4 +21,4 @@ aim: "To track firms' investment activity, financing needs and obstacles to inve
 other-topics: "Plans to adopt generative AI within 12 months, expected benefits and reasons for not using it (incl. lack of skilled staff); investment by asset type (including training of employees), obstacles to investment, access to finance, innovation, climate investment and trade."
 ---
 
-![](../../figures/eibis26.svg){fig-alt="Firms using generative AI in 2026: 67% in the EU, 71% in the United States; 58% of EU SMEs and 74% of large EU firms."}
+![](../../figures/eibis26.svg){fig-alt="Firms using generative AI in 2026: 67% in the EU, 71% in the United States."}

@@ -2,7 +2,7 @@
 title: "JRC AIM-WORK"
 link: "https://doi.org/10.2760/9406086"
 link-text: "JRC: Digital monitoring, algorithmic management and the platformisation of work in Europe"
-who: "European Commission, JRC and DG EMPL"
+who: "European Commission (JRC and DG EMPL)"
 when: "2024-25"
 where: "EU-27"
 countries: eu27
@@ -12,8 +12,8 @@ use: work
 use-note: "Main paid job; no question on use in private life"
 question: "\"In the last 12 months, did you use an AI-powered tool when performing your main paid job?\""
 demographics:
-  workers: ["age", "sex", "education", "occupation (ISCO 4-digit)", "contract type", "working hours", "earnings", "migrant background", "region (NUTS)", "country"]
-  firms: ["firm size (reported by worker)", "sector (NACE)", "trade union presence"]
+  workers: ["age", "sex", "education", "occupation", "contract type", "working hours", "earnings", "migrant background", "region", "country"]
+  firms: ["firm size (reported by worker)", "sector", "trade union presence"]
 month: "2024-12"
 adoption-workers: 30
 adoption-base: "workers aged 16-65"

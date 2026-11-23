@@ -53,6 +53,8 @@ code { color: #b5295c; }
 }
 main.content figure { margin: 0 0 1.2rem; }
 main.content img.img-fluid, main.content figure img { max-width: min(100%, 700px); }
+/* Charts with a link in them (figures/make_figures.py), embedded with <object>: same size as the image charts */
+main.content object.chart-object { display: block; width: min(100%, 700px); height: auto; aspect-ratio: 475.2 / 180.72; margin: 0 0 1.2rem; }
 
 /* Who-was-asked pill */
 .pill { display: inline-block; padding: .05rem .6rem; border-radius: 999px; font-size: .82rem; font-weight: 600; margin-right: .4rem; white-space: nowrap; }
@@ -261,8 +263,9 @@ body:has(.hero) #quarto-content, body:has(.hero) main.content { margin-top: 0 !i
 
 /* Sidebar logo */
 .sidebar-logo-link { display: block; text-align: center; }
-.sidebar-logo { width: 100%; max-width: 170px; margin: 0 auto .9rem; }
-.sidebar-header .sidebar-title { display: block; margin-top: .2rem; }
+.sidebar-logo { width: 100%; max-width: 210px; margin: .2rem auto 1.1rem; }
+/* The logo stands in for the site title in the sidebar (the title stays in _quarto.yml for the browser tab and search) */
+.sidebar-header .sidebar-title { display: none; }
 
 /* ---------- Country evidence: index grid and country pages ---------- */
 .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; margin: 1.6rem 0 2rem; }

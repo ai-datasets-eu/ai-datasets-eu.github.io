@@ -1,15 +1,15 @@
 ---
 title: Digital Decade EB
-link: https://europa.eu/eurobarometer/surveys/detail/3682
+link: https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-special-eurobarometer
 link-text: 'Special Eurobarometer 572: The Digital Decade 2026'
-who: European Commission, DG CNECT
+who: "European Commission (DG CNECT)"
 when: '2026'
 where: EU-27
 countries: eu27
 asked: Individuals
 sample: 26,494 people aged 15+
 use: both
-use-note: "Two separate items: personal life, and work or studies (work and studies cannot be separated)"
+use-note: "Two separate questions: personal life, and work or studies (work and studies cannot be separated)"
 question: '"How often do you use generative AI tools? In your personal life / In your work, or your studies"'
 demographics:
   individuals: ["age", "sex", "age at end of education", "occupation (socio-professional category)", "difficulty paying bills", "country"]
@@ -23,4 +23,4 @@ other-topics: "Obstacles to using generative AI (incl. lack of training or skill
 
 ![](../../figures/dd-use.svg){fig-alt="Generative AI use in the EU, early 2026: 61% in personal life or for work or studies, 59% in personal life, 49% for work or studies; at least weekly 43% in personal life and 39% for work or studies."}
 
-![](../../figures/dd-age.svg){fig-alt="Generative AI use in personal life: 87% of people aged 15 to 24, 34% of people aged 55 and over."}
+The figures are from the report, p. 37.

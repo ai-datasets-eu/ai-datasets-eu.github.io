@@ -1,8 +1,8 @@
 ---
-title: "Eurobarometer 554"
+title: "Future of Work EB"
 link: "https://doi.org/10.2767/8591026"
 link-text: "Special Eurobarometer 554: Artificial Intelligence and the future of work"
-who: "European Commission, DG EMPL"
+who: "European Commission (DG EMPL)"
 when: "2024"
 where: "EU-27"
 countries: eu27

@@ -1,5 +1,5 @@
 ---
-title: "Eurostat enterprises"
+title: "Eurostat Enterprises"
 link: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20250123-3"
 link-text: "Eurostat: Usage of AI technologies increasing in EU enterprises"
 who: "Eurostat"
@@ -11,7 +11,7 @@ sample: "Enterprises with 10+ employees"
 use: firm
 question: "Does the enterprise use any of a list of AI technologies (text mining, speech recognition, language generation, image recognition, machine learning, process automation, autonomous machines)?"
 demographics:
-  firms: ["sector (NACE)", "size class (10-49, 50-249, 250+)", "country", "turnover", "region (NUTS 2, optional)"]
+  firms: ["sector", "size class (10-49, 50-249, 250+)", "country", "turnover", "region"]
 month: "2024-02"
 adoption-firms: 13.5
 coverage: eu27
@@ -21,4 +21,4 @@ aim: "To produce official, comparable statistics on how businesses use digital t
 other-topics: "ICT specialists and hard-to-fill ICT vacancies, ICT training for staff, remote access and remote meetings, ICT security, e-commerce; AI in business functions, checks of AI output for bias, and reasons for not using AI."
 ---
 
-![](../../figures/eurostat-ent-2024-size.svg){fig-alt="Share of EU enterprises using AI in 2024: all 13.5%, small 11.2%, medium 21%, large 41.2%."}
+![](../../figures/eurostat-ent-2024.svg){fig-alt="13.5% of EU enterprises with 10 or more employees used AI in 2024."}

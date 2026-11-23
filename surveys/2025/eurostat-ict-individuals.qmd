@@ -1,5 +1,5 @@
 ---
-title: "Eurostat individuals"
+title: "Eurostat Individuals"
 link: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260210-1"
 link-text: "Eurostat: 64% of 16-24-year-olds used AI in 2025"
 who: "Eurostat"
@@ -12,7 +12,7 @@ use: both
 use-note: "One question on any use, then the purpose: private, work, formal education (several answers possible)"
 question: "\"Have you used any generative AI tools (e.g. ChatGPT, Copilot, Gemini, LLaMA, Midjourney, DALL-E) to create content like text, images, programming code, or videos in the last 3 months?\" Then: \"What was the purpose of using generative AI tools in the last 3 months?\" For private purposes / For professional (work) purposes / For formal education"
 demographics:
-  individuals: ["age", "sex", "education", "employment status", "occupation (ISCO 2-digit)", "degree of urbanisation", "country of birth and citizenship", "country"]
+  individuals: ["age", "sex", "education", "employment status", "occupation", "degree of urbanisation", "country of birth and citizenship", "country"]
 month: "2025-05"
 adoption-individuals: 32.7
 coverage: eu27
@@ -23,8 +23,6 @@ other-topics: "Digital skills, online learning, online job search, privacy and d
 ---
 
 ![](../../figures/eurostat-ind-purpose.svg){fig-alt="Use of generative AI tools in the EU in 2025: any purpose 32.7%, private 25.5%, work 15.4% of all people and 21.9% of employed people aged 25 to 64, formal education 9.3%."}
-
-![](../../figures/eurostat-ind-age.svg){fig-alt="Use of generative AI tools in 2025: 32.7% of people aged 16 to 74, 63.8% of people aged 16 to 24."}
 
 ![](../../figures/eurostat-ind-nouse.svg){fig-alt="Main reason for not using generative AI tools in 2025, among people aged 16 to 74 in the EU who did not use them: no need 64.3%, did not know how to use them 13.8%, did not know they existed 8.5%, concerns about privacy, security or safety 7.3%, other 5.4%."}
 

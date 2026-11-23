@@ -59,8 +59,9 @@ local function common_rows(get, row, where)
     error("unknown `use` value '" .. pandoc.utils.stringify(u) .. "' in " .. (PANDOC_STATE.input_files[1] or "?"))
   end
   if use then
-    local text = '<span class="pill ' .. use[1] .. '">' .. use[2] .. "</span>"
-    text = text .. (get("use-note") and html(get("use-note")) or use[3])
+    -- The pill alone, with its explanation as a tooltip; a `use-note` is shown after it
+    local text = '<span class="pill ' .. use[1] .. '" title="' .. use[3] .. '">' .. use[2] .. "</span>"
+    if get("use-note") then text = text .. html(get("use-note")) end
     row("AI use", text)
   end
 
@@ -164,8 +165,8 @@ function Pandoc(doc)
   local has_about = m.aim or m["other-topics"]
   local has_results = #doc.blocks > 0
   local cues = {}
-  if has_about then cues[#cues + 1] = '<a class="survey-cue" href="#about">Main aim and topics <span aria-hidden="true">&darr;</span></a>' end
-  if has_results then cues[#cues + 1] = '<a class="survey-cue" href="#results">See the results <span aria-hidden="true">&darr;</span></a>' end
+  if has_about then cues[#cues + 1] = '<a class="survey-cue no-external" href="#about">Main aim and topics <span aria-hidden="true">&darr;</span></a>' end
+  if has_results then cues[#cues + 1] = '<a class="survey-cue no-external" href="#results">See the results <span aria-hidden="true">&darr;</span></a>' end
   if #cues > 0 then out[#out + 1] = '<div class="survey-cues">' .. table.concat(cues, "") .. "</div>" end
 
   -- The source link, table and buttons fill the first screen (styles.css: .survey-top)

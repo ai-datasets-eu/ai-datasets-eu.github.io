@@ -28,6 +28,7 @@ HIGHLIGHT = EC_YELLOW   # headline bar
 TRACK = "#e9eff5"
 INK = "#1d2733"
 MUTED = "#6b7785"
+US_RED = "#c8102e"      # United States, where a chart compares Europe with the US
 OUT = Path(__file__).parent
 ROOT = OUT.parent
 
@@ -36,49 +37,38 @@ plt.rcParams["svg.fonttype"] = "path"
 
 # name: (title, unit, [(label, value), ...]).  A label starting with "*" is the
 # headline value and is drawn in the highlight colour.
+# Each chart: (title, subtitle, rows[, link]). Conventions: the title ends with the period in brackets,
+# e.g. "(early 2026)"; the subtitle names the population, without a leading "%" (the values carry it);
+# survey pages show the headline result plus at most one chart on the survey's own topic, with no
+# breakdowns by age, education, sex or firm size.
 FIGURES = {
     # Eurostat, ICT usage in enterprises
-    "eurostat-ent-2024-size": (
-        "Enterprises using AI, by size, 2024",
-        "% of enterprises with 10+ employees, EU",
-        [("*All", 13.5), ("Small (10-49)", 11.2), ("Medium (50-249)", 21.0), ("Large (250+)", 41.2)],
+    "eurostat-ent-2024": (
+        "Enterprises using AI (2024)",
+        "Enterprises with 10+ employees (EU)",
+        [("*All enterprises", 13.5)],
     ),
-    "eurostat-ent-size": (
-        "Enterprises using AI, by size, 2025",
-        "% of enterprises with 10+ employees, EU",
-        [("*All", 20.0), ("Small (10-49)", 17.0), ("Medium (50-249)", 30.4), ("Large (250+)", 55.0)],
-    ),
-    "eurostat-ent-trend": (
-        "Enterprises using AI, 2024 and 2025",
-        "% of enterprises with 10+ employees, EU",
-        [("2024", 13.5), ("*2025", 20.0)],
+    "eurostat-ent-2025": (
+        "Enterprises using AI (2025)",
+        "Enterprises with 10+ employees (EU)",
+        [("*All enterprises", 20.0, {"prev": 13.5, "prev-label": "2024"})],
     ),
     # Eurostat, ICT usage by individuals 2025
     "eurostat-ind-purpose": (
-        "Use of generative AI tools, by purpose, 2025",
-        "% of people aged 16-74, EU, last 3 months; several purposes possible",
+        "Use of generative AI tools, by purpose (2025)",
+        "People aged 16-74, EU, last 3 months; several purposes possible",
         [("Any purpose", 32.7), ("Private", 25.5), ("Work", 15.4), ("*Work, employed people aged 25-64", 21.9), ("Formal education", 9.3)],
-    ),
-    "eurostat-ind-age": (
-        "Use of generative AI tools, by age, 2025",
-        "% of age group, EU, any purpose, last 3 months",
-        [("Aged 16-74", 32.7), ("Aged 16-24", 63.8)],
     ),
     # ECB SAFE, Q4 2025
     "ecb-safe-intensity": (
-        "Use of AI technologies in the firm, Q4 2025",
-        "% of firms, 12 euro area countries, weighted by employment",
+        "Use of AI technologies in the firm (Q4 2025)",
+        "Firms, 12 euro area countries, weighted by employment",
         [("Not in use", 27), ("Very infrequent / pilot", 33), ("Moderate use", 31), ("Significant use", 7)],
-    ),
-    "ecb-safe-size": (
-        "Firms not using AI, by size, Q4 2025",
-        "% of firms in each size class, 12 euro area countries",
-        [("SMEs", 35), ("Large firms", 13)],
     ),
     # JRC AIM-WORK 2024-25
     "jrc-aim-work": (
         "Digital tools and algorithmic management at work",
-        "% of EU workers",
+        "EU workers",
         [
             ("Use digital devices", 90),
             ("Working hours digitally monitored", 37),
@@ -89,12 +79,12 @@ FIGURES = {
     # Cedefop AI skills survey 2024
     "cedefop-use": (
         "AI at the workplace",
-        "% of workers, 11 EU countries",
+        "Workers, 11 EU countries",
         [("AI is used at their workplace", 28), ("It is not", 55), ("Not sure", 16)],
     ),
     "cedefop-tasks": (
         "How AI has changed job tasks",
-        "% of workers who use AI at work, 11 EU countries",
+        "Workers who use AI at work, 11 EU countries",
         [
             ("Do some tasks faster", 67),
             ("Do some new or different tasks", 41),
@@ -105,7 +95,7 @@ FIGURES = {
     # Special Eurobarometer 554, 2024
     "eb554-views": (
         "Views on robots and AI at work",
-        "% who agree, EU",
+        "People who agree, EU",
         [
             ("Speed up how fast tasks get done", 73),
             ("Needed for boring or repetitive jobs", 66),
@@ -116,7 +106,7 @@ FIGURES = {
     ),
     "eb554-management": (
         "Activities done by digital technologies, including AI",
-        "% of people with a current or past job, EU",
+        "People with a current or past job, EU",
         [
             ("Monitoring workers' activities", 24),
             ("Allocating tasks to workers", 22),
@@ -126,276 +116,300 @@ FIGURES = {
     ),
     # DG ECFIN consumer survey, ad hoc AI module, Feb-Mar 2026
     "ecfin-use": (
-        "Use of AI technologies, early 2026",
-        "%, 18 EU Member States",
+        "Use of AI technologies (early 2026)",
+        "18 EU Member States",
         [("Use AI for any purpose (all respondents)", 54), ("*Use AI for work (employed)", 34.5)],
     ),
     "ecfin-impact": (
         "What people who use AI for work report",
-        "% of those using AI for work, 18 EU Member States",
-        [("AI makes tasks faster", 91), ("Worried about losing their job to AI", 41)],
+        "Those using AI for work, 18 EU Member States",
+        [("AI makes tasks faster", 91), ("Worried about losing their job to AI", 40)],
     ),
     # Flash Eurobarometer 578, Mar-Apr 2026
     "fl578-use": (
-        "AI and algorithmic management in SMEs and mid-caps, 2026",
-        "% of companies with 1-749 employees, EU",
+        "AI and algorithmic management in SMEs and mid-caps (2026)",
+        "Companies with 1-749 employees, EU",
         [("*Already use it", 42), ("Plan to use it", 21)],
     ),
     "fl578-barriers": (
-        "Barriers to wider AI adoption",
-        "% of companies with 1-749 employees, EU",
+        "Barriers to adopting AI and algorithmic management (2026)",
+        "Companies with 1-749 employees, EU",
         [("High investment costs", 50), ("Legal uncertainty", 49), ("Lack of expertise", 48)],
     ),
     # Bick et al., worker survey
     "bick-2025": (
-        "Workers using generative AI for work, May-June 2025",
-        "% of employed people aged 18-67 (18-63 in France)",
+        "Workers using generative AI for work (May-June 2025)",
+        "Employed people aged 18-67",
         [("Netherlands", 33.9), ("Sweden", 33.1), ("Germany", 30.7), ("France", 28.0), ("Italy", 24.5),
-         ("United Kingdom", 34.7), ("United States", 39.4)],
+         ("United Kingdom", 34.7), ("United States", 39.4, {"color": US_RED})],
     ),
     "bick-2026": (
-        "Workers using generative AI for work, January-February 2026",
-        "% of employed people aged 18-67 (18-63 in France)",
-        [("Sweden", 35.6), ("Netherlands", 35.6), ("Germany", 31.5), ("France", 28.1), ("Italy", 25.6),
-         ("United Kingdom", 36.3), ("United States", 43.0)],
+        "Workers using generative AI for work (Jan-Feb 2026)",
+        "Employed people aged 18-67",
+        [("Sweden", 35.6, {"prev": 33.1, "prev-label": "2025"}), ("Netherlands", 35.6, {"prev": 33.9}), ("Germany", 31.5, {"prev": 30.7}),
+         ("France", 28.1, {"prev": 28.0}), ("Italy", 25.6, {"prev": 24.5}),
+         ("United Kingdom", 36.3, {"prev": 34.7}), ("United States", 43.0, {"prev": 39.4, "color": US_RED})],
     ),
     # ECB Consumer Expectations Survey
-    "ecb-ces-trend": (
-        "Workers using AI in their work",
-        "% of workers, 11 euro area countries",
-        [("2024", 26), ("2025", 41), ("*2026", 52)],
+    # ECB Consumer Expectations Survey: one chart per wave, each showing the previous wave lighter
+    "ecb-ces-2024": (
+        "Workers using AI in their work (May 2024)",
+        "Employed people (11 euro area countries)",
+        [("*All workers", 26)],
     ),
-    "ecb-ces-education": (
-        "AI use at work by education, 2026",
-        "% of workers, 11 euro area countries",
-        [("Highly educated", 61), ("Lower education", 37)],
+    "ecb-ces-2024-effect": (
+        "Expected effect of technology such as AI on their job (May 2024)",
+        "Employed people, next five years, approximate (11 euro area countries)",
+        [("Positive", 41), ("No effect", 37), ("Negative", 20)],
+    ),
+    "ecb-ces-2025": (
+        "Workers using AI in their work (2025)",
+        "Employed people (11 euro area countries)",
+        [("*All workers", 41, {"prev": 26, "prev-label": "2024"})],
+    ),
+    "ecb-ces-2026": (
+        "Workers using AI in their work (2026)",
+        "Employed people (11 euro area countries). Source: ECB Blog",
+        # the last word of the subtitle links to the source; embed this chart with <object> (see bar_chart)
+        [("*All workers", 52, {"prev": [(26, "2024"), (41, "2025")]})],
+        "https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260826~e1c1a89999.en.html",
     ),
     # EIB Investment Survey 2025
     "eibis-genai": (
-        "Firms using generative AI as measured by the EIB, 2025",
-        "% of firms, weighted by value added; combines two questions (see text)",
+        "Firms using generative AI as measured by the EIB (2025)",
+        "Firms, weighted by value added; combines two questions (see text)",
         [("*European Union", 37), ("United States", 36)],
     ),
     # Private surveys
     "aws-trend": (
         "Businesses that say they have adopted AI",
-        "% of businesses, 17 European countries",
+        "Businesses, 17 European countries",
         [("2024", 33), ("2025", 42), ("*2026", 54)],
     ),
     "aws-stage": (
-        "How far AI adopters have got, 2026",
-        "% of businesses that have adopted AI; shares as published, they sum to 97%",
+        "How far AI adopters have got (2026)",
+        "Businesses that have adopted AI; shares as published, they sum to 97%",
         [("Basic stage", 58), ("Intermediate", 17), ("Advanced", 22)],
     ),
     "sdworx": (
         "AI at work in 16 European countries",
-        "% of employees, unless stated",
+        "Employees, unless stated",
         [("*Use AI at least once a week (2026)", 29), ("Regularly use AI at work (2025)", 23),
          ("Regularly use AI at work (2024)", 18), ("Employers investing in AI (2025)", 38)],
     ),
     "ey-barometer": (
         "Workers and AI, 9 Western European countries",
-        "% of managers and employees; use not limited to work",
+        "Managers and employees; use not limited to work",
         [("*Ever used or been involved with AI (2025)", 78), ("Same question (2024)", 72),
          ("Positive attitude towards AI (2025)", 70)],
     ),
     "deloitte-use": (
-        "Generative AI: awareness and use, mid-2024",
-        "% of people aged 16-75, 11 European countries, any purpose",
+        "Generative AI: awareness and use (mid-2024)",
+        "People aged 16-75, 11 European countries, any purpose",
         [("*Have used generative AI", 44), ("Aware but not using", 22), ("Unaware or unsure", 34)],
     ),
     "deloitte-purpose": (
-        "What generative AI is used for, mid-2024",
-        "% of people aware of generative AI",
+        "What generative AI is used for (mid-2024)",
+        "People aware of generative AI",
         [("Personal tasks", 47), ("Work", 23)],
     ),
     "kpmg-countries": (
         "People using AI regularly or semi-regularly, EU countries",
-        "% of people, any purpose, Nov 2024-Jan 2025; selected EU countries",
+        "People, any purpose, Nov 2024-Jan 2025; selected EU countries",
         [('Latvia (highest in the EU)', 72), ('Poland', 69), ('Italy', 60), ('Spain', 60), ('France', 51),
          ('Germany', 51), ('Belgium', 47), ('Netherlands (lowest in the EU)', 43)],
     ),
     "pwc-hopes": (
-        "Employees using AI at work, 2026",
-        "% of employees, May-June 2026",
+        "Employees using AI at work (2026)",
+        "Employees, May-June 2026",
         [('*Belgium', 56), ('Western Europe', 56), ('North America', 55), ('Asia Pacific', 72), ('Middle East', 80)],
     ),
     "mckinsey-regions": (
-        "Organisations using AI in at least one function, 2025",
-        "% of respondents to McKinsey's online survey, by region, as published in the AI Index 2026",
+        "Organisations using AI in at least one function (2025)",
+        "Respondents to McKinsey's online survey, by region, as published in the AI Index 2026",
         [('*Europe', 91), ('North America', 90), ('All regions', 88), ('Greater China', 88),
          ('Developing markets', 88), ('Asia-Pacific', 82)],
     ),
     "mckinsey-jobs": (
         "AI and head count: expected and reported change",
-        "% of respondents whose organisation regularly uses AI, global",
+        "Respondents whose organisation regularly uses AI, global",
         [('Expect a decline next year, 2025 survey', 32), ('*Expect a decline next year, 2026 survey', 39),
          ('Expect little or no change next year, 2026 survey', 43), ('Report a decline over the past year, 2026 survey', 14)],
     ),
     # National surveys
     "ifo-trend": (
         "German firms using AI in their business processes",
-        "% of firms, ifo Business Survey",
+        "Firms, ifo Business Survey",
         [('2023', 13.3), ('2024', 27), ('2025', 40.9), ('*2026', 54.5)],
     ),
     "bundesbank-genai": (
         "German firms using or planning to use generative AI",
-        "% of firms, firm-weighted; all three years asked in Q2 2025",
+        "Firms, firm-weighted; all three years asked in Q2 2025",
         [('2024', 26), ('*2025', 44), ('2026', 56)],
     ),
     "bdi-trend": (
         "Italian firms using AI",
-        "% of firms with 20+ employees",
+        "Firms with 20+ employees",
         [('2024', 13), ('Start of 2025', 27), ('*Start of 2026', 32)],
     ),
     "bdf-use": (
-        "French firms using AI, early 2026",
-        "% of firms with 20+ employees",
+        "French firms using AI (early 2026)",
+        "Firms with 20+ employees",
         [('*Generative AI', 67), ('Non-generative AI', 35), ('Generative AI, 20-49 employees', 64), ('Generative AI, 1,000+ employees', 83)],
     ),
     "bde-use": (
-        "Spanish firms using AI, late 2024",
-        "% of firms",
+        "Spanish firms using AI (late 2024)",
+        "Firms",
         [('*Any AI', 19.9), ('Generative AI', 18.1), ('Predictive AI', 14.6)],
     ),
     "iab-size": (
-        "German establishments using generative AI, 2025",
-        "% of establishments, by number of employees",
+        "German establishments using generative AI (2025)",
+        "Establishments, by number of employees",
         [('*All', 24), ('1-9', 21), ('10-49', 28), ('50-199', 38), ('200+', 48)],
     ),
     "diwabe": (
-        "How often German employees work with AI programs, 2024",
-        "% of employees aged 16-65",
+        "How often German employees work with AI programs (2024)",
+        "Employees aged 16-65",
         [('Never', 35.7), ('Rarely or sometimes', 44.8), ('*Often or always', 19.6)],
     ),
     "austria": (
         "Generative AI use in Austria, last three months",
-        "% of people aged 16-74, any purpose",
+        "People aged 16-74, any purpose",
         [('2024', 28.0), ('*2025', 39.4), ('Employed people, 2025', 43.2), ('Aged 16-24, 2025', 73.2)],
     ),
     "cbs-work": (
-        "Dutch workers using AI for their work, 2025",
-        "% of adults in paid work",
+        "Dutch workers using AI for their work (2025)",
+        "Adults in paid work",
         [('*All', 42.9), ('Higher education', 55.5), ('Medium education', 32.0), ('Lower education', 19.7)],
     ),
     "tno-wea": (
-        "Dutch employers using algorithms, AI or big data, 2024",
-        "% of establishments with 5+ employees",
+        "Dutch employers using algorithms, AI or big data (2024)",
+        "Establishments with 5+ employees",
         [('*All', 12.8), ('5-9 employees', 10.5), ('10-49', 11.8), ('50-99', 26.4), ('100+', 27.2)],
     ),
     "humlum": (
         "Danish workers in AI-exposed occupations using ChatGPT for work",
-        "% of workers in 11 occupations",
+        "Workers in 11 occupations",
         [('Late 2023', 39.8), ('*Late 2024', 49.1)],
     ),
     "etla": (
-        "Generative AI use in Finland, October 2024",
-        "% of group",
+        "Generative AI use in Finland (October 2024)",
+        "Each group",
         [('Have used generative AI (all aged 18-79)', 47), ('*Have used it for work (people in work)', 29), ('Use it weekly (people in work)', 11)],
     ),
     "tem-barometer": (
-        "AI at Finnish workplaces, autumn 2025",
-        "% of wage earners; last two bars: % of those whose workplace uses AI",
+        "AI at Finnish workplaces (autumn 2025)",
+        "Wage earners; last two bars: those whose workplace uses AI",
         [('*AI is used at their workplace', 45), ('Of those: AI improved their own efficiency', 45), ('Of those: AI replaced some work tasks', 18)],
     ),
     "nbp": (
         "Polish enterprises using AI tools",
-        "% of surveyed non-financial enterprises; large firms over-represented",
+        "Surveyed non-financial enterprises; large firms over-represented",
         [('Q4 2024', 13.7), ('*Q2 2026', 42), ('Large firms, Q2 2026', 59), ('Medium-sized firms, Q2 2026', 43),
          ('Small and micro firms, Q2 2026', 28)],
     ),
     "bopf-2026": (
-        "German firms using at least one AI technology, 2026",
-        "% of firms, employment-weighted",
+        "German firms using at least one AI technology (2026)",
+        "Firms, employment-weighted",
         [('January 2026', 65), ('*July 2026', 78)],
     ),
     "insee-tic": (
         "French enterprises using AI",
-        "% of enterprises with 10+ employees",
+        "Enterprises with 10+ employees",
         [('2023', 6), ('2024', 10), ('*2025', 18), ('10-49 employees, 2025', 15), ('50-249, 2025', 31), ('250+, 2025', 58)],
     ),
     "sige-ai": (
-        "How important is AI to Italian firms? Q3 2024",
-        "% of firms with 50+ employees in industry and non-financial services",
+        "How important is AI to Italian firms? (Q3 2024)",
+        "Firms with 50+ employees in industry and non-financial services",
         [('*Important and already adopting it', 11.2), ('Important, plan to adopt within 2 years', 28.4),
          ('Not important for the business', 33.4), ("Don't know or no answer", 26.9)],
     ),
     "bdi-households": (
-        "Generative AI use in Italy, August-September 2024",
-        "% of respondents to the Bank of Italy household survey, any purpose",
+        "Generative AI use in Italy (August-September 2024)",
+        "Respondents to the Bank of Italy household survey, any purpose",
         [('*Used it in the past 12 months', 26), ('Use it at least weekly', 10),
          ('Workers and retirees: used it in the past 12 months', 36), ('Workers and retirees: use it at least weekly', 13)],
     ),
     "statbel-ent": (
         "Belgian enterprises using AI",
-        "% of enterprises with 10+ persons employed",
+        "Enterprises with 10+ persons employed",
         [('2023', 13.8), ('2024', 24.7), ('*2025', 34.5), ('Brussels, 2025', 42.3), ('Flanders, 2025', 34.8), ('Wallonia, 2025', 30.2)],
     ),
     "statbel-ind": (
-        "Generative AI use in Belgium, 2025",
-        "% of people aged 16-74 (unless stated), any purpose, last 3 months",
+        "Generative AI use in Belgium (2025)",
+        "People aged 16-74 (unless stated), any purpose, last 3 months",
         [('*All', 42.0), ('Brussels', 47.1), ('Flanders', 43.5), ('Wallonia', 37.5),
          ('Workers', 48.5), ('Aged 16-24', 74.4), ('Aged 65-74', 11.7)],
     ),
     "dst-ent": (
         "Danish enterprises using AI",
-        "% of enterprises with 10+ employees, reference month January",
+        "Enterprises with 10+ employees, reference month January",
         [('2023', 15), ('2024', 28), ('2025', 42), ('*2026', 59), ('AI to produce written text or speech, 2026', 44)],
     ),
     "dst-ind": (
         "AI use in Denmark, by situation",
-        "% of residents aged 16+",
+        "Residents aged 16+",
         [('In connection with work, 2024', 21), ('*In connection with work, 2025', 27),
          ('Private purposes, 2025', 34), ('Use it daily, 2025', 11)],
     ),
     # EU surveys added from the wider search
     "dd-use": (
-        "Use of generative AI tools, early 2026",
-        "% of people aged 15+, EU",
+        "Use of generative AI tools (early 2026)",
+        "People aged 15+ (EU)",
         [('*In personal life or for work or studies', 61), ('In personal life', 59), ('For work or studies', 49), ('At least weekly, personal life', 43), ('At least weekly, work or studies', 39)],
     ),
-    "dd-age": (
-        "Use of generative AI in personal life, by age",
-        "% of age group, EU",
-        [('Aged 15-24', 87), ('Aged 55+', 34)],
-    ),
     "osh-pulse": (
-        "Digital technologies used for the main job, April 2025",
-        "% of workers, EU",
+        "Digital technologies used for the main job (April 2025)",
+        "Workers, EU",
         [('*Software or tools powered by AI', 18), ('Machines or robots that think and decide', 6), ('Any advanced digital technology', 32), ('Tasks or shifts allocated automatically', 27)],
     ),
     "eibis26": (
-        "Firms using generative AI, 2026",
-        "% of firms",
-        [('*European Union', 67), ('United States', 71), ('EU SMEs', 58), ('EU large firms', 74)],
+        "Firms using generative AI (2026)",
+        "Firms",
+        [('*European Union', 67), ('United States', 71)],
+    ),
+    "ewcs": (
+        "Workers using generative AI tools at work (2024)",
+        "Workers (EU)",
+        [("*All workers", 12)],
     ),
     "esener": (
-        "Digital technologies used in establishments, 2024",
-        "% of establishments with 5+ employees, EU",
-        [('*Machines, systems or computers that use AI', 7), ('Automatic allocation of tasks or shifts', 9), ("Monitoring of workers' performance", 7), ('AI, information and communication sector', 21)],
+        "Digital technologies used in establishments (2024)",
+        "Establishments with 5+ employees, EU",
+        [('*Machines, systems or computers that use AI', 7), ('Automatic allocation of tasks or shifts', 9), ("Monitoring of workers' performance", 7)],
     ),
     "fl559": (
-        "Enterprises that have adopted AI, early 2025",
-        "% of enterprises, EU",
-        [('*All SMEs (1-249 employees)', 14), ('Micro (1-9)', 14), ('Small (10-49)', 12), ('Medium (50-249)', 13), ('Large (500+)', 24), ('Startups', 21)],
+        "Enterprises that have adopted AI (early 2025)",
+        "Enterprises, EU",
+        [('*All SMEs (1-249 employees)', 14)],
     ),
     "eurostat-ind-nouse": (
-        "Main reason for not using generative AI, 2025",
-        "% of people aged 16-74 who did not use it in the last 3 months, EU",
+        "Main reason for not using generative AI (2025)",
+        "People aged 16-74 who did not use it in the last 3 months, EU",
         [('*No need', 64.3), ('Did not know how to use them', 13.8), ('Did not know they existed', 8.5),
          ('Concerns about privacy, security or safety', 7.3), ('Other', 5.4)],
     ),
     "oecd-sme": (
-        "SMEs where someone uses generative AI for work, late 2024",
-        "% of SMEs (1-249 employees)",
-        [('*All 7 countries', 31), ('Germany', 38.7), ('Austria', 34.1), ('Ireland', 33.0),
-         ('One-person firms, 7 countries', 23.6), ('50-249 employees, 7 countries', 45.8)],
+        "SMEs where someone uses generative AI for work (late 2024)",
+        "SMEs (1-249 employees)",
+        [('*All 7 countries', 31), ('Germany', 38.7), ('Austria', 34.1), ('Ireland', 33.0)],
     ),
 }
 
 
-def bar_chart(name, title, unit, rows):
-    """Label-above-bar chart: rounded bars on a pale 0-100% track."""
+def lighter(colour, amount=0.55):
+    """Mix a hex colour with white."""
+    rgb = [int(colour[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(c + (255 - c) * amount):02x}" for c in rgb)
+
+
+def bar_chart(name, title, unit, rows, link=None):
+    """Label-above-bar chart: rounded bars on a pale 0-100% track.
+    A row is (label, value) or (label, value, options). A label starting with * is the headline bar.
+    Options: "color" overrides the bar colour; "prev" draws the part of the bar up to an earlier
+    level in a lighter shade; "prev-label" marks that level with a small tick and label (use it on
+    one row only, as a key for the whole chart). For several earlier levels, "prev" is a list of
+    (level, label or None), drawn progressively lighter the older they are."""
     n = len(rows)
     pitch, head = 0.56, 0.78                      # inches per row, inches for title block
     height = head + pitch * n + 0.05
@@ -404,20 +418,55 @@ def bar_chart(name, title, unit, rows):
     ax.set_xlim(0, 100)
     ax.set_ylim(n - 0.42, -0.72)
     ax.axis("off")
-    for i, (label, value) in enumerate(rows):
+    for i, (label, value, *opts) in enumerate(rows):
+        opts = opts[0] if opts else {}
         star = label.startswith("*")
         label = label.lstrip("*")
-        colour = HIGHLIGHT if star else ACCENT
+        colour = opts.get("color", HIGHLIGHT if star else ACCENT)
         ax.plot([1.2, 98.8], [i, i], color=TRACK, lw=9, solid_capstyle="round", zorder=1)
         ax.plot([1.2, max(value - 1.2, 1.21)], [i, i], color=colour, lw=9, solid_capstyle="round", zorder=2)
+        if "prev" in opts:
+            # Earlier levels in lighter shades, the oldest lightest; each band is drawn as a round bar
+            # from the start, then the next band is drawn again with a square end on top of it, so
+            # the round end of the lighter bar does not show
+            prev = opts["prev"]
+            prev = [(prev, opts.get("prev-label"))] if not isinstance(prev, list) else prev
+            prev = sorted(prev)                                   # oldest (lowest) first
+            n = len(prev)
+            shades = [lighter(colour, 0.55)] if n == 1 else [lighter(colour, 0.75 - 0.35 * k / (n - 1)) for k in range(n)]
+            ends = [level for level, _ in prev[1:]] + [value - 1.2]
+            colours = shades[1:] + [colour]
+            for k in reversed(range(n)):
+                level = prev[k][0]
+                ax.plot([1.2, max(level - 1.2, 1.21)], [i, i], color=shades[k], lw=9, solid_capstyle="round", zorder=3 + 2 * (n - k))
+                if ends[k] > level:
+                    ax.plot([level, ends[k]], [i, i], color=colours[k], lw=9, solid_capstyle="butt", zorder=4 + 2 * (n - k))
+            for level, tag in prev:
+                if tag:
+                    ax.plot([level, level], [i - 0.24, i + 0.24], color=ACCENT, lw=1.6, zorder=20)
+                    ax.text(level, i - 0.27, tag, ha="center", va="bottom", fontsize=10, fontweight="bold", color=ACCENT)
         ax.text(0, i - 0.36, label, ha="left", va="center", fontsize=10.5, color=INK)
         # Yellow is too light for text, so the headline value is printed in ink
         ax.text(100, i - 0.36, f"{value:g}%", ha="right", va="center", fontsize=11.5,
                 fontweight="bold", color=INK if star else colour)
     fig.text(0.012, 1 - 0.20 / height, title, fontsize=13, fontweight="bold", color=ACCENT, va="center")
-    fig.text(0.012, 1 - 0.47 / height, unit, fontsize=9.5, color=MUTED, va="center")
+    if link:
+        # The last word of the subtitle links to `link`. A link inside an SVG only works when the
+        # page embeds the chart with <object> or inline, not with an <img> (markdown image)
+        head, word = unit.rsplit(" ", 1)
+        first = fig.text(0.012, 1 - 0.47 / height, head + " ", fontsize=9.5, color=MUTED, va="center")
+        box = first.get_window_extent(renderer=fig.canvas.get_renderer())
+        end = fig.transFigure.inverted().transform((box.x1, 0))[0]
+        word_text = fig.text(end, 1 - 0.47 / height, word, fontsize=9.5, color=ACCENT, va="center")
+        word_text.set_url(link)
+    else:
+        fig.text(0.012, 1 - 0.47 / height, unit, fontsize=9.5, color=MUTED, va="center")
     fig.savefig(OUT / f"{name}.svg", transparent=True)
     plt.close(fig)
+    if link:
+        svg = (OUT / f"{name}.svg").read_text(encoding="utf8")
+        svg = svg.replace(f'<a xlink:href="{link}">', f'<a xlink:href="{link}" target="_blank" style="cursor:pointer;pointer-events:bounding-box">')
+        (OUT / f"{name}.svg").write_text(svg, encoding="utf8")
 
 
 def survey_points():
@@ -713,8 +762,8 @@ def country_coverage(surveys, pages, companies):
 if __name__ == "__main__":
     for old in OUT.glob("*.svg"):
         old.unlink()
-    for name, (title, unit, rows) in FIGURES.items():
-        bar_chart(name, title, unit, rows)
+    for name, (title, unit, rows, *link) in FIGURES.items():
+        bar_chart(name, title, unit, rows, *link)
     points = survey_points()
     for kind in KINDS:
         timeline(kind, [p for p in points if p["kind"] == kind])

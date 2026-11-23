@@ -3,30 +3,27 @@ title: "ECB CES"
 link: "https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260826~e1c1a89999.en.html"
 link-text: "ECB Blog: AI adoption and the productivity promise: what workers report"
 who: "European Central Bank"
-when: "2024, 2025 and 2026"
+when: "2026"
 where: "11 euro area countries"
 countries: [BE, DE, IE, EL, ES, FR, IT, NL, AT, PT, FI]
 asked: "Workers"
 sample: "Consumer Expectations Survey, about 20,000 people per month"
 use: work
-use-note: "No general question on use in private life"
 question: "\"Do you personally use artificial intelligence (AI) in your work (including tools such as ChatGPT, Claude, Gemini, etc.)?\""
 demographics:
-  workers: ["age", "sex", "education", "occupation (ISCO 1-digit)", "sector (NACE)", "contracted hours", "household income", "tenure", "country"]
+  workers: ["age", "sex", "education", "occupation", "sector", "contracted hours", "household income", "tenure", "country"]
   firms: ["company size (reported by worker)"]
 month: "2026-06"
 adoption-workers: 52
 adoption-base: "employed, all ages"
 coverage: eu-subset
 series: ecb-ces
-earlier-waves:
-  - {month: "2024-06", workers: 26}
-  - {month: "2025-06", workers: 41}
 chart-label: "CES"
 aim: "To monitor euro area households' expectations and economic behaviour for monetary policy. The AI questions ask workers whether they use AI in their job and how much time it saves them."
-other-topics: "From 2026: frequency of AI use, tasks, hours saved, barriers and incentives. The survey also covers job training, job satisfaction, job search and reservation wages, and expectations about inflation, income and consumption."
+other-topics: "Frequency of AI use, tasks, hours saved, barriers and incentives. The survey also covers job training, job satisfaction, job search and reservation wages, and expectations about inflation, income and consumption."
 ---
 
-![](../../figures/ecb-ces-trend.svg){fig-alt="Share of euro area workers using AI in their work: 26% in 2024, 41% in 2025, 52% in 2026."}
-
-![](../../figures/ecb-ces-education.svg){fig-alt="AI use at work in 2026: 61% of highly educated workers, 37% of workers with lower education."}
+```{=html}
+<!-- <object>, not an image, so that the link in the chart subtitle works -->
+<object class="chart-object" data="../../figures/ecb-ces-2026.svg" type="image/svg+xml" role="img" aria-label="52% of euro area workers used AI in their work in 2026, up from 26% in 2024 and 41% in 2025.">52% of euro area workers used AI in their work in 2026, up from 26% in 2024 and 41% in 2025.</object>
+```

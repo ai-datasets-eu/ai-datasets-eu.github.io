@@ -1,15 +1,15 @@
 ---
-title: "Flash Eurobarometer 578"
+title: "AI in Companies EB"
 link: "https://employment-social-affairs.ec.europa.eu/news/growing-use-ai-european-companies-2026-10-14_en"
 link-text: "European Commission: Growing use of AI in European companies"
-who: "European Commission, DG EMPL"
+who: "European Commission (DG EMPL)"
 when: "2026"
 where: "EU-27"
 countries: eu27
 asked: "Firms"
 sample: "12,826 SMEs and mid-caps (1 to 749 employees)"
 use: firm
-use-note: "AI and algorithmic management in the workplace, asked as one item, so the two cannot be separated"
+use-note: "AI and algorithmic management in the workplace, asked as one question, so the two cannot be separated"
 question: "Does the company use AI or algorithmic management, and what drives or holds back adoption?"
 demographics:
   firms: ["size class (1-9 to 250-749)", "sector", "turnover", "country", "in-house or external supplier", "supplier location (EU or not)"]
@@ -23,4 +23,4 @@ other-topics: "Workforce uses (recruitment, HR decisions, performance monitoring
 
 ![](../../figures/fl578-use.svg){fig-alt="42% of EU SMEs and mid-caps already use AI or algorithmic management; 21% plan to."}
 
-![](../../figures/fl578-barriers.svg){fig-alt="Barriers to wider AI adoption: high investment costs 50%, legal uncertainty 49%, lack of expertise 48%."}
+![](../../figures/fl578-barriers.svg){fig-alt="Main barriers to adopting AI and algorithmic management: high investment costs 50%, legal uncertainty 49%, lack of expertise 48%."}

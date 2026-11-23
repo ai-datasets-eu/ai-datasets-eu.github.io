@@ -24,5 +24,3 @@ other-topics: "Access to finance, investment, employment and wage expectations, 
 ---
 
 ![](../../figures/ecb-safe-intensity.svg){fig-alt="Firms in 12 euro area countries by intensity of AI use, weighted by employment: not in use 27%, very infrequent or pilot 33%, moderate 31%, significant 7%."}
-
-![](../../figures/ecb-safe-size.svg){fig-alt="Share of firms in 12 euro area countries not using AI: SMEs 35%, large firms 13%."}

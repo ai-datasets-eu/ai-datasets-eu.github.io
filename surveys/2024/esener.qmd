@@ -12,7 +12,7 @@ use: firm
 use-note: "Use by the establishment, reported by the person who knows best about health and safety"
 question: '"Does your establishment use any of the following digital technologies for work? [...] Machines, systems or computers that use Artificial Intelligence to perform work tasks"'
 demographics:
-  firms: ["size", "sector (NACE 2-digit)", "establishment age", "single or multi-site", "remote or hybrid work", "country"]
+  firms: ["size", "sector", "establishment age", "single or multi-site", "remote or hybrid work", "country"]
 month: 2024-07
 adoption-firms: 7
 adoption-firms-base: "establishments with 5+ employees"
@@ -23,4 +23,4 @@ aim: "To find out how European workplaces manage safety and health risks. AI is 
 other-topics: "Algorithmic task allocation and digital monitoring of workers, perceived risks of digitalisation (work intensity, fear of job loss, worker data), psychosocial risks, risk assessment, health and safety training, and worker participation. No worker characteristics are collected."
 ---
 
-![](../../figures/esener.svg){fig-alt="EU establishments in 2024: 7% use machines, systems or computers that use AI, 9% allocate tasks or shifts automatically, 7% monitor workers' performance digitally; AI use is 21% in information and communication."}
+![](../../figures/esener.svg){fig-alt="EU establishments in 2024: 7% use machines, systems or computers that use AI, 9% allocate tasks or shifts automatically, 7% monitor workers' performance digitally."}

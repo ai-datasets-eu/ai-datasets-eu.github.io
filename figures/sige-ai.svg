@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-23T18:46:46.809149</dc:date>
+    <dc:date>2026-11-23T21:53:36.706521</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,42 +33,42 @@ z
    <g id="line2d_1">
     <path d="M 11.267942 83.767814 
 L 463.932058 83.767814 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_2">
     <path d="M 11.267942 122.112 
 L 463.932058 122.112 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_3">
     <path d="M 11.267942 160.456186 
 L 463.932058 160.456186 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_4">
     <path d="M 11.267942 198.800372 
 L 463.932058 198.800372 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #e9eff5; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_5">
     <path d="M 11.267942 83.767814 
 L 52.08192 83.767814 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #ffcc00; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #ffcc00; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_6">
     <path d="M 11.267942 122.112 
 L 131.854694 122.112 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_7">
     <path d="M 11.267942 160.456186 
 L 155.044454 160.456186 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="line2d_8">
     <path d="M 11.267942 198.800372 
 L 124.897766 198.800372 
-" clip-path="url(#pfc56a77ca1)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
+" clip-path="url(#p71725bde2b)" style="fill: none; stroke: #004494; stroke-width: 9; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <!-- Important and already adopting it -->
@@ -846,8 +846,8 @@ z
    </g>
   </g>
   <g id="text_9">
-   <!-- How important is AI to Italian firms? Q3 2024 -->
-   <g style="fill: #004494" transform="translate(5.7024 18.227891) scale(0.13 -0.13)">
+   <!-- How important is AI to Italian firms? (Q3 2024) -->
+   <g style="fill: #004494" transform="translate(5.7024 18.540703) scale(0.13 -0.13)">
     <defs>
      <path id="FiraSans-Bold-48" d="M 2797 0 
 L 3846 0 
@@ -1108,6 +1108,15 @@ C 1709 -109 1965 154 1965 474
 C 1965 787 1709 1050 1389 1050 
 z
 " transform="scale(0.015625)"/>
+     <path id="FiraSans-Bold-28" d="M 1357 5498 
+C 710 4608 115 3770 115 2240 
+C 115 710 710 -128 1357 -1018 
+L 2003 -582 
+C 1408 269 1139 1056 1139 2240 
+C 1139 3424 1408 4211 2003 5062 
+L 1357 5498 
+z
+" transform="scale(0.015625)"/>
      <path id="FiraSans-Bold-51" d="M 3168 288 
 C 3712 589 4211 1146 4211 2221 
 C 4211 3699 3462 4544 2208 4544 
@@ -1135,6 +1144,15 @@ C 2291 3667 2470 3334 2470 2157
 C 2470 986 2291 640 1875 640 
 C 1453 640 1280 1011 1280 2157 
 C 1280 3302 1453 3667 1875 3667 
+z
+" transform="scale(0.015625)"/>
+     <path id="FiraSans-Bold-29" d="M 723 5498 
+L 77 5062 
+C 666 4211 941 3424 941 2240 
+C 941 1056 666 269 77 -582 
+L 723 -1018 
+C 1363 -128 1958 710 1958 2240 
+C 1958 3770 1363 4608 723 5498 
 z
 " transform="scale(0.015625)"/>
     </defs>
@@ -1176,48 +1194,32 @@ z
     <use xlink:href="#FiraSans-Bold-73" transform="translate(1545.999741 0)"/>
     <use xlink:href="#FiraSans-Bold-3f" transform="translate(1594.299728 0)"/>
     <use xlink:href="#FiraSans-Bold-20" transform="translate(1642.399719 0)"/>
-    <use xlink:href="#FiraSans-Bold-51" transform="translate(1666.099716 0)"/>
-    <use xlink:href="#FiraSans-Bold-33" transform="translate(1735.099701 0)"/>
-    <use xlink:href="#FiraSans-Bold-20" transform="translate(1787.099686 0)"/>
-    <use xlink:href="#FiraSans-Bold-32" transform="translate(1810.799683 0)"/>
-    <use xlink:href="#FiraSans-Bold-30" transform="translate(1862.49968 0)"/>
-    <use xlink:href="#FiraSans-Bold-32" transform="translate(1920.999664 0)"/>
-    <use xlink:href="#FiraSans-Bold-34" transform="translate(1972.699661 0)"/>
+    <use xlink:href="#FiraSans-Bold-28" transform="translate(1666.099716 0)"/>
+    <use xlink:href="#FiraSans-Bold-51" transform="translate(1698.599701 0)"/>
+    <use xlink:href="#FiraSans-Bold-33" transform="translate(1767.599686 0)"/>
+    <use xlink:href="#FiraSans-Bold-20" transform="translate(1819.59967 0)"/>
+    <use xlink:href="#FiraSans-Bold-32" transform="translate(1843.299667 0)"/>
+    <use xlink:href="#FiraSans-Bold-30" transform="translate(1894.999664 0)"/>
+    <use xlink:href="#FiraSans-Bold-32" transform="translate(1953.499649 0)"/>
+    <use xlink:href="#FiraSans-Bold-34" transform="translate(2005.199646 0)"/>
+    <use xlink:href="#FiraSans-Bold-29" transform="translate(2061.699631 0)"/>
    </g>
   </g>
   <g id="text_10">
-   <!-- % of firms with 50+ employees in industry and non-financial services -->
+   <!-- Firms with 50+ employees in industry and non-financial services -->
    <g style="fill: #6b7785" transform="translate(5.7024 36.533398) scale(0.095 -0.095)">
     <defs>
-     <path id="FiraSans-Regular-25" d="M 3923 4550 
-L 960 70 
-L 1370 -198 
-L 4333 4282 
-L 3923 4550 
-z
-M 1325 4346 
-C 730 4346 288 3930 288 3264 
-C 288 2598 730 2182 1325 2182 
-C 1926 2182 2368 2598 2368 3264 
-C 2368 3930 1926 4346 1325 4346 
-z
-M 1325 3949 
-C 1741 3949 1843 3597 1843 3264 
-C 1843 2918 1741 2579 1325 2579 
-C 915 2579 806 2931 806 3264 
-C 806 3610 915 3949 1325 3949 
-z
-M 3962 2086 
-C 3360 2086 2918 1670 2918 1005 
-C 2918 339 3360 -77 3962 -77 
-C 4563 -77 4998 339 4998 1005 
-C 4998 1670 4563 2086 3962 2086 
-z
-M 3962 1683 
-C 4378 1683 4480 1338 4480 1005 
-C 4480 659 4378 320 3962 320 
-C 3552 320 3443 672 3443 1005 
-C 3443 1350 3552 1683 3962 1683 
+     <path id="FiraSans-Regular-46" d="M 2982 4410 
+L 640 4410 
+L 640 0 
+L 1248 0 
+L 1248 1939 
+L 2688 1939 
+L 2688 2419 
+L 1248 2419 
+L 1248 3923 
+L 2912 3923 
+L 2982 4410 
 z
 " transform="scale(0.015625)"/>
      <path id="FiraSans-Regular-35" d="M 2771 4282 
@@ -1297,79 +1299,74 @@ L 3085 3373
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#FiraSans-Regular-25"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(82.599991 0)"/>
-    <use xlink:href="#FiraSans-Regular-6f" transform="translate(109.099976 0)"/>
-    <use xlink:href="#FiraSans-Regular-66" transform="translate(167.499969 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(200.999954 0)"/>
-    <use xlink:href="#FiraSans-Regular-66" transform="translate(227.499939 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(260.999924 0)"/>
-    <use xlink:href="#FiraSans-Regular-72" transform="translate(289.199921 0)"/>
-    <use xlink:href="#FiraSans-Regular-6d" transform="translate(327.799911 0)"/>
-    <use xlink:href="#FiraSans-Regular-73" transform="translate(413.499893 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(460.19989 0)"/>
-    <use xlink:href="#FiraSans-Regular-77" transform="translate(486.699875 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(558.399857 0)"/>
-    <use xlink:href="#FiraSans-Regular-74" transform="translate(586.599854 0)"/>
-    <use xlink:href="#FiraSans-Regular-68" transform="translate(622.699844 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(681.299835 0)"/>
-    <use xlink:href="#FiraSans-Regular-35" transform="translate(707.79982 0)"/>
-    <use xlink:href="#FiraSans-Regular-30" transform="translate(757.899811 0)"/>
-    <use xlink:href="#FiraSans-Regular-2b" transform="translate(813.699799 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(863.599792 0)"/>
-    <use xlink:href="#FiraSans-Regular-65" transform="translate(890.099777 0)"/>
-    <use xlink:href="#FiraSans-Regular-6d" transform="translate(945.099762 0)"/>
-    <use xlink:href="#FiraSans-Regular-70" transform="translate(1030.799744 0)"/>
-    <use xlink:href="#FiraSans-Regular-6c" transform="translate(1090.199738 0)"/>
-    <use xlink:href="#FiraSans-Regular-6f" transform="translate(1119.499725 0)"/>
-    <use xlink:href="#FiraSans-Regular-79" transform="translate(1177.899719 0)"/>
-    <use xlink:href="#FiraSans-Regular-65" transform="translate(1227.099716 0)"/>
-    <use xlink:href="#FiraSans-Regular-65" transform="translate(1282.099701 0)"/>
-    <use xlink:href="#FiraSans-Regular-73" transform="translate(1337.099686 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(1383.799683 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(1410.299667 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1438.499664 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(1497.099655 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(1523.59964 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1551.799637 0)"/>
-    <use xlink:href="#FiraSans-Regular-64" transform="translate(1610.399628 0)"/>
-    <use xlink:href="#FiraSans-Regular-75" transform="translate(1670.199615 0)"/>
-    <use xlink:href="#FiraSans-Regular-73" transform="translate(1728.399612 0)"/>
-    <use xlink:href="#FiraSans-Regular-74" transform="translate(1775.099609 0)"/>
-    <use xlink:href="#FiraSans-Regular-72" transform="translate(1811.1996 0)"/>
-    <use xlink:href="#FiraSans-Regular-79" transform="translate(1849.799591 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(1898.999588 0)"/>
-    <use xlink:href="#FiraSans-Regular-61" transform="translate(1925.499573 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1979.899567 0)"/>
-    <use xlink:href="#FiraSans-Regular-64" transform="translate(2038.499557 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(2098.299545 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2124.79953 0)"/>
-    <use xlink:href="#FiraSans-Regular-6f" transform="translate(2183.399521 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2241.799515 0)"/>
-    <use xlink:href="#FiraSans-Regular-2d" transform="translate(2300.399506 0)"/>
-    <use xlink:href="#FiraSans-Regular-66" transform="translate(2340.699493 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(2374.199478 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2402.399475 0)"/>
-    <use xlink:href="#FiraSans-Regular-61" transform="translate(2460.999466 0)"/>
-    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2515.39946 0)"/>
-    <use xlink:href="#FiraSans-Regular-63" transform="translate(2573.999451 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(2621.799438 0)"/>
-    <use xlink:href="#FiraSans-Regular-61" transform="translate(2649.999435 0)"/>
-    <use xlink:href="#FiraSans-Regular-6c" transform="translate(2704.399429 0)"/>
-    <use xlink:href="#FiraSans-Regular-20" transform="translate(2733.699417 0)"/>
-    <use xlink:href="#FiraSans-Regular-73" transform="translate(2760.199402 0)"/>
-    <use xlink:href="#FiraSans-Regular-65" transform="translate(2806.899399 0)"/>
-    <use xlink:href="#FiraSans-Regular-72" transform="translate(2861.899384 0)"/>
-    <use xlink:href="#FiraSans-Regular-76" transform="translate(2900.499374 0)"/>
-    <use xlink:href="#FiraSans-Regular-69" transform="translate(2949.699371 0)"/>
-    <use xlink:href="#FiraSans-Regular-63" transform="translate(2977.899368 0)"/>
-    <use xlink:href="#FiraSans-Regular-65" transform="translate(3025.699356 0)"/>
-    <use xlink:href="#FiraSans-Regular-73" transform="translate(3080.699341 0)"/>
+    <use xlink:href="#FiraSans-Regular-46"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(49.099991 0)"/>
+    <use xlink:href="#FiraSans-Regular-72" transform="translate(77.299988 0)"/>
+    <use xlink:href="#FiraSans-Regular-6d" transform="translate(115.899979 0)"/>
+    <use xlink:href="#FiraSans-Regular-73" transform="translate(201.59996 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(248.299957 0)"/>
+    <use xlink:href="#FiraSans-Regular-77" transform="translate(274.799942 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(346.499924 0)"/>
+    <use xlink:href="#FiraSans-Regular-74" transform="translate(374.699921 0)"/>
+    <use xlink:href="#FiraSans-Regular-68" transform="translate(410.799911 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(469.399902 0)"/>
+    <use xlink:href="#FiraSans-Regular-35" transform="translate(495.899887 0)"/>
+    <use xlink:href="#FiraSans-Regular-30" transform="translate(545.999878 0)"/>
+    <use xlink:href="#FiraSans-Regular-2b" transform="translate(601.799866 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(651.69986 0)"/>
+    <use xlink:href="#FiraSans-Regular-65" transform="translate(678.199844 0)"/>
+    <use xlink:href="#FiraSans-Regular-6d" transform="translate(733.199829 0)"/>
+    <use xlink:href="#FiraSans-Regular-70" transform="translate(818.899811 0)"/>
+    <use xlink:href="#FiraSans-Regular-6c" transform="translate(878.299805 0)"/>
+    <use xlink:href="#FiraSans-Regular-6f" transform="translate(907.599792 0)"/>
+    <use xlink:href="#FiraSans-Regular-79" transform="translate(965.999786 0)"/>
+    <use xlink:href="#FiraSans-Regular-65" transform="translate(1015.199783 0)"/>
+    <use xlink:href="#FiraSans-Regular-65" transform="translate(1070.199768 0)"/>
+    <use xlink:href="#FiraSans-Regular-73" transform="translate(1125.199753 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(1171.89975 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(1198.399734 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1226.599731 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(1285.199722 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(1311.699707 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1339.899704 0)"/>
+    <use xlink:href="#FiraSans-Regular-64" transform="translate(1398.499695 0)"/>
+    <use xlink:href="#FiraSans-Regular-75" transform="translate(1458.299683 0)"/>
+    <use xlink:href="#FiraSans-Regular-73" transform="translate(1516.49968 0)"/>
+    <use xlink:href="#FiraSans-Regular-74" transform="translate(1563.199677 0)"/>
+    <use xlink:href="#FiraSans-Regular-72" transform="translate(1599.299667 0)"/>
+    <use xlink:href="#FiraSans-Regular-79" transform="translate(1637.899658 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(1687.099655 0)"/>
+    <use xlink:href="#FiraSans-Regular-61" transform="translate(1713.59964 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1767.999634 0)"/>
+    <use xlink:href="#FiraSans-Regular-64" transform="translate(1826.599625 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(1886.399612 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(1912.899597 0)"/>
+    <use xlink:href="#FiraSans-Regular-6f" transform="translate(1971.499588 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2029.899582 0)"/>
+    <use xlink:href="#FiraSans-Regular-2d" transform="translate(2088.499573 0)"/>
+    <use xlink:href="#FiraSans-Regular-66" transform="translate(2128.799561 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(2162.299545 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2190.499542 0)"/>
+    <use xlink:href="#FiraSans-Regular-61" transform="translate(2249.099533 0)"/>
+    <use xlink:href="#FiraSans-Regular-6e" transform="translate(2303.499527 0)"/>
+    <use xlink:href="#FiraSans-Regular-63" transform="translate(2362.099518 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(2409.899506 0)"/>
+    <use xlink:href="#FiraSans-Regular-61" transform="translate(2438.099503 0)"/>
+    <use xlink:href="#FiraSans-Regular-6c" transform="translate(2492.499496 0)"/>
+    <use xlink:href="#FiraSans-Regular-20" transform="translate(2521.799484 0)"/>
+    <use xlink:href="#FiraSans-Regular-73" transform="translate(2548.299469 0)"/>
+    <use xlink:href="#FiraSans-Regular-65" transform="translate(2594.999466 0)"/>
+    <use xlink:href="#FiraSans-Regular-72" transform="translate(2649.999451 0)"/>
+    <use xlink:href="#FiraSans-Regular-76" transform="translate(2688.599442 0)"/>
+    <use xlink:href="#FiraSans-Regular-69" transform="translate(2737.799438 0)"/>
+    <use xlink:href="#FiraSans-Regular-63" transform="translate(2765.999435 0)"/>
+    <use xlink:href="#FiraSans-Regular-65" transform="translate(2813.799423 0)"/>
+    <use xlink:href="#FiraSans-Regular-73" transform="translate(2868.799408 0)"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pfc56a77ca1">
+  <clipPath id="p71725bde2b">
    <rect x="5.7024" y="56.16" width="463.7952" height="164.88"/>
   </clipPath>
  </defs>

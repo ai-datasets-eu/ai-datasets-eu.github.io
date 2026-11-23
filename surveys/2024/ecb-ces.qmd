@@ -1,0 +1,29 @@
+---
+title: "ECB CES"
+link: "https://www.ecb.europa.eu/press/blog/date/2025/html/ecb.blog20250321~6af1337b6b.en.html"
+link-text: "ECB Blog: AI adoption and employment prospects (March 2025)"
+who: "European Central Bank"
+when: "May 2024"
+where: "11 euro area countries"
+countries: [BE, DE, IE, EL, ES, FR, IT, NL, AT, PT, FI]
+asked: "Workers"
+sample: "Workers responding to the Consumer Expectations Survey, an online panel"
+use: work
+question: "\"Do you personally use artificial intelligence (including a large language model, such as ChatGPT or Gemini) in your work?\""
+demographics:
+  workers: ["age", "sex", "education", "occupation", "sector", "training received", "country"]
+month: "2024-05"
+adoption-workers: 26
+adoption-base: "employed, all ages"
+coverage: eu-subset
+series: ecb-ces
+chart-label: "CES"
+aim: "To monitor euro area households' expectations and economic behaviour for monetary policy. The May 2024 survey asked workers whether they use AI in their job and how they expect technology to affect their job."
+other-topics: "Expected effect of technological advances such as AI on their job and employment prospects over the next five years; AI use and attitudes by sector and occupation."
+---
+
+![](../../figures/ecb-ces-2024.svg){fig-alt="26% of euro area workers used AI in their work in May 2024."}
+
+![](../../figures/ecb-ces-2024-effect.svg){fig-alt="Workers expecting technological advances such as AI to affect their job over the next five years, May 2024: about 41% positively, 37% not at all, about 20% negatively."}
+
+The March 2025 post says "about a quarter" of workers use AI; the 26% is from the ECB's August 2026 post, which compares the three waves. The ECB notes that, as the survey is online, the share may be higher than in surveys that are not.

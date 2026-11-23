@@ -1,8 +1,8 @@
 ---
-title: Flash Eurobarometer 559
+title: "Startups and Scaleups EB"
 link: https://europa.eu/eurobarometer/surveys/detail/3359
 link-text: 'Flash Eurobarometer 559: Startups, scaleups and entrepreneurship'
-who: European Commission, DG GROW
+who: "European Commission (DG GROW)"
 when: '2025'
 where: EU-27 (plus 11 non-EU countries)
 countries: eu27
@@ -11,14 +11,14 @@ sample: 12,653 SMEs with 1 to 249 employees in the EU
 use: firm
 question: '"Which of the following advanced technologies, if any, has your enterprise adopted to date? [...] Artificial intelligence, e.g. machine learning, Large Language Models"'
 demographics:
-  firms: ["size class", "sector (NACE)", "industrial ecosystem", "startup or scaleup status", "firm age", "turnover", "exporting", "country"]
+  firms: ["size class", "sector", "industrial ecosystem", "startup or scaleup status", "firm age", "turnover", "exporting", "country"]
 month: 2025-03
 adoption-firms: 14
 coverage: eu27
 chart-label: Eurobarometer
 label-pos: right
-aim: "To understand the conditions for starting and scaling up a business in the EU. AI adoption is one item in a list of advanced technologies firms may have taken up."
+aim: "To understand the conditions for starting and scaling up a business in the EU. AI adoption is one answer option in a question on advanced technologies firms may have taken up."
 other-topics: "Access to finance, access to skills and difficulty hiring or keeping skilled staff, past and planned growth in employment and turnover, barriers to growth, innovation and single-market barriers."
 ---
 
-![](../../figures/fl559.svg){fig-alt="EU enterprises that have adopted AI, early 2025: 14% of SMEs; micro 14%, small 12%, medium 13%, large with 500 or more employees 24%, startups 21%."}
+![](../../figures/fl559.svg){fig-alt="14% of EU SMEs had adopted AI in early 2025."}

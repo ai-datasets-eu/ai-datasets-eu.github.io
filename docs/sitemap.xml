@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/flash-eb-578.html</loc>
-    <lastmod>2026-11-19T10:19:16.855Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/eib-eibis.html</loc>
+    <lastmod>2026-11-23T20:34:45.944Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/ecfin-consumer.html</loc>
-    <lastmod>2026-11-19T10:19:16.855Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/ecb-ces.html</loc>
+    <lastmod>2026-11-23T20:34:45.948Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/digital-decade.html</loc>
-    <lastmod>2026-11-19T10:19:16.853Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/bick-et-al.html</loc>
+    <lastmod>2026-11-23T20:19:24.483Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2025/osh-pulse.html</loc>
-    <lastmod>2026-11-19T10:19:16.851Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2025/startups-scaleups-eb.html</loc>
+    <lastmod>2026-11-23T20:34:45.942Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2025/eurostat-ict-individuals.html</loc>
-    <lastmod>2026-11-19T10:19:16.849Z</lastmod>
+    <lastmod>2026-11-23T20:34:45.940Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2025/eib-eibis.html</loc>
-    <lastmod>2026-11-19T10:19:16.848Z</lastmod>
+    <lastmod>2026-11-23T20:19:24.370Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2025/bick-et-al.html</loc>
-    <lastmod>2026-11-19T10:19:16.847Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2025/ecb-ces.html</loc>
+    <lastmod>2026-11-23T20:34:45.946Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2024/jrc-aim-work.html</loc>
-    <lastmod>2026-11-19T10:19:16.845Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/oecd-sme-genai.html</loc>
+    <lastmod>2026-11-23T20:34:45.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/future-of-work-eb.html</loc>
+    <lastmod>2026-11-23T20:19:24.271Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2024/eurofound-ewcs.html</loc>
-    <lastmod>2026-11-19T10:19:16.844Z</lastmod>
+    <lastmod>2026-11-23T20:34:45.948Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2024/esener.html</loc>
-    <lastmod>2026-11-19T10:19:16.842Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/ecb-cts.html</loc>
+    <lastmod>2026-11-23T20:19:24.185Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2024/cedefop-ai-skills.html</loc>
-    <lastmod>2026-11-19T10:19:16.842Z</lastmod>
+    <lastmod>2026-11-23T20:22:37.665Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/country-evidence.html</loc>
@@ -162,46 +166,50 @@
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/index.html</loc>
-    <lastmod>2026-11-23T18:07:20.092Z</lastmod>
+    <lastmod>2026-11-23T20:54:21.102Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2024/ecb-cts.html</loc>
-    <lastmod>2026-11-19T10:19:16.842Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/ecb-ces.html</loc>
+    <lastmod>2026-11-23T20:34:45.946Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2024/eurobarometer-554.html</loc>
-    <lastmod>2026-11-19T10:19:16.842Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/esener.html</loc>
+    <lastmod>2026-11-23T20:34:45.932Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2024/eurostat-ict-enterprises.html</loc>
-    <lastmod>2026-11-19T10:19:16.845Z</lastmod>
+    <lastmod>2026-11-23T20:34:45.932Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2024/oecd-sme-genai.html</loc>
-    <lastmod>2026-11-19T10:19:16.846Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2024/jrc-aim-work.html</loc>
+    <lastmod>2026-11-23T20:19:24.293Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ai-datasets-eu.github.io/surveys/2025/bick-et-al.html</loc>
+    <lastmod>2026-11-23T20:19:24.332Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2025/ecb-safe.html</loc>
-    <lastmod>2026-11-19T10:19:16.847Z</lastmod>
+    <lastmod>2026-11-23T20:34:45.940Z</lastmod>
   </url>
   <url>
     <loc>https://ai-datasets-eu.github.io/surveys/2025/eurostat-ict-enterprises.html</loc>
-    <lastmod>2026-11-19T10:19:16.849Z</lastmod>
+    <lastmod>2026-11-23T20:34:45.938Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2025/flash-eb-559.html</loc>
-    <lastmod>2026-11-19T10:19:16.850Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2025/osh-pulse.html</loc>
+    <lastmod>2026-11-23T20:19:24.452Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/bick-et-al.html</loc>
-    <lastmod>2026-11-19T10:19:16.853Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/ai-in-companies-eb.html</loc>
+    <lastmod>2026-11-23T20:53:34.164Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/ecb-ces.html</loc>
-    <lastmod>2026-11-19T10:19:16.853Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/digital-decade.html</loc>
+    <lastmod>2026-11-23T20:34:45.945Z</lastmod>
   </url>
   <url>
-    <loc>https://ai-datasets-eu.github.io/surveys/2026/eib-eibis.html</loc>
-    <lastmod>2026-11-19T10:19:16.855Z</lastmod>
+    <loc>https://ai-datasets-eu.github.io/surveys/2026/ecfin-consumer.html</loc>
+    <lastmod>2026-11-23T20:22:37.724Z</lastmod>
   </url>
 </urlset>

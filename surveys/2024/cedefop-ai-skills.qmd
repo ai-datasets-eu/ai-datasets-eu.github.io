@@ -1,5 +1,5 @@
 ---
-title: "Cedefop AI skills"
+title: "Cedefop AI Skills"
 link: "https://www.cedefop.europa.eu/files/ai_and_the_eu_skilling_challenge_first_insights_from_cedefops_ai_skills_survey_-_konstantinos_pouliakas_cedefop_and_nicolas_becuwe_verian.pdf"
 link-text: "Cedefop: first insights from the AI skills survey"
 who: "Cedefop"

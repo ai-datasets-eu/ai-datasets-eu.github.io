@@ -43,6 +43,8 @@ format:
     css: styles.css
     toc: false
     link-external-newwindow: true
+    # Links count as internal on the live site and when the rendered site is opened from disk (file://)
+    link-external-filter: '^(?:https://ai-datasets-eu\.github\.io|file:)'
     include-after-body:
       - includes/sidebar-data.html
       - includes/sidebar.html
