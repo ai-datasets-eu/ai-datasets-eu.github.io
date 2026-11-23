@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 96" width="236" height="96" role="img" aria-label="EC AI">
+  <title>EC AI</title>
+  <defs>
+    <!-- Block letters on a 14-unit stroke; each letter is stacked three times with an offset -->
+    <g id="ec">
+      <path d="M0 0h48v14H14v14h26v14H14v14h34v14H0z"/>
+      <path d="M58 0h48v14H72v42h34v14H58z"/>
+    </g>
+    <g id="ai">
+      <path d="M124 0h50v70h-14V46h-22v24h-14zM138 14v18h22V14z" fill-rule="evenodd"/>
+      <path d="M184 0h14v70h-14z"/>
+    </g>
+  </defs>
+  <g transform="translate(18 10) skewX(-14)">
+    <!-- EC: yellow / light blue / EC blue -->
+    <use href="#ec" fill="#FFCC00" transform="translate(8 8)"/>
+    <use href="#ec" fill="#6f9bd1" transform="translate(4 4)"/>
+    <use href="#ec" fill="#004494"/>
+    <!-- AI: EC blue / light blue / yellow -->
+    <use href="#ai" fill="#004494" transform="translate(8 8)"/>
+    <use href="#ai" fill="#6f9bd1" transform="translate(4 4)"/>
+    <use href="#ai" fill="#FFCC00"/>
+  </g>
+</svg>

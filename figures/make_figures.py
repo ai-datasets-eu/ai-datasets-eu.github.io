@@ -575,7 +575,8 @@ def overview_stats(points):
             f'<ul class="lede-list">{"".join(rows)}</ul>'
             "<p>These ranges are wide, because each survey makes different choices when defining:</p>"
             '<ul class="lede-list lede-list-plain"><li><span>artificial intelligence tools</span></li><li><span>adoption and intensity</span></li>'
-            "<li><span>the target population</span></li></ul></div>")
+            "<li><span>the target population</span></li>"
+            "<li><span>&hellip;</span></li></ul></div>")
     (OUT / "overview-stats.inline.html").write_text(html, encoding="utf8")
 
 
@@ -588,6 +589,15 @@ EU_COUNTRIES = {  # Eurostat codes (EL = Greece)
 }
 EURO_AREA = ["AT", "BE", "HR", "CY", "EE", "FI", "FR", "DE", "EL", "IE", "IT", "LV", "LT", "LU", "MT",
              "NL", "PT", "SK", "SI", "ES"]   # 20 members in 2024-25
+
+
+def pops(asked, use):
+    """Who a survey covers, for the sidebar dot and filter: the groups named in `asked`, plus
+    workers when a survey of individuals also asks about use at work (`use: both`)."""
+    out = [k for k in ("individuals", "workers", "firms") if k in asked]
+    if "individuals" in out and use == "both" and "workers" not in out:
+        out.insert(1, "workers")
+    return out
 
 
 def survey_index():
@@ -603,7 +613,7 @@ def survey_index():
             raise ValueError(f"{path}: unknown country codes {sorted(unknown)}")
         out.append({"title": meta["title"], "year": path.parent.name,
                     "url": path.relative_to(ROOT).with_suffix(".html").as_posix(),
-                    "pops": [k for k in ("individuals", "workers", "firms") if k in asked],
+                    "pops": pops(asked, meta.get("use")),
                     "countries": codes})
     return out
 
