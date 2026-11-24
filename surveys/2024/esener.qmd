@@ -10,7 +10,7 @@ asked: Firms
 n: "41,458"
 sample: "Establishments with 5+ employees"
 use: firm
-use-note: "Use by the establishment, reported by the person who knows best about health and safety"
+use-label: "Firm: establishment"
 question: '"Does your establishment use any of the following digital technologies for work? [...] Machines, systems or computers that use Artificial Intelligence to perform work tasks"'
 demographics:
   firms: ["size", "sector", "establishment age", "single or multi-site", "remote or hybrid work", "country"]

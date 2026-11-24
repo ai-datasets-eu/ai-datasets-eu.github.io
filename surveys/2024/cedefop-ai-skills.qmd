@@ -1,7 +1,7 @@
 ---
 title: "Cedefop AI Skills"
-link: "https://www.cedefop.europa.eu/files/ai_and_the_eu_skilling_challenge_first_insights_from_cedefops_ai_skills_survey_-_konstantinos_pouliakas_cedefop_and_nicolas_becuwe_verian.pdf"
-link-text: "Cedefop: first insights from the AI skills survey"
+link: "https://www.cedefop.europa.eu/en/publications/9201"
+link-text: "Cedefop policy brief: Skills empower workers in the AI revolution (January 2025)"
 who: "Cedefop"
 when: "2024"
 where: "11 EU countries"
@@ -10,18 +10,18 @@ asked: "Workers"
 n: "5,342"
 sample: "Employees aged 16 to 64"
 use: work
-use-note: "AI use at the workplace, by the respondent or colleagues"
+use-label: "At work: respondent or colleagues"
 question: "\"To the best of your knowledge, do you or your colleagues use any AI tools or systems at your workplace?\""
 demographics:
   workers: ["age", "sex", "occupation", "sector", "contract type", "pay", "country"]
   firms: ["workplace size (reported by worker)", "sector", "worker representation"]
 month: "2024-03"
-adoption-text: "Workplace: 28% say they or colleagues use AI at work; no personal-use rate is published"
+adoption-text: "Workplace: 28% say they or colleagues use AI at work"
 aim: "To measure how AI is changing skill needs at work: who works with AI, which tasks it changes, and whether workers have the skills and training to keep up. It follows up Cedefop's second European skills and jobs survey."
 other-topics: "AI skills and AI literacy, AI training in the last 12 months, task change, job control, fear of job loss, productivity and time savings, algorithmic management and social dialogue."
 ---
 
 ![](../../figures/cedefop-use.svg){fig-alt="28% of workers in 11 EU countries say AI is used at their workplace, 55% say it is not, 16% are not sure."}
 
-![](../../figures/cedefop-tasks.svg){fig-alt="How AI changed job tasks: 67% do some tasks faster, 41% do new or different tasks, 30% no longer do some tasks, 17% have less control."}
+![](../../figures/cedefop-tasks.svg){fig-alt="How AI changed job tasks for workers who use it: 67% do some tasks faster, 41% do new or different tasks, 30% no longer do some tasks."}
 

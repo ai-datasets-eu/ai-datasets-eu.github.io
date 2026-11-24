@@ -85,18 +85,17 @@ FIGURES = {
     ),
     # Cedefop AI skills survey 2024
     "cedefop-use": (
-        "AI at the workplace",
+        "AI at the workplace (2024)",
         "Workers, 11 EU countries",
-        [("AI is used at their workplace", 28), ("It is not", 55), ("Not sure", 16)],
+        [("*AI is used at their workplace", 28), ("It is not", 55), ("Not sure", 16)],
     ),
     "cedefop-tasks": (
-        "How AI has changed job tasks",
+        "How AI has changed job tasks (2024)",
         "Workers who use AI at work, 11 EU countries",
         [
             ("Do some tasks faster", 67),
             ("Do some new or different tasks", 41),
             ("No longer do some tasks", 30),
-            ("Have less control over tasks", 17),
         ],
     ),
     # Special Eurobarometer 554, 2024

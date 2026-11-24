@@ -11,6 +11,7 @@ asked: "Workers"           # Workers | Firms | Individuals | Workers and firms
 n: "Number of respondents, e.g. 5,067 (or \"≈ 7,500\" if only approximate)"
 sample: "Who was surveyed, e.g. people aged 16 to 74 (leave out the number)"
 use: work                  # work | private | both (asked separately) | any (not separated) | firm
+# use-label: "At work: respondent or colleagues"   # optional: replaces the pill text
 # use-note: "optional short note, e.g. which split is published"
 question: "\"The main AI question, in quotation marks if verbatim.\""
 demographics:              # characteristics collected, shown as collapsible lists

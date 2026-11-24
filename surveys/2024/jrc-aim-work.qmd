@@ -10,7 +10,7 @@ asked: "Workers"
 n: "70,316"
 sample: "People aged 16 to 65"
 use: work
-use-note: "Main paid job; no question on use in private life"
+use-label: "At work: main paid job"
 question: "\"In the last 12 months, did you use an AI-powered tool when performing your main paid job?\""
 demographics:
   workers: ["age", "sex", "education", "occupation", "contract type", "working hours", "earnings", "migrant background", "region", "country"]

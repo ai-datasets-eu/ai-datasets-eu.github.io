@@ -10,7 +10,7 @@ asked: Workers
 n: "25,688"
 sample: "People in employment aged 16+ in the EU"
 use: work
-use-note: "Main job; no question on use in private life"
+use-label: "At work: main job"
 question: '"Do you use any of the following digital technologies for your main job? [...] Software or tools powered by artificial intelligence"'
 demographics:
   workers: ["age", "sex", "education", "occupation", "contract type", "sector", "supervisory role", "platform work", "country"]

@@ -10,7 +10,7 @@ asked: "Firms"
 n: "5,232"
 sample: "SMEs with 1 to 249 employees, about 800 per country (400 in Japan), interviewed by telephone from 14 October to 6 December 2024; weighted by number of firms"
 use: firm
-use-note: "Use for work by anyone in the firm, including use started by workers themselves"
+use-label: "Firm: any staff use"
 question: "\"Does anyone in your company, and please include yourself, ever use generative AI for work?\""
 demographics:
   firms: ["size class (1, 2-9, 10-49, 50-249)", "sector", "firm age", "country", "owner's gender (one-person firms only)"]

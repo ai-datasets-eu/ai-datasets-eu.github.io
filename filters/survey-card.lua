@@ -28,12 +28,12 @@ end
 
 local pills = { workers = "pill-workers", firms = "pill-firms", individuals = "pill-individuals" }
 
--- Work or private use: shown as a coloured label
+-- Work or private use: shown as a coloured label (class, text)
 local uses = {
-  work = { "pill-use-work", "At work", "Use for work only" },
-  private = { "pill-use-private", "Private life", "Use outside work only" },
-  any = { "pill-use-any", "Any purpose", "Work and private use not separated" },
-  firm = { "pill-use-firm", "Firm", "Use by the firm, not by individual workers" },
+  work = { "pill-use-work", "At work" },
+  private = { "pill-use-private", "Private life" },
+  any = { "pill-use-any", "Any purpose" },
+  firm = { "pill-use-firm", "Firm" },
 }
 
 -- The rows shared by survey pages and country entries. `get(key)` returns the value of a field
@@ -54,7 +54,7 @@ local function common_rows(get, row, where)
     if n then
       local v = pandoc.utils.stringify(n)
       local text = v:match("^%d") and ("N = " .. v) or ("N " .. v)
-      sample = sample .. '<span class="pill pill-n" title="Number of respondents">' .. text .. "</span>"
+      sample = sample .. '<span class="pill pill-n">' .. text .. "</span>"
     end
     if get("sample") then sample = sample .. html(get("sample")) end
     row("Sample", sample)
@@ -67,13 +67,16 @@ local function common_rows(get, row, where)
     error("unknown `use` value '" .. pandoc.utils.stringify(u) .. "' in " .. (PANDOC_STATE.input_files[1] or "?"))
   end
   if use then
-    -- The pill alone, with its explanation as a tooltip; a `use-note` is shown after it
-    -- `both` (work and private use asked separately) shows the two pills side by side
-    local function pill(p, tip) return '<span class="pill ' .. p[1] .. '" title="' .. (tip or p[3]) .. '">' .. p[2] .. "</span>" end
-    local text = key == "both"
-      and (pill(uses.work, "Use for work, asked separately from private use")
-        .. pill(uses.private, "Use outside work, asked separately from use for work"))
-      or pill(use)
+    -- The pill, then a `use-note` if any. `both` (work and private use asked separately) shows the
+    -- two pills side by side; otherwise `use-label` can replace the pill text,
+    -- e.g. "At work: respondent or colleagues"
+    local function pill(p, text) return '<span class="pill ' .. p[1] .. '">' .. (text or p[2]) .. "</span>" end
+    local text
+    if key == "both" then
+      text = pill(uses.work) .. pill(uses.private)
+    else
+      text = pill(use, get("use-label") and pandoc.utils.stringify(get("use-label")))
+    end
     if get("use-note") then text = text .. html(get("use-note")) end
     row("AI use", text)
   end
