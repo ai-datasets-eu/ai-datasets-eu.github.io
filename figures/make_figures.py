@@ -46,24 +46,31 @@ FIGURES = {
     "eurostat-ent-2024": (
         "Enterprises using AI (2024)",
         "Enterprises with 10+ employees (EU)",
-        [("*All enterprises", 13.5)],
+        [("*", 13.5)],
     ),
     "eurostat-ent-2025": (
         "Enterprises using AI (2025)",
         "Enterprises with 10+ employees (EU)",
-        [("*All enterprises", 20.0, {"prev": 13.5, "prev-label": "2024"})],
+        [("*", 20.0, {"prev": 13.5, "prev-label": "2024"})],
     ),
     # Eurostat, ICT usage by individuals 2025
     "eurostat-ind-purpose": (
-        "Use of generative AI tools, by purpose (2025)",
-        "People aged 16-74, EU, last 3 months; several purposes possible",
-        [("Any purpose", 32.7), ("Private", 25.5), ("Work", 15.4), ("*Work, employed people aged 25-64", 21.9), ("Formal education", 9.3)],
+        "People using generative AI (2025)",
+        "Aged 16-74, last 3 months (EU)",
+        [("*Any purpose", 32.7), ("Private", 25.5), ("Work", 15.4), ("Formal education", 9.3)],
     ),
     # ECB SAFE, Q4 2025
     "ecb-safe-intensity": (
         "Use of AI technologies in the firm (Q4 2025)",
         "Firms, 12 euro area countries, weighted by employment",
         [("Not in use", 27), ("Very infrequent / pilot", 33), ("Moderate use", 31), ("Significant use", 7)],
+    ),
+    # Chart 1 of Occasional Paper 395 (p. 17): moderate + significant use, the measure plotted on the overview
+    "ecb-safe-countries": (
+        "Firms with moderate or significant AI use, by country (Q4 2025)",
+        "Firms, weighted by employment",
+        [("*Euro area", 38), ("Netherlands", 61), ("Belgium", 48), ("Austria", 47), ("Germany", 47), ("Spain", 44),
+         ("Greece", 41), ("Portugal", 35), ("Finland", 34), ("Ireland", 28), ("Italy", 26), ("France", 22), ("Slovakia", 22)],
     ),
     # JRC AIM-WORK 2024-25
     "jrc-aim-work": (
@@ -139,14 +146,14 @@ FIGURES = {
     # Bick et al., worker survey
     "bick-2025": (
         "Workers using generative AI for work (May-June 2025)",
-        "Employed people aged 18-67",
-        [("Netherlands", 33.9), ("Sweden", 33.1), ("Germany", 30.7), ("France", 28.0), ("Italy", 24.5),
+        "Employed people aged 18-67; EU-5 is the simple mean of the five EU countries",
+        [("*EU-5 average", 30.0), ("Sweden", 33.9), ("Netherlands", 33.1), ("Germany", 30.7), ("France", 28.0), ("Italy", 24.5),
          ("United Kingdom", 34.7), ("United States", 39.4, {"color": US_RED})],
     ),
     "bick-2026": (
         "Workers using generative AI for work (Jan-Feb 2026)",
-        "Employed people aged 18-67",
-        [("Sweden", 35.6, {"prev": 33.1, "prev-label": "2025"}), ("Netherlands", 35.6, {"prev": 33.9}), ("Germany", 31.5, {"prev": 30.7}),
+        "Employed people aged 18-67; EU-5 is the simple mean of the five EU countries",
+        [("*EU-5 average", 31.3, {"prev": 30.0, "prev-label": "2025"}), ("Sweden", 35.6, {"prev": 33.9}), ("Netherlands", 35.6, {"prev": 33.1}), ("Germany", 31.5, {"prev": 30.7}),
          ("France", 28.1, {"prev": 28.0}), ("Italy", 25.6, {"prev": 24.5}),
          ("United Kingdom", 36.3, {"prev": 34.7}), ("United States", 43.0, {"prev": 39.4, "color": US_RED})],
     ),
@@ -155,7 +162,7 @@ FIGURES = {
     "ecb-ces-2024": (
         "Workers using AI in their work (May 2024)",
         "Employed people (11 euro area countries)",
-        [("*All workers", 26)],
+        [("*", 26)],
     ),
     "ecb-ces-2024-effect": (
         "Expected effect of technology such as AI on their job (May 2024)",
@@ -165,20 +172,20 @@ FIGURES = {
     "ecb-ces-2025": (
         "Workers using AI in their work (2025)",
         "Employed people (11 euro area countries)",
-        [("*All workers", 41, {"prev": 26, "prev-label": "2024"})],
+        [("*", 41, {"prev": 26, "prev-label": "2024"})],
     ),
     "ecb-ces-2026": (
         "Workers using AI in their work (2026)",
         "Employed people (11 euro area countries). Source: ECB Blog",
         # the last word of the subtitle links to the source; embed this chart with <object> (see bar_chart)
-        [("*All workers", 52, {"prev": [(26, "2024"), (41, "2025")]})],
+        [("*", 52, {"prev": [(26, "2024"), (41, "2025")]})],
         "https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260826~e1c1a89999.en.html",
     ),
     # EIB Investment Survey 2025
     "eibis-genai": (
         "Firms using generative AI as measured by the EIB (2025)",
-        "Firms, weighted by value added; combines two questions (see text)",
-        [("*European Union", 37), ("United States", 36)],
+        "Firms, weighted by value added; combines two questions",
+        [("*European Union", 37), ("United States", 36, {"color": US_RED})],
     ),
     # Private surveys
     "aws-trend": (
@@ -366,12 +373,12 @@ FIGURES = {
     "eibis26": (
         "Firms using generative AI (2026)",
         "Firms",
-        [('*European Union', 67), ('United States', 71)],
+        [('*European Union', 67), ('United States', 71, {"color": US_RED})],
     ),
     "ewcs": (
         "Workers using generative AI tools at work (2024)",
         "Workers (EU)",
-        [("*All workers", 12)],
+        [("*", 12)],
     ),
     "esener": (
         "Digital technologies used in establishments (2024)",
@@ -380,14 +387,14 @@ FIGURES = {
     ),
     "fl559": (
         "Enterprises that have adopted AI (early 2025)",
-        "Enterprises, EU",
-        [('*All SMEs (1-249 employees)', 14)],
+        "SMEs with 1-249 employees (EU)",
+        [('*', 14)],
     ),
     "eurostat-ind-nouse": (
         "Main reason for not using generative AI (2025)",
-        "People aged 16-74 who did not use it in the last 3 months, EU",
-        [('*No need', 64.3), ('Did not know how to use them', 13.8), ('Did not know they existed', 8.5),
-         ('Concerns about privacy, security or safety', 7.3), ('Other', 5.4)],
+        "Non-users aged 16-74 (EU)",
+        [('No need', 64.3), ('Did not know how to use it', 13.8), ('Did not know it existed', 8.5),
+         ('Privacy, security or safety concerns', 7.3), ('Other', 5.4)],
     ),
     "oecd-sme": (
         "SMEs where someone uses generative AI for work (late 2024)",

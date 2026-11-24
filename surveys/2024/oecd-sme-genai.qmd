@@ -7,7 +7,8 @@ when: "2024"
 where: "7 OECD countries: Austria, Germany and Ireland in the EU; also Canada, Japan, Korea and the United Kingdom"
 countries: [AT, DE, IE]
 asked: "Firms"
-sample: "5,232 SMEs with 1 to 249 employees, about 800 per country (400 in Japan), interviewed by telephone from 14 October to 6 December 2024; weighted by number of firms"
+n: "5,232"
+sample: "SMEs with 1 to 249 employees, about 800 per country (400 in Japan), interviewed by telephone from 14 October to 6 December 2024; weighted by number of firms"
 use: firm
 use-note: "Use for work by anyone in the firm, including use started by workers themselves"
 question: "\"Does anyone in your company, and please include yourself, ever use generative AI for work?\""

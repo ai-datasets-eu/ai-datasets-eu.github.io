@@ -7,7 +7,8 @@ when: '2024'
 where: EU-27 (plus Iceland, Norway, Switzerland)
 countries: eu27
 asked: Firms
-sample: 41,458 establishments with 5+ employees
+n: "41,458"
+sample: "Establishments with 5+ employees"
 use: firm
 use-note: "Use by the establishment, reported by the person who knows best about health and safety"
 question: '"Does your establishment use any of the following digital technologies for work? [...] Machines, systems or computers that use Artificial Intelligence to perform work tasks"'
@@ -20,7 +21,7 @@ coverage: eu27
 chart-label: ESENER
 label-pos: right
 aim: "To find out how European workplaces manage safety and health risks. AI is covered as one of several digital technologies that may create new risks for workers."
-other-topics: "Algorithmic task allocation and digital monitoring of workers, perceived risks of digitalisation (work intensity, fear of job loss, worker data), psychosocial risks, risk assessment, health and safety training, and worker participation. No worker characteristics are collected."
+other-topics: "Algorithmic task allocation and digital monitoring of workers, perceived risks of digitalisation (work intensity, fear of job loss, worker data), psychosocial risks, risk assessment, health and safety training, and worker participation."
 ---
 
 ![](../../figures/esener.svg){fig-alt="EU establishments in 2024: 7% use machines, systems or computers that use AI, 9% allocate tasks or shifts automatically, 7% monitor workers' performance digitally."}

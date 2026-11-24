@@ -7,7 +7,7 @@ when: "2026"
 where: "18 EU Member States"
 countries: [BG, CZ, DE, EL, ES, HR, CY, LV, HU, MT, NL, AT, PL, PT, RO, SK, FI, SE]
 asked: "Individuals"
-sample: "21,207 consumers"
+n: "21,207"
 use: both
 question: "\"Are you using AI technologies for your work or for personal tasks?\""
 demographics:

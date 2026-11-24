@@ -7,7 +7,7 @@ when: "2024"
 where: "35 European countries"
 countries: eu27
 asked: "Workers"
-sample: "36,644 people"
+n: "36,644"
 use: work
 question: "\"And do you use the following equipment in your work? [...] Artificial Intelligence that simplifies complex mental tasks or makes recommendations on how you should be working? (ChatGPT, LLAMA, DALL-E, Midjourney, Jasper)\""
 demographics:

@@ -7,7 +7,8 @@ when: "2026"
 where: "11 euro area countries"
 countries: [BE, DE, IE, EL, ES, FR, IT, NL, AT, PT, FI]
 asked: "Workers"
-sample: "Consumer Expectations Survey, about 20,000 people per month"
+n: "≈ 20,000 per month"
+sample: "Consumer Expectations Survey"
 use: work
 question: "\"Do you personally use artificial intelligence (AI) in your work (including tools such as ChatGPT, Claude, Gemini, etc.)?\""
 demographics:

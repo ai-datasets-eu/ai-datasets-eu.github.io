@@ -23,14 +23,14 @@ docs/                     rendered site (serve this folder with GitHub Pages)
 
 ## Adding a national survey
 
-Add a `::: {.survey-entry name="..." link="..." who="..." when="..." asked="Firms" sample="..." use="firm" question="..."}` block, with its notes and chart inside, to `countries/<country>.qmd`. For a new country, copy an existing country page and set `country:` to its EU code; the grid, the sidebar and the list of EU-wide surveys pick it up when you run `python figures/make_figures.py`.
+Add a `::: {.survey-entry name="..." link="..." who="..." when="..." asked="Firms" n="..." sample="..." use="firm" question="..."}` block, with its notes and chart inside, to `countries/<country>.qmd`. For a new country, copy an existing country page and set `country:` to its EU code; the grid, the sidebar and the list of EU-wide surveys pick it up when you run `python figures/make_figures.py`.
 
 ## Adding a survey
 
 Anyone can suggest a survey by opening an issue with the "Add a survey" form (`.github/ISSUE_TEMPLATE/survey-request.yml`). To add one yourself:
 
 1. Copy `surveys/_template.qmd` to `surveys/<year>/<short-name>.qmd` and fill in the header. Keep `title` short: it is the label in the left menu.
-2. Set `use` (work / private / both / any / firm) so readers see whether the AI question is about use at work, in private life or by the firm; list the respondent characteristics the survey records under `demographics` (`workers` or `individuals`, and `firms`); and name other topics it covers, such as job quality or training, in `other-topics`.
+2. Put the number of respondents in `n` (shown as a pill, "N = 5,067"; write "≈ 7,500" for an approximate number) and describe who was surveyed in `sample`, without the number. Set `use` (work / private / both / any / firm) so readers see whether the AI question is about use at work, in private life or by the firm; list the respondent characteristics the survey records under `demographics` (`workers` or `individuals`, and `firms`); and name other topics it covers, such as job quality or training, in `other-topics`.
 3. If the survey measures AI adoption, fill in `month`, `adoption-individuals` / `adoption-workers` / `adoption-firms` and `coverage` in the header: the overview time series picks them up.
 4. Add the numbers for its chart to `FIGURES` in `figures/make_figures.py` and run `python figures/make_figures.py`.
 5. If the year is new, add a section for it in `_quarto.yml`.

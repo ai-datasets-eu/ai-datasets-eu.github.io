@@ -7,7 +7,8 @@ when: '2025'
 where: EU-27 (plus Iceland, Norway, Switzerland)
 countries: eu27
 asked: Workers
-sample: 25,688 people in employment aged 16+ in the EU
+n: "25,688"
+sample: "People in employment aged 16+ in the EU"
 use: work
 use-note: "Main job; no question on use in private life"
 question: '"Do you use any of the following digital technologies for your main job? [...] Software or tools powered by artificial intelligence"'
@@ -21,7 +22,7 @@ coverage: eu27
 chart-label: OSH Pulse
 label-pos: right
 aim: "To take a quick reading of workers' safety and health, this time with a focus on climate change and digitalisation. AI appears among the digital technologies workers use in their main job."
-other-topics: "Effects of digital technologies on workload, pace, autonomy and skill use; algorithmic management and monitoring; psychosocial risks, health outcomes, climate and heat at work, and job insecurity. No questions on earnings or productivity."
+other-topics: "Effects of digital technologies on workload, pace, autonomy and skill use; algorithmic management and monitoring; psychosocial risks, health outcomes, climate and heat at work, and job insecurity."
 ---
 
 ![](../../figures/osh-pulse.svg){fig-alt="EU workers in April 2025: 18% use software or tools powered by AI, 6% use machines or robots that think and decide, 32% use any advanced digital technology, 27% have tasks or shifts allocated automatically."}

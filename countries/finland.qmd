@@ -5,7 +5,7 @@ country: FI
 
 ## National surveys
 
-::: {.survey-entry name="Generative AI module, EVA values and attitudes survey" link="https://etla.fi/wp-content/uploads/ETLA-Muistio-Brief-144.pdf" who="ETLA" when="8 to 21 October 2024" asked="Individuals" sample="2,018 people aged 18 to 79" use="both" use-note="Any use, and separately use for a task in the job" question="How often people used an AI web application in the last 12 months, and whether they have used AI for a task in their job"}
+::: {.survey-entry name="Generative AI module, EVA values and attitudes survey" link="https://etla.fi/wp-content/uploads/ETLA-Muistio-Brief-144.pdf" who="ETLA" when="8 to 21 October 2024" asked="Individuals" n="2,018" sample="People aged 18 to 79" use="both" use-note="Any use, and separately use for a task in the job" question="How often people used an AI web application in the last 12 months, and whether they have used AI for a task in their job"}
 ![](../figures/etla.svg){fig-alt="Finland, October 2024: 47% of people aged 18 to 79 have used generative AI; 29% of people in work have used it for work and 11% use it weekly."}
 :::
 

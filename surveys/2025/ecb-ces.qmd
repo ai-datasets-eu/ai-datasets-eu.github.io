@@ -1,13 +1,14 @@
 ---
 title: "ECB CES"
 link: "https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260826~e1c1a89999.en.html"
-link-text: "ECB Blog: AI adoption and the productivity promise: what workers report (August 2026)"
+link-text: "ECB Blog: AI adoption and the productivity promise: what workers report"
 who: "European Central Bank"
 when: "2025"
 where: "11 euro area countries"
 countries: [BE, DE, IE, EL, ES, FR, IT, NL, AT, PT, FI]
 asked: "Workers"
-sample: "Consumer Expectations Survey, about 20,000 people per month"
+n: "≈ 20,000 per month"
+sample: "Consumer Expectations Survey"
 use: work
 question: "Whether they personally use AI in their work"
 demographics:
@@ -24,5 +25,3 @@ other-topics: "Expected effect of technological advances such as AI on their job
 ---
 
 ![](../../figures/ecb-ces-2025.svg){fig-alt="41% of euro area workers used AI in their work in 2025, up from 26% in 2024."}
-
-The ECB has not published the 2025 wave on its own. The 41% is from the August 2026 post on the 2026 wave, which also reports that 43% of workers expected technological advances such as AI to affect their job positively in 2025 (41% in 2026). An [ECB speech of 23 March 2026](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260323_1~1e06784a89.en.html) gives 40% for 2025.

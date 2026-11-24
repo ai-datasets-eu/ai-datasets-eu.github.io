@@ -7,7 +7,7 @@ when: '2026'
 where: EU-27 (plus a US sample)
 countries: eu27
 asked: Firms
-sample: 12,083 firms
+n: "12,083"
 use: firm
 question: '"I would like to ask about your company''s systematic use of generative AI tools to improve processes. [...] Does your company use these kinds of tools in any of the following areas?"'
 demographics:

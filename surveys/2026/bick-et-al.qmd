@@ -7,12 +7,14 @@ when: "2026"
 where: "Germany, France, Italy, Netherlands, Sweden (plus UK and US)"
 countries: [DE, FR, IT, NL, SE]
 asked: "Workers"
-sample: "About 3,000 per country, employed, aged 18 to 67 (18 to 63 in France)"
+n: "20,916"
+sample: "Employed, aged 18 to 67; about 3,000 per country"
 use: both
 use-note: Separate questions on use for the job and outside it, but only of people in work
 question: "\"Do you use Generative AI for your job?\""
 demographics:
-  workers: ["age", "sex", "education", "income", "occupation", "industry", "hours worked", "establishment size", "country"]
+  workers: ["age", "sex", "education", "income", "occupation", "sector", "hours worked", "country"]
+  firms: ["establishment size (reported by worker)"]
 month: "2026-01"
 adoption-workers: 31.3
 adoption-base: "employed, aged 18-67, mean of the five EU countries"
@@ -24,4 +26,4 @@ aim: "To measure generative AI use at work in a way that is comparable between t
 other-topics: "Which tools are used, days and hours of use, time saved, tasks, reasons for not using it, employer provision of AI tools and training, employer encouragement and management practices."
 ---
 
-![](../../figures/bick-2026.svg){fig-alt="Share of workers using generative AI for work, January-February 2026, with May-June 2025 in brackets: Sweden 35.6% (33.1%), Netherlands 35.6% (33.9%), Germany 31.5% (30.7%), France 28.1% (28%), Italy 25.6% (24.5%); United Kingdom 36.3% (34.7%), United States 43% (39.4%)."}
+![](../../figures/bick-2026.svg){fig-alt="Share of workers using generative AI for work, January-February 2026, with May-June 2025 in brackets: EU-5 average 31.3% (30%), Sweden 35.6% (33.9%), Netherlands 35.6% (33.1%), Germany 31.5% (30.7%), France 28.1% (28%), Italy 25.6% (24.5%); United Kingdom 36.3% (34.7%), United States 43% (39.4%)."}

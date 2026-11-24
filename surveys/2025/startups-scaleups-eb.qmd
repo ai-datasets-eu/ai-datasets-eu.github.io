@@ -1,5 +1,5 @@
 ---
-title: "Startups and Scaleups EB"
+title: "Start/Scaleup EB"
 link: https://europa.eu/eurobarometer/surveys/detail/3359
 link-text: 'Flash Eurobarometer 559: Startups, scaleups and entrepreneurship'
 who: "European Commission (DG GROW)"
@@ -7,7 +7,8 @@ when: '2025'
 where: EU-27 (plus 11 non-EU countries)
 countries: eu27
 asked: Firms
-sample: 12,653 SMEs with 1 to 249 employees in the EU
+n: "12,653"
+sample: "SMEs with 1 to 249 employees in the EU"
 use: firm
 question: '"Which of the following advanced technologies, if any, has your enterprise adopted to date? [...] Artificial intelligence, e.g. machine learning, Large Language Models"'
 demographics:

@@ -7,15 +7,17 @@ when: "2025"
 where: "Germany, France, Italy, Netherlands, Sweden (plus UK and US)"
 countries: [DE, FR, IT, NL, SE]
 asked: "Workers"
-sample: "About 5,000 per country, employed, aged 18 to 67 (18 to 63 in France)"
+n: "34,499"
+sample: "Employed, aged 18 to 67; about 5,000 per country"
 use: both
-use-note: "Asked separately about use for the job and outside it, but only of people in work; the chart shows use for the job"
+use-note: "Separate questions on use for the job and outside it, but only of people in work"
 question: "\"Do you use Generative AI for your job?\""
 demographics:
-  workers: ["age", "sex", "education", "income", "occupation", "industry", "hours worked", "establishment size", "country"]
+  workers: ["age", "sex", "education", "income", "occupation", "sector", "hours worked", "country"]
+  firms: ["establishment size (reported by worker)"]
 month: "2025-06"
 adoption-workers: 30.0
-adoption-base: "employed, aged 18-67; simple mean of the five EU countries"
+adoption-base: "employed, aged 18-67, mean of the five EU countries"
 coverage: few
 series: bick
 chart-label: "Bick et al."
@@ -24,4 +26,4 @@ aim: "To measure generative AI use at work in a way that is comparable between t
 other-topics: "Which tools are used, days and hours of use, time saved, tasks AI is used for, and reasons for not using it."
 ---
 
-![](../../figures/bick-2025.svg){fig-alt="Share of workers using generative AI for work, May-June 2025: Netherlands 33.9%, Sweden 33.1%, Germany 30.7%, France 28%, Italy 24.5%; United Kingdom 34.7%, United States 39.4%."}
+![](../../figures/bick-2025.svg){fig-alt="Share of workers using generative AI for work, May-June 2025: EU-5 average 30%, Sweden 33.9%, Netherlands 33.1%, Germany 30.7%, France 28%, Italy 24.5%; United Kingdom 34.7%, United States 39.4%."}

@@ -7,7 +7,8 @@ when: "2024"
 where: "EU-27"
 countries: eu27
 asked: "Individuals"
-sample: "26,415 people aged 15+"
+n: "26,415"
+sample: "People aged 15+"
 use: firm
 use-note: "No question on the respondent's own AI use; asks about the employer's use of digital technologies, including AI"
 question: "\"How positively or negatively do you perceive the use of robots and Artificial Intelligence in the workplace?\""

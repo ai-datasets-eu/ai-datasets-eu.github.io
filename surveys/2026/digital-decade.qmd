@@ -7,9 +7,9 @@ when: '2026'
 where: EU-27
 countries: eu27
 asked: Individuals
-sample: 26,494 people aged 15+
+n: "26,494"
+sample: "People aged 15+"
 use: both
-use-note: "Two separate questions: personal life, and work or studies (work and studies cannot be separated)"
 question: '"How often do you use generative AI tools? In your personal life / In your work, or your studies"'
 demographics:
   individuals: ["age", "sex", "age at end of education", "occupation (socio-professional category)", "difficulty paying bills", "country"]

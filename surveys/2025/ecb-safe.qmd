@@ -3,14 +3,13 @@ title: "ECB SAFE"
 link: "https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op395.en.pdf"
 link-text: "ECB Occasional Paper 395: Adoption and investment in AI across the euro area"
 who: "European Central Bank"
-when: "2025"
-where: "12 euro area countries (AT, BE, DE, EL, ES, FI, FR, IE, IT, NL, PT, SK)"
+when: "June and December 2025"
+where: "12 euro area countries"
 countries: [AT, BE, DE, EL, ES, FI, FR, IE, IT, NL, PT, SK]
 asked: "Firms"
-sample: "5,067 firms in the December 2025 round; results weighted by employment"
+n: "5,067"
 use: firm
-use-note: "One question on the intensity of use, covering predictive AI, generative AI and process automation together"
-question: "\"How would you assess the use of AI technologies in your firm?\""
+question: "\"How would you assess the use of AI technologies in your firm?\" AI technologies cover predictive tools (e.g. text mining, voice and image recognition, machine learning), generative tools (e.g. chatbots, text or image generation) and robotic process automation, in one question"
 demographics:
   firms: ["size", "sector", "country", "firm age", "turnover", "exporter", "ownership"]
 month: "2025-12"
@@ -19,8 +18,10 @@ adoption-firms-base: "moderate or significant use; 71% including very infrequent
 coverage: eu-subset
 chart-label: "SAFE"
 label-pos: below
-aim: "To monitor the financing conditions of euro area firms for monetary policy. The AI questions were a one-off addition asking how intensively firms use AI and what holds them back."
-other-topics: "Access to finance, investment, employment and wage expectations, labour costs, availability of skilled staff, expected share of investment going to AI, and obstacles to using AI."
+aim: "To monitor the financing conditions of euro area firms for monetary policy. AI questions were added to two rounds: in June 2025, whether firms had invested in AI and what share of their investment went to it; in December 2025, how intensively they use AI, why, and what holds them back."
+other-topics: "Access to finance, investment, employment and wage expectations, labour costs, availability of skilled staff, and firms' expectations of how much their competitors invest in AI."
 ---
 
 ![](../../figures/ecb-safe-intensity.svg){fig-alt="Firms in 12 euro area countries by intensity of AI use, weighted by employment: not in use 27%, very infrequent or pilot 33%, moderate 31%, significant 7%."}
+
+![](../../figures/ecb-safe-countries.svg){fig-alt="Firms with moderate or significant AI use in Q4 2025, weighted by employment: euro area 38%; Netherlands 61%, Belgium 48%, Austria 47%, Germany 47%, Spain 44%, Greece 41%, Portugal 35%, Finland 34%, Ireland 28%, Italy 26%, France 22%, Slovakia 22%."}

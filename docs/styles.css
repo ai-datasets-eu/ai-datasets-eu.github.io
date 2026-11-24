@@ -62,11 +62,11 @@ main.content object.chart-object { display: block; width: min(100%, 700px); heig
 .pill-firms { background: #e6e7e8; color: #3f4041; }
 .pill-individuals { background: #e1e9f5; color: #004494; }
 .pill-both { background: var(--accent-soft); color: var(--accent); }
+.pill-n { background: #fff; color: #3f4041; border: 1px solid #C5C6C8; font-variant-numeric: tabular-nums; }
 
 /* Work or private use label */
 .pill-use-work { background: #fff0b3; color: #4d3d00; }
 .pill-use-private { background: #f2f2f2; color: #3f4041; border: 1px solid #C5C6C8; }
-.pill-use-both { background: #e1e9f5; color: #004494; }
 .pill-use-any { background: #fff; color: #646567; border: 1px dashed #C5C6C8; }
 .pill-use-firm { background: #e6e7e8; color: #3f4041; }
 

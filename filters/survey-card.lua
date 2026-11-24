@@ -32,7 +32,6 @@ local pills = { workers = "pill-workers", firms = "pill-firms", individuals = "p
 local uses = {
   work = { "pill-use-work", "At work", "Use for work only" },
   private = { "pill-use-private", "Private life", "Use outside work only" },
-  both = { "pill-use-both", "Work and private", "Asked separately" },
   any = { "pill-use-any", "Any purpose", "Work and private use not separated" },
   firm = { "pill-use-firm", "Firm", "Use by the firm, not by individual workers" },
 }
@@ -49,18 +48,32 @@ local function common_rows(get, row, where)
     local label = pandoc.utils.stringify(asked)
     local cls = pills[label:lower()] or "pill-both"
     local sample = '<span class="pill ' .. cls .. '">' .. label .. "</span>"
+    -- Number of respondents as a second pill: `n: "5,067"` gives "N = 5,067"; a value that does
+    -- not start with a digit keeps its own sign, so `n: "≈ 7,500"` gives "N ≈ 7,500"
+    local n = get("n")
+    if n then
+      local v = pandoc.utils.stringify(n)
+      local text = v:match("^%d") and ("N = " .. v) or ("N " .. v)
+      sample = sample .. '<span class="pill pill-n" title="Number of respondents">' .. text .. "</span>"
+    end
     if get("sample") then sample = sample .. html(get("sample")) end
     row("Sample", sample)
   end
 
   local u = get("use")
-  local use = u and uses[pandoc.utils.stringify(u):lower()]
+  local key = u and pandoc.utils.stringify(u):lower()
+  local use = key and (key == "both" or uses[key])
   if u and not use then
     error("unknown `use` value '" .. pandoc.utils.stringify(u) .. "' in " .. (PANDOC_STATE.input_files[1] or "?"))
   end
   if use then
     -- The pill alone, with its explanation as a tooltip; a `use-note` is shown after it
-    local text = '<span class="pill ' .. use[1] .. '" title="' .. use[3] .. '">' .. use[2] .. "</span>"
+    -- `both` (work and private use asked separately) shows the two pills side by side
+    local function pill(p, tip) return '<span class="pill ' .. p[1] .. '" title="' .. (tip or p[3]) .. '">' .. p[2] .. "</span>" end
+    local text = key == "both"
+      and (pill(uses.work, "Use for work, asked separately from private use")
+        .. pill(uses.private, "Use outside work, asked separately from use for work"))
+      or pill(use)
     if get("use-note") then text = text .. html(get("use-note")) end
     row("AI use", text)
   end
